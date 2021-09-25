@@ -38,6 +38,39 @@ The following is a report template to help your team successfully provide all th
 ## Conflict Resolution Protocol
 
 *[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem? (If you choose to make this an external document, link to it here)]*
+### Conflict with a Team member
+Any conflict that arises with members of the project team will require the individual involved in
+the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a
+meeting with the aggrieved parties accompanied by a detailed description of each individual's
+comments and concerns. If the conflict in question involves the Project Manager then a Team
+Member who is not involved in the conflict will fill the role of Project Manager for the purposes of
+resolving this specific conflict. The meeting will begin with each person, in no particular order,
+individually explaining their concerns and discussing them openly. Notes will be taken
+throughout this process including key comments and desired outcomes. The purpose of this
+meeting is for all parties to come to a mutual understanding and reach a resolution to the
+aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and
+require mediation as described in the Mediation part.
+
+### Conflict with the Convenor
+Any conflict that arises with the Convenor will require the individual, or individuals, involved in
+the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a
+meeting with the aggrieved parties accompanied by a detailed description of each individual's
+comments and concerns. If the conflict in question involves the Project Manager then a Team
+Member who is not involved in the conflict will fill the role of Project Manager for the purposes of
+resolving this specific conflict. The meeting will begin with each person, in no particular order,
+individually explaining their concerns and discussing them openly. Notes will be taken
+throughout this process including key comments and desired outcomes. The purpose of this
+meeting is for all parties to come to a mutual understanding and reach a resolution to the
+aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and
+require mediation as described in the Mediation part.
+
+### Mediation
+In the unlikely event that an event of conflict can not be resolved it will require mediation from a
+third party. This can be at the request of the aggrieved parties if they believe they can not
+resolve the conflict through the usual means. It is the responsibility of the Project Manager to
+organise an appropriate person to undertake mediation. If there is a conflict of interest with the
+Project Manager, the next appropriate individual will be the Assessor followed by the Course
+Convenor.
 
 ## Application Description
 
