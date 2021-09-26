@@ -220,7 +220,7 @@ Convenor.
 
 *Here is an example:*
 
-- *[Team Meeting 1](./MeetingTemplate.md)*
+- *[Team Meeting 1](./meeting1.md)*
 - ...
 
 *Either write your meeting minutes here or link to documents that contain them. There must be at least 3 team meetings.*
