@@ -22,7 +22,7 @@ Stand up Procedure: ...
 
 - The figure below is our plan in details:
 
-  ![](E:\ANU\2021S2_6442Software Construction\plan.png)
+  ![1632925342913](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\1632925342913.png)
 
   
 
