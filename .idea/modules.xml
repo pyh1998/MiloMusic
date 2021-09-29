@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Social-network-app.iml" filepath="$PROJECT_DIR$/.idea/modules/Social-network-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Social-network-app.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Social-network-app.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/comp21006442_g15barbecue-sauce.Social-network-app.iml" filepath="$PROJECT_DIR$/.idea/modules/comp21006442_g15barbecue-sauce.Social-network-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/comp21006442_g15barbecue-sauce.Social-network-app.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/comp21006442_g15barbecue-sauce.Social-network-app.app.iml" />
     </modules>
   </component>
 </project>
