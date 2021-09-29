@@ -22,7 +22,7 @@ Stand up Procedure: ...
 
 - The figure below is our plan in details:
 
-  ![plan in meeting2](.\images\meeting2_plan.png)
+  ![plan in meeting2](./images/meeting2_plan.png)
 
   
 
