@@ -13,9 +13,9 @@ Stand up Procedure: ...
 ## Agenda Items
 | Number | Item |
 | :--- | :--- |
-| [1] | Ensure the app theme |
-| [2] | Discuss the basic part and assign the tasks |
-| [3] | Set the deadline of each part |
+| 1 | Ensure the app theme |
+| 2 | Discuss the basic part and assign the tasks |
+| 3 | Set the deadline of each part |
 
 ## Meeting Minutes
 - We ensure the app theme which is about music.
