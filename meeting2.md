@@ -22,7 +22,7 @@ Stand up Procedure: ...
 
 - The figure below is our plan in details:
 
-  ![1632925342913](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\1632925342913.png)
+  ![plan in meeting2](.\images\meeting2_plan.png)
 
   
 
