@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false"
+        android:color="#FFFFFF" />        <!--  5de280 -->
+        <!-- android:drawable="@drawable/layer_btn_login_50dp_corner" /> -->
+        
+    <item android:state_pressed="true"
+        android:color="@color/softblue" />
+        <!-- android:drawable="@drawable/layer_btn_login_gray_50dp_corner" /> -->
+</selector>

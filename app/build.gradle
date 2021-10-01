@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId "com.example.social_network_app"
         minSdk 16
-        targetSdk 31
+        targetSdk 26
         versionCode 1
         versionName "1.0"
 
@@ -25,6 +25,8 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    compileSdkVersion 30
+    buildToolsVersion '30.0.2'
 }
 
 dependencies {

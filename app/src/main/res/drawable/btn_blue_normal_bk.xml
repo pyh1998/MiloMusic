@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false"  
+        android:drawable="@drawable/bob_next" />    <!--  45b0ff  -->
+        <!-- android:drawable="@drawable/layer_btn_login_50dp_corner" /> -->
+        
+    <item android:state_pressed="true"  
+        android:drawable="@drawable/bob_next_pressed" />
+        <!-- android:drawable="@drawable/layer_btn_login_gray_50dp_corner" /> -->
+</selector>

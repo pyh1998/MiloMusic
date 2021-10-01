@@ -7,4 +7,81 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="red">#FFFF0000</color>
+    <color name="blue">#FF159eec</color>
+    <color name="blue_bk">#F2159eec</color>
+    <color name="grey">#1e999999</color>
+    <color name="gray2">#FFAAAAAA</color>
+    <color name="black2">#AA0000</color>
+    <color name="black3">#FF656565</color>
+    <color name="transparent">#00000000</color>
+    <color name="pagesview">#CCCCCC</color>
+    <color name="normal_back">#CC000000</color>
+    <color name="page_no">#32000000</color>
+    <color name="find_edit_text_hint_color">#ffbbbbbb</color>
+
+    <color name="normal_blue">#00FFFFFF</color>
+    <color name="normal_pre_blue">#FFC0C0C0</color>
+    <color name="normal_bk">#00000000</color>
+
+    <color name="textbutton_pressed">#FFC0C0C0</color>
+    <color name="textbutton_disabled">#ff505050</color>
+    <color name="textbutton_gradient_begin">#FF159eec</color>
+    <color name="textbutton_gradient_end">#FF159eec</color>
+    <color name="textbutton_stroke">#40000000</color>
+
+
+
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+
+    <color name="gray">#FFDDDDDD</color>
+    <color name="f5">#f5f5f5</color>
+    <color name="f2">#f2f2f2</color>
+    <color name="red_cd0000">#cd0000</color>
+    <color name="font33">#333333</color>
+    <color name="ccc">#cccccc</color>
+    <color name="darkblue">#e8f6ff</color>
+    <color name="softblue1">#b5e2ff</color>
+    <color name="softblue">#5bbef7</color>
+
+    <color name="windowBackground">#F4F4F4</color>
+    <color name="textColor">#333333</color>
+    <color name="textColorHint">#757575</color>
+
+    <!-- 灰色 -->
+    <color name="gray3">#808080</color>
+    <!-- 红色 -->
+    <color name="red1">#FF0000</color>
+    <!-- 金色 -->
+    <color name="gold">#FFD700</color>
+    <!-- 黄色 -->
+    <color name="yellow">#FFFF00</color>
+    <!-- 绿色 -->
+    <color name="green">#008000</color>
+    <!-- 蓝色 -->
+    <color name="blue1">#0000FF</color>
+    <color name="skyblue">#4981fa</color>
+    <!-- 紫色 -->
+    <color name="purple">#800080</color>
+    <color name="purple2">#a56ef9</color>
+    <!-- 粉色 -->
+    <color name="pink">#FFC0CB</color>
+    <!-- 橙色 -->
+    <color name="orange">#FFA500</color>
+
+    <color name="color_f85959">#f85959</color>
+    <color name="color_b11919">#b11919</color>
+    <color name="color_F96B6B">#F96B6B</color>
+    <color name="dialog_bg_press">#f0f0f0</color>
+    <color name="dialog_bg">#ffffff</color>
 </resources>
