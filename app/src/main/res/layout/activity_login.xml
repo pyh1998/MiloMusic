@@ -98,27 +98,29 @@
             android:layout_height="60dp"
             android:orientation="horizontal"
             android:layout_marginTop="40dp">
+
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:text="Login"
-                android:textSize="14sp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
                 android:background="@drawable/btn_blue_normal_bk"
+                android:text="Login"
                 android:textColor="@color/btn_blue_normal"
-                />
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/btnRegister"
                 android:layout_width="120dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="40dp"
-                android:text="REGIASTER"
-                android:background="@drawable/btn_gradle_normal_bk"
-                android:textColor="@color/btn_gradle_normal"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="80dp"
+                android:layout_marginLeft="80dp"
+                android:background="@drawable/btn_gradle_normal_bk"
+                android:text="REGIASTER"
+                android:textColor="@color/btn_gradle_normal" />
 
         </LinearLayout>
 
