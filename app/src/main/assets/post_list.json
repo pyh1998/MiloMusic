@@ -1,7 +1,7 @@
 [
-  {"id":1,"music_id":1,"user_id":1,"UserReviews":"Worth the wait."},
-  {"id":2,"music_id":1,"user_id":2,"UserReviews":"Worth the wait2."},
-  {"id":3,"music_id":2,"user_id":3,"UserReviews":"Worth the wait3."},
-  {"id":4,"music_id":2,"user_id":2,"UserReviews":"Worth the wait4."},
-  {"id":5,"music_id":3,"user_id":1,"UserReviews":"Worth the wait5."}
+  {"id":1,"music_id":1,"user_id":1,"userReviews":"Worth the wait."},
+  {"id":2,"music_id":1,"user_id":2,"userReviews":"Worth the wait2."},
+  {"id":3,"music_id":2,"user_id":3,"userReviews":"Worth the wait3."},
+  {"id":4,"music_id":2,"user_id":2,"userReviews":"Worth the wait4."},
+  {"id":5,"music_id":3,"user_id":1,"userReviews":"Worth the wait5."}
 ]
