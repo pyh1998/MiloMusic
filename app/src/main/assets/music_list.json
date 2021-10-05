@@ -1,0 +1,5 @@
+[
+  {"id":1,"Name":"Vega-Tables","Artist":"Brian Wilson","Album":"SMILE","ReleaseDate":"Sep 28, 2004","Picture": "./Brian Wilson.jpg"},
+  {"id":2,"Name":"On a Holiday","Artist":"Brian Wilson","Album":"SMILE","ReleaseDate":"Sep 28, 2004","Picture": "./Brian Wilson.jpg"},
+  {"id":3,"Name":"Wind Chimes","Artist":"Brian Wilson","Album":"SMILE","ReleaseDate":"Sep 28, 2004","Picture": "./Brian Wilson.jpg"}
+]
