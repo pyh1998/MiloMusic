@@ -10,13 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Socialnetworkapp">
+        <activity android:name=".MainActivity"></activity>
         <activity
-            android:name=".MainActivity"
-            >
-
-        </activity>
-
-        <activity android:name=".LoginActivity"
+            android:name=".LoginActivity"
             tools:ignore="IntentFilterExportedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

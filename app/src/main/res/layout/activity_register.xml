@@ -100,9 +100,8 @@
             android:paddingTop="20dp"
             android:paddingRight="20dp"
             android:paddingBottom="20dp"
-            android:text="submmit"
-            android:textSize="14sp"
-            />
+            android:text="submit"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
