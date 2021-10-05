@@ -1,4 +1,4 @@
-package com.example.social_network_app.Basic_class;
+package com.example.social_network_app.Basic_classes.UserDao;
 
 public class User {
     private int id;
@@ -8,13 +8,14 @@ public class User {
     private String sex;
     private String heed;
 
-    public User(int id, String name, String email, int age, String sex, String heed) {
+    public User(int id, String name, String email, int age, String sex) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
         this.sex = sex;
-        this.heed = heed;
+        if(sex.equals("male")) this.heed = "app/src/main/assets/Male_head.png";
+        else this.heed = "app/src/main/assets/Female_head.png";
     }
 
     public int getId() {
