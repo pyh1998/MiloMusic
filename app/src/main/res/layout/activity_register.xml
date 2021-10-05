@@ -91,6 +91,83 @@
 
         </LinearLayout>
 
+        <RadioGroup
+            android:id="@+id/rg_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <RadioButton
+                android:id="@+id/rb_female"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                tools:layout_conversion_absoluteHeight="48dp"
+                tools:layout_conversion_absoluteWidth="78dp"
+                tools:layout_editor_absoluteX="30dp"
+                tools:layout_editor_absoluteY="300dp" />
+
+            <RadioButton
+                android:id="@+id/rb_male"
+                android:layout_width="187dp"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                tools:layout_conversion_absoluteHeight="48dp"
+                tools:layout_conversion_absoluteWidth="78dp"
+                tools:layout_editor_absoluteX="30dp"
+                tools:layout_editor_absoluteY="348dp" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="name"
+            app:startIconDrawable="@drawable/field_username_icon"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconTint="@color/black"
+            app:hintTextColor="@color/black"
+            android:textColorHint="@color/black"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="age"
+            app:startIconDrawable="@drawable/field_full_name_icon"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:startIconTint="@color/black"
+            app:hintTextColor="@color/black"
+            android:textColorHint="@color/black"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            app:boxStrokeColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number">
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        
+
         <Button
             android:id="@+id/btnRegSubmit"
             android:layout_width="match_parent"
@@ -101,7 +178,8 @@
             android:paddingRight="20dp"
             android:paddingBottom="20dp"
             android:text="submit"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            />
 
     </LinearLayout>
 

@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024"
-        tools:srcCompat="@drawable/music" />
+        app:srcCompat="@drawable/music" />
 
     <TextView
         android:id="@+id/tv_username"
