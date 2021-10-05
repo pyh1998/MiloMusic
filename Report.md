@@ -174,9 +174,7 @@ Convenor.
 *Here is an example:*
 
 1. *Bug 1:*
-
-- *A space bar (' ') in the sign in email will crash the application.*
-- ... 
+- *User avatar does not show in the activity_main.* 
 
 2. *Bug 2:*
 3. ...
