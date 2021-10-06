@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".UserActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/user_comments"
@@ -66,5 +67,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.09"
-        app:srcCompat="@drawable/music" />
+        app:srcCompat="@drawable/male_head" />
 </androidx.constraintlayout.widget.ConstraintLayout>

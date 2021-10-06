@@ -119,7 +119,7 @@
                 android:layout_marginStart="80dp"
                 android:layout_marginLeft="80dp"
                 android:background="@drawable/btn_gradle_normal_bk"
-                android:text="REGIASTER"
+                android:text="REGISTER"
                 android:textColor="@color/btn_gradle_normal" />
 
         </LinearLayout>
