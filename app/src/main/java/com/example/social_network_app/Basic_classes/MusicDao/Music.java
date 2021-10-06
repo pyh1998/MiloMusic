@@ -1,8 +1,9 @@
 package com.example.social_network_app.Basic_classes.MusicDao;
 
 
+import java.io.Serializable;
 
-public class Music {
+public class Music implements Serializable {
     private int id;
     private String name;
     private String artist;

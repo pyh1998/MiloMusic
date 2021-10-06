@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 if(current == null){
-                    Toast.makeText(LoginActivity.this,"No user!Please register!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this,"No user! Please register!",Toast.LENGTH_LONG).show();
                     return;
                 }
 

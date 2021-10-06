@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -44,7 +45,8 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     List<Music> MusicList;
-    List<Map<String,Object>> resultList = new ArrayList<>();
+    List<Music> resultList = new ArrayList<>();
+    List<Map<String,Object>> resultMapList = new ArrayList<>();
     User currentUser;
 
     ListView resultView;
@@ -69,10 +71,27 @@ public class MainActivity extends AppCompatActivity {
         iv_userHead = findViewById(R.id.iv_userhead);
 
         MusicList = getMusicList();
-        showAllMusic();
+        resultList = MusicList;  //TODO search function(parse & token)
+        showMusic(resultList);
         showUser();
 
+        resultView.setOnItemClickListener(resultViewListener);
     }
+
+    private AdapterView.OnItemClickListener resultViewListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Intent intent = new Intent(getApplicationContext(),CommentsActivity.class);
+            Music music = resultList.get(i);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("CurrentUser", currentUser);
+            bundle.putSerializable("Music",music);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+    };
+
+
 
     @SuppressLint("SetTextI18n")
     public void showUser(){
@@ -89,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void showAllMusic(){
-        for(int i =0;i<MusicList.size();i++){
+    public void showMusic(List<Music> list){
+        for(int i =0;i<list.size();i++){
             Map<String,Object> map = new HashMap<>();
             Music music = MusicList.get(i);
             try {
@@ -105,11 +124,11 @@ public class MainActivity extends AppCompatActivity {
             map.put("m_date",music.getReleaseDate());
             map.put("m_rate",music.getRate());
             Log.e("!!!!!!!!!",map.toString());
-            resultList.add(map);
+            resultMapList.add(map);
         }
         SimpleAdapter listAdapter = new SimpleAdapter(
                 this,
-                resultList,
+                resultMapList,
                 R.layout.music_item,
                 new String[]{"m_img","m_name","m_artist","m_date","m_rate"},
                 new int[]{R.id.m_img,R.id.m_name,R.id.m_artist,R.id.m_date,R.id.m_rate}
