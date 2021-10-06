@@ -10,15 +10,16 @@
         android:id="@+id/comment_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
+        android:maxLength="11"
         android:text="User name"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toEndOf="@+id/comment_userhead"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -30,7 +31,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/female_head" />
@@ -49,10 +49,10 @@
         android:id="@+id/comment"
         android:layout_width="281dp"
         android:layout_height="49dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="Comment....."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/comment_user_name"
-        app:layout_constraintTop_toBottomOf="@+id/comment_user_name" />
+        app:layout_constraintTop_toBottomOf="@+id/comment_date" />
 </androidx.constraintlayout.widget.ConstraintLayout>
