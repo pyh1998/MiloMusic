@@ -1,5 +1,14 @@
 [
-  {"id":1,"name":"Vega-Tables","artist":"Brian Wilson","album":"SMILE","releaseDate":"2004-11-8","rate":4.8,"picture": "file:///android_asset/Brian Wilson.jpg"},
-  {"id":2,"name":"On a Holiday","artist":"Brian Wilson","album":"SMILE","releaseDate":"2004-11-8","rate":4.5,"picture": "file:///android_asset/Brian Wilson.jpg"},
-  {"id":3,"name":"Wind Chimes","artist":"Brian Wilson","album":"SMILE","releaseDate":"2004-11-8","rate":4.1,"picture": "file:///android_asset/Brian Wilson.jpg"}
+  {"id":1,"name":"Vega-Tables","artist":"Brian Wilson","album":"SMILE","releaseDate":"2004-11-8","rate":4.8,"picture": "brianwilson"},
+  {"id":2,"name":"On a Holiday","artist":"Brian Wilson","album":"SMILE","releaseDate":"2004-11-8","rate":4.5,"picture": "brianwilson"},
+  {"id":3,"name":"Wind Chimes","artist":"Brian Wilson","album":"SMILE","releaseDate":"2008-10-5","rate":4.1,"picture": "brianwilson"},
+  {"id":4,"name":"On I Go","artist":"Fiona Apple","album":"FETCH THE BOLT CUTTERS","releaseDate":"2004-11-8","rate":4.9,"picture": "fionaapple"},
+  {"id":5,"name":"Surf's Up","artist":"Brian Wilson","album":"SMILE","releaseDate":"2004-11-8","rate":4.1,"picture": "wadadaleosmith"},
+  {"id":6,"name":"America, Pts. 1, 2 & 3","artist":"Wadada Leo Smith","album":"TEN FREEDOM SUMMERS","releaseDate":"2012-5-22","rate":4.1,"picture": "wadadaleosmith"},
+  {"id":7,"name":"For Her","artist":"Fiona Apple","album":"FETCH THE BOLT CUTTERS","releaseDate":"2018-5-7","rate":4.1,"picture": "fionaapple"},
+  {"id":8,"name":"Black Church","artist":"Wadada Leo Smith","album":"TEN FREEDOM SUMMERS","releaseDate":"2017-6-8","rate":4.5,"picture": "wadadaleosmith"},
+  {"id":9,"name":"Wind Chimes","artist":"Brian Wilson","album":"SMILE","releaseDate":"2004-11-8","rate":4.2,"picture": "brianwilson"}
+
+
+
 ]

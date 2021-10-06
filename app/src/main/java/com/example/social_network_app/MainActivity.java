@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
@@ -39,7 +40,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<Post> postList;
+    List<Music> MusicList;
     List<Map<String,Object>> resultList = new ArrayList<>();
     ListView resultView;
     ImageButton searchButton;
@@ -53,24 +54,24 @@ public class MainActivity extends AppCompatActivity {
         resultView = findViewById(R.id.rv_musiclist);
         searchButton = findViewById(R.id.ib_search);
 
-        getPostList();
+        MusicList = getMusicList();
 
-        for(int i =0;i<postList.size();i++){
+        for(int i =0;i<MusicList.size();i++){
             Map<String,Object> map = new HashMap<>();
-            Post post = postList.get(i);
+            Music music = MusicList.get(i);
             try {
-                Log.e("!!!!!!!!!",post.getMusic().getPicture());
-                Field field = R.drawable.class.getField(post.getMusic().getPicture());
+                Log.e("!!!!!!!!!",music.getPicture());
+                Field field = R.drawable.class.getField(music.getPicture());
                 Log.e("!!!!!!!!!",field.getName());
                 int img_id = field.getInt(field.getName());
                 map.put("m_img",img_id);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            map.put("m_name",post.getMusic().getName());
-            map.put("m_artist",post.getMusic().getArtist());
-            map.put("m_date",post.getMusic().getReleaseDate());
-            map.put("m_rate",post.getMusic().getRate());
+            map.put("m_name",music.getName());
+            map.put("m_artist",music.getArtist());
+            map.put("m_date",music.getReleaseDate());
+            map.put("m_rate",music.getRate());
             Log.e("!!!!!!!!!",map.toString());
             resultList.add(map);
         }
@@ -84,10 +85,16 @@ public class MainActivity extends AppCompatActivity {
         resultView.setAdapter(listAdapter);
     }
 
-    public void getPostList(){
+    public List<Music> getMusicList(){
+        String myjson = getJson(MainActivity.this, "music_list.json");
+        Gson gson = new Gson();
+        return gson .fromJson(myjson, new TypeToken<List<Music>>(){}.getType());
+    }
+
+    public List<Post> getPostList(){
         String myjson = getJson(MainActivity.this, "post_list.json");
         Gson gson = new Gson();
-        postList = (List<Post>)gson .fromJson(myjson, new TypeToken<List<Post>>(){}.getType());
+        return  gson .fromJson(myjson, new TypeToken<List<Post>>(){}.getType());
     }
 
     public static String getJson(Context context, String fileName){
