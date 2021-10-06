@@ -90,4 +90,10 @@ public class Music implements Serializable {
                 ", picture='" + picture + '\'' +
                 '}';
     }
+
+    public boolean equals(Music music){
+        return this.id == music.id;
+    }
+
+
 }

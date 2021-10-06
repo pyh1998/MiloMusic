@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     public void showMusic(List<Music> list){
         for(int i =0;i<list.size();i++){
             Map<String,Object> map = new HashMap<>();
-            Music music = MusicList.get(i);
+            Music music = list.get(i);
             try {
                 Field field = R.drawable.class.getField(music.getPicture());
                 int img_id = field.getInt(field.getName());

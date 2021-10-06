@@ -20,14 +20,14 @@ public class Post {
     private Music music;
     private User user;
     private String userReviews;
+    private String datetime;
 
-    public Post(int id, int music_id, int user_id, String userReviews) {
-        System.out.println("mmmm"+music_id);
-        System.out.println("uuuuu"+user_id);
+    public Post(int id, int music_id, int user_id, String userReviews,String datetime) {
         this.id = id;
         this.music = getMusicByID(music_id);
         this.user = getUserById(user_id);
         this.userReviews = userReviews;
+        this.datetime = datetime;
     }
 
     public static void main(String[] args) {
@@ -121,6 +121,14 @@ public class Post {
 
     public void setUserReviews(String userReviews) {
         this.userReviews = userReviews;
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 
     @Override

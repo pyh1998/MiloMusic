@@ -1,5 +1,7 @@
 package com.example.social_network_app.Basic_classes.UserDao;
 
+import com.example.social_network_app.Basic_classes.MusicDao.Music;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -77,5 +79,9 @@ public class User implements Serializable {
                 ", sex='" + sex + '\'' +
                 ", heed='" + heed + '\'' +
                 '}';
+    }
+
+    public boolean equals(User user){
+        return this.id == user.id;
     }
 }
