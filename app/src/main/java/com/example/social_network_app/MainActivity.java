@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             }
             map.put("m_name",post.getMusic().getName());
             map.put("m_artist",post.getMusic().getArtist());
-            map.put("m_album",post.getMusic().getAlbum());
+            map.put("m_date",post.getMusic().getReleaseDate());
             map.put("m_rate",post.getMusic().getRate());
             Log.e("!!!!!!!!!",map.toString());
             resultList.add(map);
@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 this,
                 resultList,
                 R.layout.music_item,
-                new String[]{"m_img","m_name","m_artist","m_album","m_rate"},
-                new int[]{R.id.m_img,R.id.m_name,R.id.m_artist,R.id.m_album,R.id.m_rate}
+                new String[]{"m_img","m_name","m_artist","m_date","m_rate"},
+                new int[]{R.id.m_img,R.id.m_name,R.id.m_artist,R.id.m_date,R.id.m_rate}
         );
         resultView.setAdapter(listAdapter);
     }

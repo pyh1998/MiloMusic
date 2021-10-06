@@ -28,18 +28,18 @@
 
     <TextView
         android:id="@+id/m_artist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginLeft="72dp"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/m_img"
         app:layout_constraintStart_toEndOf="@+id/m_img" />
 
     <TextView
-        android:id="@+id/m_album"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/m_date"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/m_img"
         app:layout_constraintEnd_toStartOf="@+id/m_rate"
@@ -48,11 +48,10 @@
 
     <TextView
         android:id="@+id/m_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
         android:layout_marginStart="244dp"
         android:layout_marginLeft="244dp"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/m_img"
         app:layout_constraintStart_toEndOf="@+id/m_img" />
 </androidx.constraintlayout.widget.ConstraintLayout>
