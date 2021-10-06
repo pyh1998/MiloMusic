@@ -6,7 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -54,8 +55,6 @@ public class CommentsActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
         currentMusic = (Music) getIntent().getSerializableExtra("Music");
-        Log.e("!!!!!!!!!!!!!",currentUser.toString());
-        Log.e("!!!!!!!!!!!!!",currentMusic.toString());
 
         userHead = findViewById(R.id.iv_userhead_comments);
         MusicImage = findViewById(R.id.comment_music);
@@ -77,7 +76,21 @@ public class CommentsActivity extends AppCompatActivity {
         showMusic();
         showComments(resultList);
         CommentsCount.setText(String.valueOf(resultList.size()));
+
+        Comments.setOnItemClickListener(commentsListener);
     }
+
+    private AdapterView.OnItemClickListener commentsListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Intent intent = new Intent(getApplicationContext(),UserActivity.class);
+            User user = resultList.get(i).getUser();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("User",user);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+    };
 
     public void showUser(){
         String head_img = currentUser.getHeed();

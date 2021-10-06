@@ -2,13 +2,138 @@ package com.example.social_network_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
+
+import com.example.social_network_app.Basic_classes.MusicDao.Music;
+import com.example.social_network_app.Basic_classes.PostDao.Post;
+import com.example.social_network_app.Basic_classes.UserDao.User;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class UserActivity extends AppCompatActivity {
+
+    User user;
+    List<Post> postList = new ArrayList<>();
+    List<Post> resultList = new ArrayList<>();
+    List<Map<String,Object>> resultMapList = new ArrayList<>();
+
+    ImageView iv_user_userhead;
+    TextView user_username;
+    TextView user_userage;
+    TextView user_usersex;
+    TextView user_useremail;
+    TextView user_commentscount;
+    ListView comments;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
+        iv_user_userhead = findViewById(R.id.iv_user_userhead);
+        user_username = findViewById(R.id.user_username);
+        user_userage = findViewById(R.id.user_userage);
+        user_usersex = findViewById(R.id.user_usersex);
+        user_useremail = findViewById(R.id.user_useremail);
+        user_commentscount = findViewById(R.id.user_commentscount);
+        comments = findViewById(R.id.user_usercomments);
+
+        Intent intent = getIntent();
+        user = (User) getIntent().getSerializableExtra("User");
+
+        postList = getPostList();
+        for(int i=0;i<postList.size();i++){
+            if(postList.get(i).getUser().equals(user)){
+                resultList.add(postList.get(i));
+            }
+        }
+        showUserDetail();
+        showComments(resultList);
+        user_commentscount.setText(String.valueOf(resultList.size()));
+
+
+    }
+
+    public void showUserDetail(){
+        String head_img = user.getHeed();
+        try {
+            Field field = R.drawable.class.getField(head_img);
+            int img_id = field.getInt(field.getName());
+            iv_user_userhead.setImageResource(img_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        user_username.setText(user.getName());
+        user_userage.setText(String.valueOf(user.getAge()));
+        user_usersex.setText(user.getSex());
+        user_useremail.setText(user.getEmail());
+    }
+
+    public void showComments(List<Post> list){
+        for(int i =0;i<list.size();i++){
+            Map<String,Object> map = new HashMap<>();
+            Music music = list.get(i).getMusic();
+            String datetime = list.get(i).getDatetime();
+            String comments = list.get(i).getUserReviews();
+            try {
+                Field field = R.drawable.class.getField(music.getPicture());
+                int img_id = field.getInt(field.getName());
+                map.put("comment_userhead",img_id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            map.put("comment_user_name",music.getName());
+            map.put("comment_date",datetime);
+            map.put("comment",comments);
+            resultMapList.add(map);
+        }
+        SimpleAdapter listAdapter = new SimpleAdapter(
+                this,
+                resultMapList,
+                R.layout.comment_item,
+                new String[]{"comment_userhead","comment_user_name","comment_date","comment"},
+                new int[]{R.id.comment_userhead,R.id.comment_user_name,R.id.comment_date,R.id.comment}
+        );
+        comments.setAdapter(listAdapter);
+    }
+
+    public List<Post> getPostList(){
+        String myjson = getJson(this, "post_list.json");
+        Gson gson = new Gson();
+        return  gson .fromJson(myjson, new TypeToken<List<Post>>(){}.getType());
+    }
+
+    public static String getJson(Context context, String fileName){
+        StringBuilder stringBuilder = new StringBuilder();
+        AssetManager assetManager = context.getAssets();
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+                    assetManager.open(fileName),"utf-8"));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
     }
 }

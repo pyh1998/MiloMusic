@@ -106,7 +106,7 @@
         app:srcCompat="@drawable/microphone" />
 
     <ListView
-        android:id="@+id/user_usercomments"
+        android:id="@+id/user_comments"
         android:layout_width="410dp"
         android:layout_height="368dp"
         app:layout_constraintBottom_toBottomOf="parent"
