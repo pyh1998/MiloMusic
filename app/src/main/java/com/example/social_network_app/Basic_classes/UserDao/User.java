@@ -14,8 +14,8 @@ public class User {
         this.email = email;
         this.age = age;
         this.sex = sex;
-        if(sex.equals("male")) this.heed = "app/src/main/assets/Male_head.png";
-        else this.heed = "app/src/main/assets/Female_head.png";
+        if(sex.equals("male")) this.heed = "app/src/main/assets/male_head.png";
+        else this.heed = "app/src/main/assets/female_head.png";
     }
 
     public int getId() {

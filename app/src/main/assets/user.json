@@ -1,7 +1,7 @@
 [
-  {"id": 1,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"male","head": "./Male_head.png"},
-  {"id": 2,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"male","head": "./Male_head.png"},
-  {"id": 3,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"male","head": "./Male_head.png"},
-  {"id": 4,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"female","head": "./Female_head.png"},
-  {"id": 5,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"female","head": "./Female_head.png"}
+  {"id": 1,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"male","head": "file:///android_asset/Male_head.png"},
+  {"id": 2,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"male","head": "file:///android_asset/Male_head.png"},
+  {"id": 3,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"male","head": "file:///android_asset/Male_head.png"},
+  {"id": 4,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"female","head": "file:///android_asset/Female_head.png"},
+  {"id": 5,"name": "Jack","email": "123456@gmail.com","age": 18,"sex":"female","head": "file:///android_asset/Female_head.png"}
 ]

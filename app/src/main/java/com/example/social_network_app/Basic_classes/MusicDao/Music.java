@@ -8,15 +8,26 @@ public class Music {
     private String artist;
     private String album;
     private String releaseDate;
+    private double rate;
     private String picture;
 
-    public Music(int id, String name, String artist, String album, String releaseDate, String picture){
+    public Music(int id, String name, String artist, String album, String releaseDate, double rate,String picture){
+        System.out.println("!!!!");
         this.id = id;
         this.name = name;
         this.artist = artist;
         this.album = album;
         this.releaseDate = releaseDate;
+        this.rate = rate;
         this.picture = picture;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 
     public int getId() {

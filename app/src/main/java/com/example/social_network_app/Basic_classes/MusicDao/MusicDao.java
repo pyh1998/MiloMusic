@@ -1,6 +1,9 @@
 package com.example.social_network_app.Basic_classes.MusicDao;
 
 
+import android.content.res.AssetManager;
+
+import com.example.social_network_app.MainActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -13,6 +16,8 @@ public class MusicDao implements MusicDaoInterface {
 
     @Override
     public List<Music> findAllMusics() {
+
+
         Gson gson = new Gson();
         JsonReader jsonReader = null;
 

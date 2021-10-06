@@ -68,14 +68,12 @@
         app:layout_constraintStart_toEndOf="@+id/search"
         app:srcCompat="@drawable/search" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:id="@+id/rv_musiclist"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="410dp"
+        android:layout_height="530dp"
         android:layout_marginTop="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
