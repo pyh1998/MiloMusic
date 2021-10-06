@@ -1,6 +1,8 @@
 package com.example.social_network_app.Basic_classes.UserDao;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private int id;
     private String name;
     private String email;
@@ -14,8 +16,6 @@ public class User {
         this.email = email;
         this.age = age;
         this.sex = sex;
-        if(sex.equals("male")) this.heed = "app/src/main/assets/male_head.png";
-        else this.heed = "app/src/main/assets/female_head.png";
     }
 
     public int getId() {
@@ -39,7 +39,8 @@ public class User {
     }
 
     public String getHeed() {
-        return heed;
+        if(sex.equals("male")) return "male_head";
+        else return  "female_head";
     }
 
     public void setId(int id) {

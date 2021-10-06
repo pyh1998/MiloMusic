@@ -13,14 +13,17 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.PostDao.PostInterface;
+import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -42,8 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
     List<Music> MusicList;
     List<Map<String,Object>> resultList = new ArrayList<>();
+    User currentUser;
+
     ListView resultView;
     ImageButton searchButton;
+    TextView tv_userName;
+    ImageView iv_userHead;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -51,18 +58,43 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
+        Log.e("!!!!!!!!!!!!!!",currentUser.toString());
+
         resultView = findViewById(R.id.rv_musiclist);
         searchButton = findViewById(R.id.ib_search);
+        tv_userName = findViewById(R.id.tv_username);
+        iv_userHead = findViewById(R.id.iv_userhead);
 
         MusicList = getMusicList();
+        showAllMusic();
+        showUser();
 
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void showUser(){
+        String name = currentUser.getName();
+        String head_img = currentUser.getHeed();
+        tv_userName.setText(name + " !");
+        try {
+            Field field = R.drawable.class.getField(head_img);
+            int img_id = field.getInt(field.getName());
+            iv_userHead.setImageResource(img_id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void showAllMusic(){
         for(int i =0;i<MusicList.size();i++){
             Map<String,Object> map = new HashMap<>();
             Music music = MusicList.get(i);
             try {
-                Log.e("!!!!!!!!!",music.getPicture());
                 Field field = R.drawable.class.getField(music.getPicture());
-                Log.e("!!!!!!!!!",field.getName());
                 int img_id = field.getInt(field.getName());
                 map.put("m_img",img_id);
             } catch (Exception e) {
@@ -99,9 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static String getJson(Context context, String fileName){
         StringBuilder stringBuilder = new StringBuilder();
-        //获得assets资源管理器
         AssetManager assetManager = context.getAssets();
-        //使用IO流读取json文件内容
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
                     assetManager.open(fileName),"utf-8"));
