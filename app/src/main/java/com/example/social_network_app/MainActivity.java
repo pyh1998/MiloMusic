@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton searchButton;
     TextView tv_userName;
     ImageView iv_userHead;
+    EditText search;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.ib_search);
         tv_userName = findViewById(R.id.tv_username);
         iv_userHead = findViewById(R.id.iv_userhead);
+        search = findViewById(R.id.search);
 
         MusicList = getMusicList();
         resultList = MusicList;  //TODO search function(parse & token)

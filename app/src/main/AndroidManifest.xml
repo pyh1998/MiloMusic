@@ -12,11 +12,12 @@
         android:theme="@style/Theme.Socialnetworkapp" >
         <activity
             android:name=".CommentsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".UserActivity"
             android:exported="true" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity" android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".LoginActivity"
             tools:ignore="IntentFilterExportedReceiver" >
