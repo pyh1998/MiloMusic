@@ -31,9 +31,10 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/female_head" />
+        app:srcCompat="@drawable/female_head1" />
 
     <TextView
         android:id="@+id/comment_date"

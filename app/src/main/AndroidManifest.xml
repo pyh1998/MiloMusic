@@ -20,14 +20,15 @@
         <activity android:name=".MainActivity" android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".LoginActivity"
-            tools:ignore="IntentFilterExportedReceiver" >
+            tools:ignore="IntentFilterExportedReceiver"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".RegisterActivity" android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>

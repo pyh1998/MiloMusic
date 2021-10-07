@@ -44,6 +44,7 @@ public class CommentsActivity extends AppCompatActivity {
     TextView AlbumName;
     TextView ReleaseDate;
     TextView CommentsCount;
+    TextView user_name;
     ListView Comments;
 
 
@@ -65,6 +66,7 @@ public class CommentsActivity extends AppCompatActivity {
         ReleaseDate = findViewById(R.id.album_releasedate);
         CommentsCount = findViewById(R.id.comments_count);
         Comments = findViewById(R.id.user_comments);
+        user_name = findViewById(R.id.c_user_name);
 
         postList = getPostList();
 
@@ -102,6 +104,7 @@ public class CommentsActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        user_name.setText(currentUser.getName());
     }
     public void showMusic(){
         String img = currentMusic.getPicture();

@@ -3,6 +3,7 @@ package com.example.social_network_app.Basic_classes.UserDao;
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class User implements Serializable {
     private int id;
@@ -10,14 +11,15 @@ public class User implements Serializable {
     private String email;
     private int age;
     private String sex;
-    private String heed;
+    private String head;
 
-    public User(int id, String name, String email, int age, String sex) {
+    public User(int id, String name, String email, int age, String sex,String head) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
         this.sex = sex;
+        this.head = head;
     }
 
     public int getId() {
@@ -41,8 +43,7 @@ public class User implements Serializable {
     }
 
     public String getHeed() {
-        if(sex.equals("male")) return "male_head";
-        else return  "female_head";
+        return head;
     }
 
     public void setId(int id) {
@@ -65,8 +66,8 @@ public class User implements Serializable {
         this.sex = sex;
     }
 
-    public void setHeed(String heed) {
-        this.heed = heed;
+    public void setHeed(String head) {
+        this.head = head;
     }
 
     @Override
@@ -77,7 +78,7 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
-                ", heed='" + heed + '\'' +
+                ", heed='" + head + '\'' +
                 '}';
     }
 

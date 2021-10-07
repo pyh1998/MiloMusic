@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
-        Log.e("!!!!!!!!!!!!!!",currentUser.toString());
+//        Log.e("!!!!!!!!!!!!!!",currentUser.toString());
 
         resultView = findViewById(R.id.rv_musiclist);
         searchButton = findViewById(R.id.ib_search);
@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
     public void showUser(){
         String name = currentUser.getName();
         String head_img = currentUser.getHeed();
+        Log.e("!!!!!!!!!!!!!!",String.valueOf(head_img));
         tv_userName.setText(name + " !");
         try {
             Field field = R.drawable.class.getField(head_img);
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             map.put("m_artist",music.getArtist());
             map.put("m_date",music.getReleaseDate());
             map.put("m_rate",music.getRate());
-            Log.e("!!!!!!!!!",map.toString());
+//            Log.e("!!!!!!!!!",map.toString());
             resultMapList.add(map);
         }
         SimpleAdapter listAdapter = new SimpleAdapter(

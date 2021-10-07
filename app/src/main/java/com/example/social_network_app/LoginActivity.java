@@ -103,6 +103,8 @@ public class LoginActivity extends AppCompatActivity {
                 helper.close();
 
                 if(isAccountRight){
+                    Log.e("!!!!!!!",current.toString());
+                    Log.e("!!!!!!!",userList.toString());
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("CurrentUser", current);
