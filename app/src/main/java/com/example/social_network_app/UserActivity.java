@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
+import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -60,7 +61,7 @@ public class UserActivity extends AppCompatActivity {
 
         postList = getPostList();
         for(int i=0;i<postList.size();i++){
-            if(postList.get(i).getUser().equals(user)){
+            if(postList.get(i).getUser(this).equals(user)){
                 resultList.add(postList.get(i));
             }
         }
@@ -89,7 +90,7 @@ public class UserActivity extends AppCompatActivity {
     public void showComments(List<Post> list){
         for(int i =0;i<list.size();i++){
             Map<String,Object> map = new HashMap<>();
-            Music music = list.get(i).getMusic();
+            Music music = list.get(i).getMusic(this);
             String datetime = list.get(i).getDatetime();
             String comments = list.get(i).getUserReviews();
             try {
@@ -115,25 +116,7 @@ public class UserActivity extends AppCompatActivity {
     }
 
     public List<Post> getPostList(){
-        String myjson = getJson(this, "post_list.json");
-        Gson gson = new Gson();
-        return  gson .fromJson(myjson, new TypeToken<List<Post>>(){}.getType());
-    }
-
-    public static String getJson(Context context, String fileName){
-        StringBuilder stringBuilder = new StringBuilder();
-        AssetManager assetManager = context.getAssets();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-                    assetManager.open(fileName),"utf-8"));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-            bufferedReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return stringBuilder.toString();
+        PostDao postDao = new PostDao();
+        return postDao.findAllPosts(this);
     }
 }

@@ -27,6 +27,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.UserDao.User;
+import com.example.social_network_app.Basic_classes.UserDao.UserDao;
 import com.example.social_network_app.utils.SQLiteHelper;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
@@ -102,9 +103,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public List<User> getUserList(){
-        String myjson = getJson(this, "user.json");
-        Gson gson = new Gson();
-        return  gson .fromJson(myjson, new TypeToken<List<User>>(){}.getType());
+        UserDao userDao = new UserDao();
+        return userDao.findAllUsers(this);
     }
 
     public static String getJson(Context context, String fileName){

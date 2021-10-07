@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
+import com.example.social_network_app.Basic_classes.MusicDao.MusicDaoInterface;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.PostDao.PostInterface;
@@ -137,31 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public List<Music> getMusicList(){
-        String myjson = getJson(MainActivity.this, "music_list.json");
-        Gson gson = new Gson();
-        return gson .fromJson(myjson, new TypeToken<List<Music>>(){}.getType());
-    }
-
-    public List<Post> getPostList(){
-        String myjson = getJson(MainActivity.this, "post_list.json");
-        Gson gson = new Gson();
-        return  gson .fromJson(myjson, new TypeToken<List<Post>>(){}.getType());
-    }
-
-    public static String getJson(Context context, String fileName){
-        StringBuilder stringBuilder = new StringBuilder();
-        AssetManager assetManager = context.getAssets();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-                    assetManager.open(fileName),"utf-8"));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-            bufferedReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return stringBuilder.toString();
+        MusicDaoInterface music = new MusicDao();
+        return music.findAllMusics(this);
     }
 }

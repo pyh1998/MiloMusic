@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.social_network_app.Basic_classes.UserDao.User;
+import com.example.social_network_app.Basic_classes.UserDao.UserDao;
 import com.example.social_network_app.utils.SQLiteHelper;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
@@ -126,26 +127,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public List<User> getUserList(){
-        String myjson = getJson(this, "user.json");
-        Gson gson = new Gson();
-        return  gson .fromJson(myjson, new TypeToken<List<User>>(){}.getType());
-    }
-
-    public static String getJson(Context context, String fileName){
-        StringBuilder stringBuilder = new StringBuilder();
-        AssetManager assetManager = context.getAssets();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-                    assetManager.open(fileName),"utf-8"));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-            bufferedReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return stringBuilder.toString();
+        UserDao userDao = new UserDao();
+        return userDao.findAllUsers(this);
     }
 
 }
