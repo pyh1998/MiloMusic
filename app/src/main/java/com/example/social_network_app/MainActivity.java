@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +46,7 @@ import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    private String TAG = "MainActivity";
     List<Music> MusicList;
     List<Music> resultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
@@ -68,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
         currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
 //        Log.e("!!!!!!!!!!!!!!",currentUser.toString());
 
+        initView();
+
+    }
+
+    private void initView() {
         resultView = findViewById(R.id.rv_musiclist);
         searchButton = findViewById(R.id.ib_search);
         tv_userName = findViewById(R.id.tv_username);
@@ -144,5 +150,40 @@ public class MainActivity extends AppCompatActivity {
     public List<Music> getMusicList(){
         MusicDaoInterface music = new MusicDao();
         return music.findAllMusics(this);
+    }
+
+    @Override
+    protected
+    void onSaveInstanceState(Bundle outState) {
+        Log.d(TAG," -- onSaveInstanceState");
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("CurrentUser", currentUser);
+        outState.putBundle("CurrentUser", bundle);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected
+    void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.d(TAG," -- onRestoreInstanceState");
+        if(savedInstanceState != null) {
+            Bundle bundle = savedInstanceState.getBundle("CurrentUser");
+            currentUser = (User) bundle.getSerializable("CurrentUser");
+        }}
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.d(TAG," -- onConfigurationChanged");
+//        if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+//
+//            setContentView(R.layout.activity_main);
+//        }else{
+//
+//            setContentView(R.layout.activity_main);
+//        }
+        setContentView(R.layout.activity_main);
+        initView();
     }
 }

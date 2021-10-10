@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/m_img"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024"
+        app:srcCompat="@drawable/fionaapple" />
+
+    <TextView
+        android:id="@+id/m_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="Music name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toEndOf="@+id/m_img"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.008" />
+
+    <TextView
+        android:id="@+id/m_artist"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="Artist name"
+        app:layout_constraintBottom_toBottomOf="@+id/m_img"
+        app:layout_constraintStart_toEndOf="@+id/m_img"
+        app:layout_constraintTop_toBottomOf="@+id/m_name"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/m_date"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:text="Release date"
+        app:layout_constraintBottom_toBottomOf="@+id/m_img"
+        app:layout_constraintEnd_toStartOf="@+id/m_rate"
+        app:layout_constraintHorizontal_bias="0.579"
+        app:layout_constraintStart_toEndOf="@+id/m_artist"
+        app:layout_constraintTop_toBottomOf="@+id/m_name"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/m_rate"
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginLeft="264dp"
+        android:text="Rate"
+        app:layout_constraintBottom_toBottomOf="@+id/m_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toEndOf="@+id/m_img"
+        app:layout_constraintTop_toBottomOf="@+id/m_name"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/m_img"
+        app:layout_constraintEnd_toStartOf="@+id/m_artist"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/m_img"
+        app:layout_constraintTop_toBottomOf="@+id/m_name"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/microphone" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/m_img"
+        app:layout_constraintEnd_toStartOf="@+id/m_date"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toEndOf="@+id/m_artist"
+        app:layout_constraintTop_toBottomOf="@+id/m_name"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/calendar" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/m_img"
+        app:layout_constraintEnd_toStartOf="@+id/m_rate"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/m_date"
+        app:layout_constraintTop_toBottomOf="@+id/m_name"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/favorite_star_rate" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,9 @@ package com.example.social_network_app;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -30,7 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
-
+    private String TAG = "LoginActivity";
     //Variables
     TextInputLayout et_email, et_password;
     Button btn_login, btn_register;
@@ -96,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                     @SuppressLint("Range") String password_db = rece.getString(rece.getColumnIndex("password"));
                     if(email.equals(email_db) && password.equals(password_db)){
                         isAccountRight = true;
+                        //current = new User(2,"ss",email,2,"s","ss");
                         break;
                     }
                 }
@@ -103,8 +106,8 @@ public class LoginActivity extends AppCompatActivity {
                 helper.close();
 
                 if(isAccountRight){
-                    Log.e("!!!!!!!",current.toString());
-                    Log.e("!!!!!!!",userList.toString());
+//                    Log.e("!!!!!!!",current.toString());
+//                    Log.e("!!!!!!!",userList.toString());
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("CurrentUser", current);
@@ -131,6 +134,22 @@ public class LoginActivity extends AppCompatActivity {
     public List<User> getUserList(){
         UserDao userDao = new UserDao();
         return userDao.findAllUsers(this);
+    }
+
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.d(TAG," -- onConfigurationChanged");
+//        if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+//
+//            setContentView(R.layout.activity_main);
+//        }else{
+//
+//            setContentView(R.layout.activity_main);
+//        }
+        setContentView(R.layout.activity_login);
+        initView();
     }
 
 }

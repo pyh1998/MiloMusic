@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,7 +35,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    private String TAG = "RegisterActivity";
     Button btn_register;
     TextInputLayout  et_password, et_email,et_name,et_age;
     RadioGroup sex;
@@ -46,6 +47,12 @@ public class RegisterActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
 
+        initView();
+
+
+    }
+
+    private void initView() {
         btn_register = findViewById(R.id.btnRegSubmit);
 
         et_password = findViewById(R.id.regPassword);
@@ -97,9 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
             }
-
-
-            });
+        });
     }
 
     public List<User> getUserList(){
@@ -125,4 +130,18 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Log.d(TAG," -- onConfigurationChanged");
+//        if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+//
+//            setContentView(R.layout.activity_main);
+//        }else{
+//
+//            setContentView(R.layout.activity_main);
+//        }
+        setContentView(R.layout.activity_register);
+        initView();
+    }
 }
