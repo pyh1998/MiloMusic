@@ -90,6 +90,7 @@ public class CommentsActivity extends AppCompatActivity {
             User user = resultList.get(i).getUser(CommentsActivity.this);
             Bundle bundle = new Bundle();
             bundle.putSerializable("User",user);
+            bundle.putSerializable("CurrentUser",currentUser);
             intent.putExtras(bundle);
             startActivity(intent);
         }

@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -30,6 +32,7 @@ import java.util.Map;
 public class UserActivity extends AppCompatActivity {
 
     User user;
+    User CurrentUser;
     List<Post> postList = new ArrayList<>();
     List<Post> resultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
@@ -58,6 +61,7 @@ public class UserActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         user = (User) getIntent().getSerializableExtra("User");
+        CurrentUser = (User) getIntent().getSerializableExtra("CurrentUser");
 
         postList = getPostList();
         for(int i=0;i<postList.size();i++){
@@ -69,8 +73,21 @@ public class UserActivity extends AppCompatActivity {
         showComments(resultList);
         user_commentscount.setText(String.valueOf(resultList.size()));
 
-
+        comments.setOnItemClickListener(resultViewListener);
     }
+
+    private AdapterView.OnItemClickListener resultViewListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            Intent intent = new Intent(getApplicationContext(),CommentsActivity.class);
+            Music music = resultList.get(i).getMusic(UserActivity.this);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("CurrentUser", CurrentUser);
+            bundle.putSerializable("Music",music);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+    };
 
     public void showUserDetail(){
         String head_img = user.getHeed();
