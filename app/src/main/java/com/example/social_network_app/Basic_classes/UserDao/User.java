@@ -12,14 +12,16 @@ public class User implements Serializable {
     private int age;
     private String sex;
     private String head;
+    private int fans;
 
-    public User(int id, String name, String email, int age, String sex,String head) {
+    public User(int id, String name, String email, int age, String sex,String head,int fans) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
         this.sex = sex;
         this.head = head;
+        this.fans = fans;
     }
 
     public int getId() {
@@ -68,6 +70,14 @@ public class User implements Serializable {
 
     public void setHeed(String head) {
         this.head = head;
+    }
+
+    public int getFans() {
+        return fans;
+    }
+
+    public void setFans(int fans) {
+        this.fans = fans;
     }
 
     @Override

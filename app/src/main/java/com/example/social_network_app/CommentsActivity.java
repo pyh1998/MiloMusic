@@ -127,6 +127,7 @@ public class CommentsActivity extends AppCompatActivity {
             User user = list.get(i).getUser(this);
             String datetime = list.get(i).getDatetime();
             String comments = list.get(i).getUserReviews();
+            String likeCount = String.valueOf(list.get(i).getLikeCount());
             try {
                 Field field = R.drawable.class.getField(user.getHeed());
                 int img_id = field.getInt(field.getName());
@@ -137,14 +138,15 @@ public class CommentsActivity extends AppCompatActivity {
             map.put("comment_user_name",user.getName());
             map.put("comment_date",datetime);
             map.put("comment",comments);
+            map.put("likeCount",likeCount);
             resultMapList.add(map);
         }
         SimpleAdapter listAdapter = new SimpleAdapter(
                 this,
                 resultMapList,
                 R.layout.comment_item,
-                new String[]{"comment_userhead","comment_user_name","comment_date","comment"},
-                new int[]{R.id.comment_userhead,R.id.comment_user_name,R.id.comment_date,R.id.comment}
+                new String[]{"comment_userhead","comment_user_name","comment_date","comment","likeCount"},
+                new int[]{R.id.comment_userhead,R.id.comment_user_name,R.id.comment_date,R.id.comment,R.id.commet_likenum}
         );
         Comments.setAdapter(listAdapter);
     }

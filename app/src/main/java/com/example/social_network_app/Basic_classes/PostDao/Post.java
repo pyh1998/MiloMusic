@@ -23,14 +23,16 @@ public class Post {
     private int user_id;
     private String userReviews;
     private String datetime;
+    private int likeCount;
 
 
-    public Post(int id, int music_id, int user_id, String userReviews, String datetime) {
+    public Post(int id, int music_id, int user_id, String userReviews, String datetime, int likeCount) {
         this.id = id;
         this.music_id = music_id;
         this.user_id = user_id;
         this.userReviews = userReviews;
         this.datetime = datetime;
+        this.likeCount = likeCount;
     }
 
     public Music getMusic(Context context){
@@ -81,6 +83,14 @@ public class Post {
 
     public void setDatetime(String datetime) {
         this.datetime = datetime;
+    }
+
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
     }
 
     @Override

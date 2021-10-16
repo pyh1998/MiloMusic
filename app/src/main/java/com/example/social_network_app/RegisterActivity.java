@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String name = et_name.getEditText().getText().toString();
                 int age = Integer.parseInt(et_age.getEditText().getText().toString());
                 userList = getUserList();
-                User current = new User(userList.size()+1,name,email,age,sex,sex+"_head1");
+                User current = new User(userList.size()+1,name,email,age,sex,sex+"_head1",0);
                 userList.add(current);
                 if (email.trim().equals("")||password.trim().equals(""))
                 {

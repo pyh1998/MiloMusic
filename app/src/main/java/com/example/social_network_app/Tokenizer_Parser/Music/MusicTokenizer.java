@@ -1,8 +1,10 @@
 package com.example.social_network_app.Tokenizer_Parser.Music;
 
+import com.example.social_network_app.Tokenizer_Parser.Tokenizer;
+
 import java.util.Scanner;
 
-public class MusicTokenizer {
+public class MusicTokenizer extends Tokenizer {
     private String buffer;          // String to be transformed into tokens each time next() is called.
     private MusicToken currentToken;     // The current token. The next token is extracted when next() is called.
 
@@ -63,37 +65,26 @@ public class MusicTokenizer {
         }
 
         char firstChar = buffer.charAt(0);
-        if (firstChar == '#'){
+        if(firstChar == ';'){
+            currentToken = new MusicToken(";");
+        }
+        else {
             StringBuilder builder = new StringBuilder();
             int pos = 0;
             while(pos < buffer.length() && buffer.charAt(pos) != ';'){
                 builder.append(buffer.charAt(pos));
                 pos++;
             }
-            currentToken = new MusicToken(builder.toString(), MusicToken.Type.TAG);
+            currentToken = new MusicToken(builder.toString());
         }
-        else if (firstChar == '@'){
-            StringBuilder builder = new StringBuilder();
-            int pos = 0;
-            while(pos < buffer.length() && buffer.charAt(pos) != ';'){
-                builder.append(buffer.charAt(pos));
-                pos++;
-            }
-            currentToken = new MusicToken(builder.toString(), MusicToken.Type.ARTIST);
-        }
-         else if (firstChar == ';'){
-            currentToken = new MusicToken(";", MusicToken.Type.SEMICOLON);
-        }
-
 
         // Remove the extracted token from buffer
-        int tokenLen = currentToken.getToken().length();
+        int tokenLen = currentToken.getLength();
         buffer = buffer.substring(tokenLen);
     }
 
     /**
      * Returns the current token extracted by {@code next()}
-     * **** please do not modify this part ****
      *
      * @return type: Token
      */
