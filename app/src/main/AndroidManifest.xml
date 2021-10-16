@@ -12,13 +12,19 @@
         android:theme="@style/Theme.Socialnetworkapp" >
         <activity
             android:name=".CommentsActivity"
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop"
             android:exported="true"
             android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".UserActivity"
+            android:parentActivityName=".CommentsActivity"
+            android:launchMode="singleTop"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:parentActivityName=".LoginActivity"
+            android:launchMode="singleTop"
             android:configChanges="orientation|keyboard|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateHidden"/>
         <!--android:screenOrientation="portrait"-->
