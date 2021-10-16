@@ -37,24 +37,24 @@
 
     <TextView
         android:id="@+id/m_artist"
-        android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_width="78dp"
+        android:layout_height="19dp"
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:text="Artist name"
         app:layout_constraintBottom_toBottomOf="@+id/m_img"
         app:layout_constraintStart_toEndOf="@+id/m_img"
         app:layout_constraintTop_toBottomOf="@+id/m_name"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.958" />
 
     <TextView
         android:id="@+id/m_date"
-        android:layout_width="70dp"
+        android:layout_width="87dp"
         android:layout_height="20dp"
         android:text="Release date"
         app:layout_constraintBottom_toBottomOf="@+id/m_img"
         app:layout_constraintEnd_toStartOf="@+id/m_rate"
-        app:layout_constraintHorizontal_bias="0.579"
+        app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toEndOf="@+id/m_artist"
         app:layout_constraintTop_toBottomOf="@+id/m_name"
         app:layout_constraintVertical_bias="1.0" />
@@ -93,7 +93,7 @@
         android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/m_img"
         app:layout_constraintEnd_toStartOf="@+id/m_date"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/m_artist"
         app:layout_constraintTop_toBottomOf="@+id/m_name"
         app:layout_constraintVertical_bias="1.0"
