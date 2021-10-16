@@ -13,7 +13,6 @@ public class Music implements Serializable {
     private String picture;
 
     public Music(int id, String name, String artist, String album, String releaseDate, double rate,String picture){
-        System.out.println("!!!!");
         this.id = id;
         this.name = name;
         this.artist = artist;
