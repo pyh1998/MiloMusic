@@ -2,11 +2,10 @@ package com.example.social_network_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,12 +17,7 @@ import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.UserDao.User;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,26 +85,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         Comments.setOnItemClickListener(commentsListener);
 
-        like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int likenum = Integer.parseInt((String) like_num.getText());
-                likenum+=1;
-                like_num.setText(likenum);
-                like.setVisibility(View.INVISIBLE);
-                liked.setVisibility(View.VISIBLE);
-            }
-        });
-        liked.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int likenum = Integer.parseInt((String) like_num.getText());
-                likenum-=1;
-                like_num.setText(likenum);
-                liked.setVisibility(View.INVISIBLE);
-                like.setVisibility(View.VISIBLE);
-            }
-        });
+
     }
 
     private AdapterView.OnItemClickListener commentsListener = new AdapterView.OnItemClickListener() {
@@ -126,28 +101,7 @@ public class CommentsActivity extends AppCompatActivity {
         }
     };
 
-//    private View.OnClickListener likeListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            int likenum = Integer.parseInt((String) like_num.getText());
-//            likenum+=1;
-//            like_num.setText(likenum);
-//            like.setVisibility(View.INVISIBLE);
-//            liked.setVisibility(View.VISIBLE);
-//
-//        }
-//    };
 
-//    private View.OnClickListener likedListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            int likenum = Integer.parseInt((String) like_num.getText());
-//            likenum-=1;
-//            like_num.setText(likenum);
-//            liked.setVisibility(View.INVISIBLE);
-//            like.setVisibility(View.VISIBLE);
-//        }
-//    };
 
     public void showUser(){
         String head_img = currentUser.getHeed();
@@ -193,16 +147,47 @@ public class CommentsActivity extends AppCompatActivity {
             map.put("comment_date",datetime);
             map.put("comment",comments);
             map.put("likeCount",likeCount);
+            map.put("button1","a");
+            map.put("button2","b");
             resultMapList.add(map);
         }
-        SimpleAdapter listAdapter = new SimpleAdapter(
+        SimpleAdapter adapter = new SimpleAdapter(
                 this,
                 resultMapList,
                 R.layout.comment_item,
                 new String[]{"comment_userhead","comment_user_name","comment_date","comment","likeCount"},
-                new int[]{R.id.comment_userhead,R.id.comment_user_name,R.id.comment_date,R.id.comment,R.id.commet_likenum}
-        );
-        Comments.setAdapter(listAdapter);
+                new int[]{R.id.comment_userhead,R.id.comment_user_name,R.id.comment_date,R.id.comment,R.id.comment_likenum}
+        ){
+            @Override
+            public View getView(final int position, View convertView, ViewGroup parent) {
+                final View view=super.getView(position, convertView, parent);
+                ImageButton like = view.findViewById(R.id.comment_like);
+                ImageButton liked = view.findViewById(R.id.comment_liked);
+                TextView num = view.findViewById(R.id.comment_likenum);
+                like.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int likenum = Integer.parseInt((String) num.getText());
+                    likenum += 1;
+                    num.setText(String.valueOf(likenum));
+                    like.setVisibility(View.INVISIBLE);
+                    liked.setVisibility(View.VISIBLE);
+                }
+            });
+            liked.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int likenum = Integer.parseInt((String) num.getText());
+                    likenum -= 1;
+                    num.setText(String.valueOf(likenum));
+                    liked.setVisibility(View.INVISIBLE);
+                    like.setVisibility(View.VISIBLE);
+                }
+            });
+                return view;
+            }
+        };
+        Comments.setAdapter(adapter);
     }
 
     public List<Post> getPostList(){

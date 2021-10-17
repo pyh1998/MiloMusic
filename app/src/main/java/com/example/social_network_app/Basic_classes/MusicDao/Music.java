@@ -11,8 +11,9 @@ public class Music implements Serializable {
     private String releaseDate;
     private double rate;
     private String picture;
+    private String tag;
 
-    public Music(int id, String name, String artist, String album, String releaseDate, double rate,String picture){
+    public Music(int id, String name, String artist, String album, String releaseDate, double rate,String picture,String tag){
         this.id = id;
         this.name = name;
         this.artist = artist;
@@ -20,6 +21,7 @@ public class Music implements Serializable {
         this.releaseDate = releaseDate;
         this.rate = rate;
         this.picture = picture;
+        this.tag = tag;
     }
 
     public double getRate() {
@@ -78,6 +80,19 @@ public class Music implements Serializable {
         this.picture = picture;
     }
 
+    public MusicTag[] getTag() {
+        String[] tags = tag.split(",");
+        MusicTag[] musicTags = new MusicTag[tags.length];
+        for(int i = 0;i<musicTags.length;i++){
+            musicTags[i] = MusicTag.getTagById(Integer.parseInt(tags[i]));
+        }
+        return musicTags;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
     @Override
     public String toString() {
         return "Music{" +
@@ -85,8 +100,10 @@ public class Music implements Serializable {
                 ", name='" + name + '\'' +
                 ", artist='" + artist + '\'' +
                 ", album='" + album + '\'' +
-                ", releaseDate=" + releaseDate +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", rate=" + rate +
                 ", picture='" + picture + '\'' +
+                ", tag='" + tag + '\'' +
                 '}';
     }
 
