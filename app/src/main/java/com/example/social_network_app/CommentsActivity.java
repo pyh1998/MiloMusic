@@ -8,6 +8,7 @@ import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -46,6 +47,9 @@ public class CommentsActivity extends AppCompatActivity {
     TextView CommentsCount;
     TextView user_name;
     ListView Comments;
+    TextView like_num;
+    ImageButton like;
+    ImageButton liked;
 
 
     @Override
@@ -68,6 +72,11 @@ public class CommentsActivity extends AppCompatActivity {
         Comments = findViewById(R.id.user_comments);
         user_name = findViewById(R.id.c_user_name);
 
+        like_num = findViewById(R.id.comment_likenum);
+        like = findViewById(R.id.comment_like);
+        liked = findViewById(R.id.comment_liked);
+
+
         postList = getPostList();
 
         for(int i=0;i<postList.size();i++){
@@ -81,6 +90,27 @@ public class CommentsActivity extends AppCompatActivity {
         CommentsCount.setText(String.valueOf(resultList.size()));
 
         Comments.setOnItemClickListener(commentsListener);
+
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int likenum = Integer.parseInt((String) like_num.getText());
+                likenum+=1;
+                like_num.setText(likenum);
+                like.setVisibility(View.INVISIBLE);
+                liked.setVisibility(View.VISIBLE);
+            }
+        });
+        liked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int likenum = Integer.parseInt((String) like_num.getText());
+                likenum-=1;
+                like_num.setText(likenum);
+                liked.setVisibility(View.INVISIBLE);
+                like.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     private AdapterView.OnItemClickListener commentsListener = new AdapterView.OnItemClickListener() {
@@ -95,6 +125,29 @@ public class CommentsActivity extends AppCompatActivity {
             startActivity(intent);
         }
     };
+
+//    private View.OnClickListener likeListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            int likenum = Integer.parseInt((String) like_num.getText());
+//            likenum+=1;
+//            like_num.setText(likenum);
+//            like.setVisibility(View.INVISIBLE);
+//            liked.setVisibility(View.VISIBLE);
+//
+//        }
+//    };
+
+//    private View.OnClickListener likedListener = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//            int likenum = Integer.parseInt((String) like_num.getText());
+//            likenum-=1;
+//            like_num.setText(likenum);
+//            liked.setVisibility(View.INVISIBLE);
+//            like.setVisibility(View.VISIBLE);
+//        }
+//    };
 
     public void showUser(){
         String head_img = currentUser.getHeed();
