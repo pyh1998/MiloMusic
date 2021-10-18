@@ -18,4 +18,32 @@ public enum MusicTag {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        switch (id){
+            case 1:
+                return "alternative";
+            case 2:
+                return "blues";
+            case 3:
+                return "country";
+            case 4:
+                return "dance";
+            case 5:
+                return "electronica";
+            case 6:
+                return "hiphop";
+            case 7:
+                return "pop";
+            case 8:
+                return "rap";
+            case 9:
+                return "rock";
+            case 10:
+                return "R_B";
+            default:
+                return null;
+        }
+    }
 }

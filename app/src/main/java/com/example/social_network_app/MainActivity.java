@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
@@ -28,6 +29,7 @@ import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.PostDao.PostInterface;
 import com.example.social_network_app.Basic_classes.UserDao.User;
+import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
-//        Log.e("!!!!!!!!!!!!!!",currentUser.toString());
+
 
         initView();
 
@@ -85,10 +87,11 @@ public class MainActivity extends AppCompatActivity {
         showMusic(resultList);
         showUser();
 
-        resultView.setOnItemClickListener(resultViewListener);
+        resultView.setOnItemClickListener(CommentViewListener);
+        searchButton.setOnClickListener(searchResultListener);
     }
 
-    private AdapterView.OnItemClickListener resultViewListener = new AdapterView.OnItemClickListener() {
+    private final AdapterView.OnItemClickListener CommentViewListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent intent = new Intent(getApplicationContext(),CommentsActivity.class);
@@ -98,6 +101,31 @@ public class MainActivity extends AppCompatActivity {
             bundle.putSerializable("Music",music);
             intent.putExtras(bundle);
             startActivity(intent);
+        }
+    };
+
+    private final View.OnClickListener searchResultListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String searchText = search.getText().toString();
+            MusicParser parser = new MusicParser(searchText);
+            try{
+                if(!parser.isValid()){
+                    Toast.makeText(getApplicationContext(),"Invalid Input!",Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+            }catch (Exception e){
+                Toast.makeText(getApplicationContext(),"Invalid Input! IllegalTokenException!",Toast.LENGTH_LONG).show();
+            }
+            resultList = new ArrayList<>();
+            for(Music music : MusicList){
+                if(parser.isMatched(music)){
+                    resultList.add(music);
+                }
+            }
+            Log.e("!!!!!!!!!!!!!!",resultList.toString());
+            showMusic(resultList);
         }
     };
 
@@ -120,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showMusic(List<Music> list){
+        resultMapList.clear();
         for(int i =0;i<list.size();i++){
             Map<String,Object> map = new HashMap<>();
             Music music = list.get(i);

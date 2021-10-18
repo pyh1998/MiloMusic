@@ -2,7 +2,7 @@ package com.example.social_network_app.Tokenizer_Parser.Music;
 
 public class MusicToken {
     // The following enum defines different types of tokens.
-    public enum Type {NAME,TAG,ARTIST,SEMICOLON,STAR}
+    public enum Type {NAME,TAG,ARTIST,SEMICOLON,STAR,INVALID}
 
     /**
      * The following exception should be thrown if a tokenizer attempts to tokenize something that is not of one
@@ -14,7 +14,7 @@ public class MusicToken {
         }
     }
 
-    private static final String symbol[] = {"==","<=",">="};
+    private static final String symbol[] = {"=","<=",">=",">","<"};
     // Fields of the class Token.
     private final String token; // Token representation in String form.
     private final Type type;    // Type of the token.
@@ -55,9 +55,13 @@ public class MusicToken {
         }
         else if(first == '*'){
             this.type = Type.STAR;
-            if(!isIn(piece.substring(1,3),symbol)) throw new IllegalTokenException("IllegalToken!");
-            this.operator = piece.substring(1,3);
-            this.token = piece.substring(3);
+            int index = 1;
+            for(index = 1;index<piece.length();index++){
+                if(Character.isDigit(piece.charAt(index))) break;
+            }
+            if(!isIn(piece.substring(1,index),symbol)) throw new IllegalTokenException("IllegalToken!");
+            this.operator = piece.substring(1,index);
+            this.token = piece.substring(index);
         }
         else {
             this.type = Type.NAME;
@@ -65,6 +69,17 @@ public class MusicToken {
             this.operator = "";
         }
     }
+
+//    public static boolean isValid(String piece){
+//        char first = piece.charAt(0);
+//        if (first == '#' || first == '@' || first == '*'){
+//
+//        }
+//        else if(first == ';'){
+//
+//        }
+//        return true;
+//    }
 
 
 
