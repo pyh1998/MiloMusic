@@ -28,6 +28,10 @@
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/drawable/field_username_icon.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/drawable/general_back_icon.xml" value="0.19479166666666667" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14814814814814814" />
+        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/activity_user.xml" value="0.1484375" />
+        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/activity_user.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/comment_item.xml" value="0.14947916666666666" />
+        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_bar_chart.xml" value="0.15677083333333333" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_comments.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_main.xml" value="0.33" />

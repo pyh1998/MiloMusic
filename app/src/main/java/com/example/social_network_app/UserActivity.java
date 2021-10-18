@@ -45,6 +45,9 @@ public class UserActivity extends AppCompatActivity {
     TextView user_commentscount;
     ListView comments;
 
+    TextView user_fanscount;
+    TextView user_likescount;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,10 @@ public class UserActivity extends AppCompatActivity {
         user_commentscount = findViewById(R.id.user_commentscount);
         comments = findViewById(R.id.user_usercomments);
 
+        user_fanscount = findViewById(R.id.user_fanscount);
+        user_likescount = findViewById(R.id.user_likescount);
+
+
         Intent intent = getIntent();
         user = (User) getIntent().getSerializableExtra("User");
         CurrentUser = (User) getIntent().getSerializableExtra("CurrentUser");
@@ -71,7 +78,22 @@ public class UserActivity extends AppCompatActivity {
         }
         showUserDetail();
         showComments(resultList);
+
         user_commentscount.setText(String.valueOf(resultList.size()));
+        user_fanscount.setText(String.valueOf(user.getFans()));
+        int total_likes = 0;
+        for(int i=0;i<postList.size();i++){
+            if(postList.get(i).getUser(this).equals(user)){
+                total_likes+=postList.get(i).getLikeCount();
+            }
+        }
+        user_likescount.setText(String.valueOf(total_likes));
+//        findViewById(R.id.bar_chart).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getApplicationContext(), BarChartActivity.class));
+//            }
+//        });
 
         comments.setOnItemClickListener(resultViewListener);
     }
