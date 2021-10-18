@@ -1,8 +1,6 @@
-# [Team Name]
-This following is a team meeting template. You may change this template as you like.
-
-## Team Meeting [number] - Week [number] - [date] (start-end time)
-**Absent:**
+# [Group15 Barbecue Sauce]
+## Team Meeting [4] - Week [10] - [17/10/2021] (18:30-19:30)
+**Absent:** None
 <br>
 **Lead/scribe:Qihong Zeng
 
