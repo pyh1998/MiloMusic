@@ -30,6 +30,8 @@ public class TokenValidTest {
         String piece10 = "#";
         String piece11 = "@";
         String piece12 = "*";
+        String piece13 = "*>5.1.";
+        String piece14 = "*<4.";
 
         assertTrue(MusicToken.isValid(piece1));
         assertTrue(MusicToken.isValid(piece2));
@@ -43,6 +45,8 @@ public class TokenValidTest {
         assertFalse(MusicToken.isValid(piece10));
         assertFalse(MusicToken.isValid(piece11));
         assertFalse(MusicToken.isValid(piece12));
+        assertFalse(MusicToken.isValid(piece13));
+        assertFalse(MusicToken.isValid(piece14));
 
     }
 }

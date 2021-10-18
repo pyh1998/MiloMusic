@@ -3,7 +3,7 @@ package com.example.social_network_app.Basic_classes.MusicDao;
 
 public enum MusicTag {
     alternative(1),blues(2),country(3),dance(4),electronica(5),
-    hiphop(6),pop(7),rap(8),rock(9),R_B(10);
+    hiphop(6),pop(7),rap(8),rock(9),RB(10);
 
     int id;
 
@@ -41,7 +41,7 @@ public enum MusicTag {
             case 9:
                 return "rock";
             case 10:
-                return "R_B";
+                return "R&B";
             default:
                 return null;
         }

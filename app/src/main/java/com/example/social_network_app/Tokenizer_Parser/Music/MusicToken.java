@@ -1,5 +1,8 @@
 package com.example.social_network_app.Tokenizer_Parser.Music;
 
+import java.util.Locale;
+import java.util.regex.Pattern;
+
 public class MusicToken {
     // The following enum defines different types of tokens.
     public enum Type {NAME,TAG,ARTIST,SEMICOLON,STAR,INVALID}
@@ -37,47 +40,69 @@ public class MusicToken {
 
     public MusicToken(String piece){
         this.length = piece.length();
+
+        if(!isValid(piece)){
+            this.type = Type.INVALID;
+            this.token = "";
+            this.operator = "";
+        }
+        else{
+            char first = piece.charAt(0);
+            if(first == ';'){
+                this.type = Type.SEMICOLON;
+                this.token = ";";
+                this.operator = "";
+            }
+            else if(first == '#'){
+                this.type = Type.TAG;
+                this.token = piece.substring(1);
+                this.operator = "";
+            }
+            else if(first == '@'){
+                this.type = Type.ARTIST;
+                this.token = piece.substring(1);
+                this.operator = "";
+            }
+            else if(first == '*'){
+                this.type = Type.STAR;
+                int index = 1;
+                for(index = 1;index<piece.length();index++){
+                    if(Character.isDigit(piece.charAt(index))) break;
+                }
+                if(!isIn(piece.substring(1,index),symbol)) throw new IllegalTokenException("IllegalToken!");
+                this.operator = piece.substring(1,index);
+                this.token = piece.substring(index);
+            }
+            else {
+                this.type = Type.NAME;
+                this.token = piece;
+                this.operator = "";
+            }
+        }
+
+    }
+
+    public static boolean isValid(String piece){
+        if(piece == null || piece.length() == 0) return false;
         char first = piece.charAt(0);
-        if(first == ';'){
-            this.type = Type.SEMICOLON;
-            this.token = ";";
-            this.operator = "";
-        }
-        else if(first == '#'){
-            this.type = Type.TAG;
-            this.token = piece.substring(1);
-            this.operator = "";
-        }
-        else if(first == '@'){
-            this.type = Type.ARTIST;
-            this.token = piece.substring(1);
-            this.operator = "";
-        }
-        else if(first == '*'){
-            this.type = Type.STAR;
+        if(first == '*'){
+            if(piece.length() == 1) return false;
             int index = 1;
             for(index = 1;index<piece.length();index++){
                 if(Character.isDigit(piece.charAt(index))) break;
             }
-            if(!isIn(piece.substring(1,index),symbol)) throw new IllegalTokenException("IllegalToken!");
-            this.operator = piece.substring(1,index);
-            this.token = piece.substring(index);
+            if(index == 1 || index == piece.length()) return false;
+            if(!isIn(piece.substring(1,index),symbol)) return false;
+            String remain = piece.substring(index);
+            String pattern = "^([0-4](\\.[0-9])?|5(\\.0)?)$";
+            return Pattern.matches(pattern,remain);
         }
-        else {
-            this.type = Type.NAME;
-            this.token = piece;
-            this.operator = "";
+        else if (first == '#' || first == '@'){
+            return piece.length() > 1;
         }
-    }
-
-    public static boolean isValid(String piece){
-//        char first = piece.charAt(0);
-//        if (first == '#' || first == '@' || first == '*'){
-//
-//        }
-//        else if(first == ';'){
-//
-//        }
+        else if(first == ';'){
+            return piece.length() == 1;
+        }
         return true;
     }
 
@@ -113,7 +138,7 @@ public class MusicToken {
     }
 
 
-    private boolean isIn(String string, String symbol[]) {
+    private static boolean isIn(String string, String symbol[]) {
         for (String s : symbol) {
             if (string.equals(s)) {
                 return true;
