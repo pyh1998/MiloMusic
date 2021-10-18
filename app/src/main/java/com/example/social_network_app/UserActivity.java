@@ -2,9 +2,7 @@ package com.example.social_network_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,12 +15,7 @@ import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.UserDao.User;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -112,7 +105,7 @@ public class UserActivity extends AppCompatActivity {
     };
 
     public void showUserDetail(){
-        String head_img = user.getHeed();
+        String head_img = user.getHead();
         try {
             Field field = R.drawable.class.getField(head_img);
             int img_id = field.getInt(field.getName());

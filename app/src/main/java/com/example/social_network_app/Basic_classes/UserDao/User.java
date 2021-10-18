@@ -44,7 +44,7 @@ public class User implements Serializable {
         return sex;
     }
 
-    public String getHeed() {
+    public String getHead() {
         return head;
     }
 

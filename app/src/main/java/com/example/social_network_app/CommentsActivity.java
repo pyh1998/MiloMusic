@@ -104,7 +104,7 @@ public class CommentsActivity extends AppCompatActivity {
 
 
     public void showUser(){
-        String head_img = currentUser.getHeed();
+        String head_img = currentUser.getHead();
         try {
             Field field = R.drawable.class.getField(head_img);
             int img_id = field.getInt(field.getName());
@@ -137,7 +137,7 @@ public class CommentsActivity extends AppCompatActivity {
             String comments = list.get(i).getUserReviews();
             String likeCount = String.valueOf(list.get(i).getLikeCount());
             try {
-                Field field = R.drawable.class.getField(user.getHeed());
+                Field field = R.drawable.class.getField(user.getHead());
                 int img_id = field.getInt(field.getName());
                 map.put("comment_userhead",img_id);
             } catch (Exception e) {

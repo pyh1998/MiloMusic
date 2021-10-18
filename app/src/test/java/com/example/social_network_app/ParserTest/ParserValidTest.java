@@ -8,7 +8,7 @@ import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
 
 import org.junit.Test;
 
-public class ValidTest {
+public class ParserValidTest {
 
     @Test
     public void validTest(){

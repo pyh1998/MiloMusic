@@ -1,19 +1,14 @@
 package com.example.social_network_app;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -25,22 +20,10 @@ import android.widget.Toast;
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDaoInterface;
-import com.example.social_network_app.Basic_classes.PostDao.Post;
-import com.example.social_network_app.Basic_classes.PostDao.PostDao;
-import com.example.social_network_app.Basic_classes.PostDao.PostInterface;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -134,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void showUser(){
         String name = currentUser.getName();
-        String head_img = currentUser.getHeed();
+        String head_img = currentUser.getHead();
         Log.e("!!!!!!!!!!!!!!",String.valueOf(head_img));
         tv_userName.setText(name + " !");
         try {

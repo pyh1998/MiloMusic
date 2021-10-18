@@ -70,7 +70,7 @@ public class MusicToken {
         }
     }
 
-//    public static boolean isValid(String piece){
+    public static boolean isValid(String piece){
 //        char first = piece.charAt(0);
 //        if (first == '#' || first == '@' || first == '*'){
 //
@@ -78,8 +78,8 @@ public class MusicToken {
 //        else if(first == ';'){
 //
 //        }
-//        return true;
-//    }
+        return true;
+    }
 
 
 
