@@ -3,11 +3,11 @@ plugins {
 }
 
 def keystoreFilepath = ''
-def keystorePSW = ''
-def keystoreAlias = ''
-def keystoreAliasPSW = ''
+def keystorePSW = "shanzhaapp"
+def keystoreAlias = "shanzhaapp"
+def keystoreAliasPSW = "shanzhaapp"
 // default keystore file, PLZ config file path in local.properties
-def keyfile = file('s.keystore.temp')
+def keyfile = file("../shanzhaapp.keystore")
 
 Properties properties = new Properties()
 // local.properties file in the root director
