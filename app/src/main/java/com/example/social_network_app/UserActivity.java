@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -58,12 +59,13 @@ public class UserActivity extends AppCompatActivity {
         user_fanscount = findViewById(R.id.user_fanscount);
         user_likescount = findViewById(R.id.user_likescount);
 
-
+        Log.e("!!!!!!!!!!!!!!","?????????????");
         Intent intent = getIntent();
         user = (User) getIntent().getSerializableExtra("User");
         CurrentUser = (User) getIntent().getSerializableExtra("CurrentUser");
 
-        postList = getPostList();
+        GlobalVariable globalVariable = (GlobalVariable) getApplication();
+        postList = globalVariable.getPostList();
         for(int i=0;i<postList.size();i++){
             if(postList.get(i).getUser(this).equals(user)){
                 resultList.add(postList.get(i));

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -18,6 +20,7 @@ import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,8 +73,8 @@ public class CommentsActivity extends AppCompatActivity {
         like = findViewById(R.id.comment_like);
         liked = findViewById(R.id.comment_liked);
 
-
-        postList = getPostList();
+        GlobalVariable global = (GlobalVariable) getApplication();
+        postList = global.getPostList();
 
         for(int i=0;i<postList.size();i++){
             if(postList.get(i).getMusic(this).equals(currentMusic)){
@@ -93,10 +96,8 @@ public class CommentsActivity extends AppCompatActivity {
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             User user = resultList.get(i).getUser(CommentsActivity.this);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("User",user);
-            bundle.putSerializable("CurrentUser",currentUser);
-            intent.putExtras(bundle);
+            intent.putExtra("User",user);
+            intent.putExtra("CurrentUser",currentUser);
             startActivity(intent);
         }
     };
@@ -169,6 +170,7 @@ public class CommentsActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     int likenum = Integer.parseInt((String) num.getText());
                     likenum += 1;
+                    updateLikeCount(list.get(position).getId(),likenum);
                     num.setText(String.valueOf(likenum));
                     like.setVisibility(View.INVISIBLE);
                     liked.setVisibility(View.VISIBLE);
@@ -179,6 +181,7 @@ public class CommentsActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     int likenum = Integer.parseInt((String) num.getText());
                     likenum -= 1;
+                    updateLikeCount(list.get(position).getId(),likenum);
                     num.setText(String.valueOf(likenum));
                     liked.setVisibility(View.INVISIBLE);
                     like.setVisibility(View.VISIBLE);
@@ -190,8 +193,20 @@ public class CommentsActivity extends AppCompatActivity {
         Comments.setAdapter(adapter);
     }
 
-    public List<Post> getPostList(){
-        PostDao postDao = new PostDao();
-        return postDao.findAllPosts(this);
+
+    public void updateLikeCount(int id,int newCount){
+        for(int i =0;i<postList.size();i++){
+            if(postList.get(i).getId() == id){
+                postList.get(i).setLikeCount(newCount);
+                break;
+            }
+        }
+        GlobalVariable globalVariable = (GlobalVariable) getApplication();
+        globalVariable.setPostList(postList);
     }
+
+//    public List<Post> getPostList(){
+//        PostDao postDao = new PostDao();
+//        return postDao.findAllPosts(this);
+//    }
 }

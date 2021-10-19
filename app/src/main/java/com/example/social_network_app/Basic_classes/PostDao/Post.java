@@ -13,11 +13,12 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
 import java.io.FileReader;
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.List;
 
 
-public class Post {
+public class Post implements Serializable {
     private int id;
     private int music_id;
     private int user_id;
