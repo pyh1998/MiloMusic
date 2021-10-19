@@ -148,8 +148,6 @@ public class CommentsActivity extends AppCompatActivity {
             map.put("comment_date",datetime);
             map.put("comment",comments);
             map.put("likeCount",likeCount);
-            map.put("button1","a");
-            map.put("button2","b");
             resultMapList.add(map);
         }
         SimpleAdapter adapter = new SimpleAdapter(

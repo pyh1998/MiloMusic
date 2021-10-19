@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -59,7 +61,7 @@ public class UserActivity extends AppCompatActivity {
         user_fanscount = findViewById(R.id.user_fanscount);
         user_likescount = findViewById(R.id.user_likescount);
 
-        Log.e("!!!!!!!!!!!!!!","?????????????");
+
         Intent intent = getIntent();
         user = (User) getIntent().getSerializableExtra("User");
         CurrentUser = (User) getIntent().getSerializableExtra("CurrentUser");
@@ -131,6 +133,7 @@ public class UserActivity extends AppCompatActivity {
             Music music = list.get(i).getMusic(this);
             String datetime = list.get(i).getDatetime();
             String comments = list.get(i).getUserReviews();
+            String likeCount = String.valueOf(list.get(i).getLikeCount());
             try {
                 Field field = R.drawable.class.getField(music.getPicture());
                 int img_id = field.getInt(field.getName());
@@ -141,16 +144,59 @@ public class UserActivity extends AppCompatActivity {
             map.put("comment_user_name",music.getName());
             map.put("comment_date",datetime);
             map.put("comment",comments);
+            map.put("likeCount",likeCount);
             resultMapList.add(map);
         }
         SimpleAdapter listAdapter = new SimpleAdapter(
                 this,
                 resultMapList,
                 R.layout.comment_item,
-                new String[]{"comment_userhead","comment_user_name","comment_date","comment"},
-                new int[]{R.id.comment_userhead,R.id.comment_user_name,R.id.comment_date,R.id.comment}
-        );
+                new String[]{"comment_userhead","comment_user_name","comment_date","comment","likeCount"},
+                new int[]{R.id.comment_userhead,R.id.comment_user_name,R.id.comment_date,R.id.comment,R.id.comment_likenum}
+        ){
+            @Override
+            public View getView(final int position, View convertView, ViewGroup parent) {
+                final View view=super.getView(position, convertView, parent);
+                ImageButton like = view.findViewById(R.id.comment_like);
+                ImageButton liked = view.findViewById(R.id.comment_liked);
+                TextView num = view.findViewById(R.id.comment_likenum);
+                like.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int likenum = Integer.parseInt((String) num.getText());
+                        likenum += 1;
+                        updateLikeCount(list.get(position).getId(),likenum);
+                        num.setText(String.valueOf(likenum));
+                        like.setVisibility(View.INVISIBLE);
+                        liked.setVisibility(View.VISIBLE);
+                    }
+                });
+                liked.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int likenum = Integer.parseInt((String) num.getText());
+                        likenum -= 1;
+                        updateLikeCount(list.get(position).getId(),likenum);
+                        num.setText(String.valueOf(likenum));
+                        liked.setVisibility(View.INVISIBLE);
+                        like.setVisibility(View.VISIBLE);
+                    }
+                });
+                return view;
+            }
+        };
         comments.setAdapter(listAdapter);
+    }
+
+    public void updateLikeCount(int id,int newCount){
+        for(int i =0;i<postList.size();i++){
+            if(postList.get(i).getId() == id){
+                postList.get(i).setLikeCount(newCount);
+                break;
+            }
+        }
+        GlobalVariable globalVariable = (GlobalVariable) getApplication();
+        globalVariable.setPostList(postList);
     }
 
     public List<Post> getPostList(){
