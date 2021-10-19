@@ -81,12 +81,12 @@ public class UserActivity extends AppCompatActivity {
             }
         }
         user_likescount.setText(String.valueOf(total_likes));
-//        findViewById(R.id.bar_chart).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getApplicationContext(), BarChartActivity.class));
-//            }
-//        });
+        findViewById(R.id.bar_chart).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), BarActivity.class));
+            }
+        });
 
         comments.setOnItemClickListener(resultViewListener);
     }
