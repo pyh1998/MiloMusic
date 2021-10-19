@@ -84,7 +84,11 @@ public class UserActivity extends AppCompatActivity {
         findViewById(R.id.bar_chart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), BarActivity.class));
+                Intent reportIntent = new Intent(getApplicationContext(), BarActivity.class);
+                reportIntent.putExtra("commentsCount",user_commentscount.getText());
+                reportIntent.putExtra("fansCount",user_fanscount.getText());
+                reportIntent.putExtra("likesCount", user_likescount.getText());
+                startActivity(reportIntent);
             }
         });
 

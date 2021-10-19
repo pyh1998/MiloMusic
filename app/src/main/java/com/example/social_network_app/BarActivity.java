@@ -33,12 +33,16 @@ public class BarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar);
+        float commentsCount = Float.parseFloat(getIntent().getStringExtra("commentsCount"));
+        float fansCount = Float.parseFloat(getIntent().getStringExtra("fansCount"));
+        float likesCount = Float.parseFloat(getIntent().getStringExtra("likesCount"));
+
+
         barChart = (BarChart) findViewById(R.id.bar_chart);
-        entries.add(new BarEntry(1, 5));
-        entries.add(new BarEntry(2, 1));
-        entries.add(new BarEntry(3, 2));
-        entries.add(new BarEntry(4, 6));
-        entries.add(new BarEntry(5, 3));
+        entries.add(new BarEntry(1, commentsCount));
+        entries.add(new BarEntry(2, fansCount));
+        entries.add(new BarEntry(3, likesCount/100));
+
 
 
 
