@@ -23,6 +23,7 @@ import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDaoInterface;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
+import com.example.social_network_app.Tokenizer_Parser.Music.MusicToken;
 import com.github.dfqin.grantor.PermissionListener;
 import com.github.dfqin.grantor.PermissionsUtil;
 
@@ -113,8 +114,14 @@ public class MainActivity extends AppCompatActivity {
             MusicParser parser = new MusicParser(searchText);
             try{
                 if(!parser.isValid()){
-                    Toast.makeText(getApplicationContext(),"Invalid Input!",Toast.LENGTH_LONG).show();
-                    return;
+                    List<MusicToken> validList = parser.getValidList();
+                    if(validList.size() == 0){
+                        Toast.makeText(getApplicationContext(),"Invalid Input!",Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"Partial Valid Input! Valid condition: "+validList.toString(),Toast.LENGTH_LONG).show();
+                    }
                 }
 
             }catch (Exception e){
@@ -278,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
         mOption.setOnceLocationLatest(false);//This parameter is optional. The default value is false. If this parameter is set to true, the system automatically changes to single location
         AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//Optional: Set the network request protocol. The value can be HTTP or HTTPS. The default for HTTP
         mOption.setSensorEnable(false);//Optional: Set whether to use a sensor. The default is false
-        mOption.setWifiScan(true); //Optional. Enable or disable wifi scanning.This parameter is optional. The default value is true可选，设置是否使用缓存定位，默认为true
+        mOption.setWifiScan(true); //Optional. Enable or disable wifi scanning.This parameter is optional. The default value is true
         mOption.setGeoLanguage(AMapLocationClientOption.GeoLanguage.DEFAULT);//Optional, set the language of the inverse geographic information.
         return mOption;
     }

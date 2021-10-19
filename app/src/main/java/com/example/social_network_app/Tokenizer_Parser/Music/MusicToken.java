@@ -127,7 +127,7 @@ public class MusicToken {
     @Override
     public String toString() {
         if(!this.operator.equals(""))return type + operator + token;
-        return type + token;
+        return type +":" +token;
     }
 
     @Override

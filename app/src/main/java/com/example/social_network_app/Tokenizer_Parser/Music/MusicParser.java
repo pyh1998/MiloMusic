@@ -50,6 +50,9 @@ public class MusicParser {
      * @return return true if the string is valid
      */
     public boolean isValid(){
+        for(MusicToken token :tokenList){
+            if(token.getType()== MusicToken.Type.INVALID) return false;
+        }
         int tag = 0;
         int artist = 0;
         int rate = 0;
@@ -73,81 +76,100 @@ public class MusicParser {
         return tag <= tag_max && artist <= artist_max && rate <= rate_max && name <= name_max;
     }
 
-//    public List<MusicToken> getTokenList(){
-//        MusicTokenizer musicTokenizer = new MusicTokenizer(searchText);
-//        List<MusicToken> tokenList = new ArrayList<>();
-//        try {
-//            while (musicTokenizer.hasNext()) {
-//                tokenList.add(musicTokenizer.current());
-//                musicTokenizer.next();
-//            }
-//        }
-//        catch (Exception e){
-//            throw new MusicToken.IllegalTokenException("IllegalTokenException");
-//        }
-//        return tokenList;
-//
-//    }
 
 
-    public List<MusicToken> getPartialValidList(){
-        return null;
+
+    public List<MusicToken> getValidList(){
+        List<MusicToken> validList = new ArrayList<>();
+        int tag = 0;
+        int artist = 0;
+        int rate = 0;
+        int name = 0;
+        for(MusicToken token : tokenList){
+            switch (token.getType()){
+                case TAG:
+                    if(tag<3){
+                        validList.add(token);
+                        tag++;
+                    }
+                    break;
+                case ARTIST:
+                    if(artist<1){
+                        validList.add(token);
+                        artist++;
+                    }
+                    break;
+                case STAR:
+                    if(rate<1){
+                        validList.add(token);
+                        rate++;
+                    }
+                    break;
+                case NAME:
+                    if(name<1){
+                        validList.add(token);
+                        name++;
+                    }
+                    break;
+            }
+        }
+        return validList;
     }
 
     public boolean isMatched(Music music){
-        if(!isValid()) throw new IllegalParserException("IllegalParserException");
-        boolean check_tag = true;
-        boolean check_artist = true;
-        boolean check_star = true;
-        boolean check_name = true;
+        List<Boolean> condition = new ArrayList<>();
 
         for(MusicToken token : tokenList){
             switch (token.getType()){
                 case TAG:
                     MusicTag[] tags= music.getTag();
-                    check_tag = false;
+                    condition.add(false);
                     for(MusicTag tag : tags){
                         if(tag.toString().equals(token.getToken())) {
-                            check_tag = true;
+                            condition.set(condition.size()-1,true);
                             break;
                         }
                     }
                     break;
                 case ARTIST:
-                    check_artist = false;
+                    condition.add(false);
                     String artist = music.getArtist();
-                    if(artist.toLowerCase(Locale.ROOT).contains(token.getToken().toLowerCase(Locale.ROOT))) check_artist = true;
+                    if(artist.toLowerCase(Locale.ROOT).contains(token.getToken().toLowerCase(Locale.ROOT))) condition.set(condition.size()-1,true);
                     break;
                 case STAR:
-                    check_star = false;
+                    condition.add(false);
                     double rate = music.getRate();
                     double rate_search = Double.parseDouble(token.getToken());
                     switch(token.getOperator()){
                         case ">=":
-                            check_star = rate >= rate_search;
+                            condition.set(condition.size()-1,rate >= rate_search);
                             break;
                         case ">":
-                            check_star = rate > rate_search;
+                            condition.set(condition.size()-1,rate > rate_search);
                             break;
                         case "<=":
-                            check_star = rate <= rate_search;
+                            condition.set(condition.size()-1,rate <= rate_search);;
                             break;
                         case "<":
-                            check_star = rate < rate_search;
+                            condition.set(condition.size()-1,rate < rate_search);
                             break;
                         case "=":
-                            check_star = rate == rate_search;
+                            condition.set(condition.size()-1,rate == rate_search);
                             break;
                     }
                     break;
                 case NAME:
-                    check_name = false;
+                    condition.add(false);
                     String name = music.getName();
-                    if(name.toLowerCase(Locale.ROOT).contains(token.getToken().toLowerCase(Locale.ROOT))) check_name = true;
+                    if(name.toLowerCase(Locale.ROOT).contains(token.getToken().toLowerCase(Locale.ROOT))) condition.set(condition.size()-1,true);
                     break;
             }
         }
-        return check_tag && check_artist && check_star && check_name;
+        boolean total = true;
+        for(boolean b : condition){
+            total = total && b;
+        }
+        return total;
     };
 
     public static void main(String[] args) {
