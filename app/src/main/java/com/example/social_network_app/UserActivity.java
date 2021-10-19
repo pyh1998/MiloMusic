@@ -85,13 +85,14 @@ public class UserActivity extends AppCompatActivity {
             }
         }
         user_likescount.setText(String.valueOf(total_likes));
-        findViewById(R.id.bar_chart).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.report).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent reportIntent = new Intent(getApplicationContext(), BarActivity.class);
                 reportIntent.putExtra("commentsCount",user_commentscount.getText());
                 reportIntent.putExtra("fansCount",user_fanscount.getText());
                 reportIntent.putExtra("likesCount", user_likescount.getText());
+                reportIntent.putExtra("username",user_username.getText());
                 startActivity(reportIntent);
             }
         });
