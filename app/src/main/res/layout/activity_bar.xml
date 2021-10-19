@@ -8,7 +8,36 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/report"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report3"
+        tools:ignore="MissingConstraints" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/report2"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report"
+        tools:ignore="MissingConstraints" />
+
+    <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:id="@+id/report3"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

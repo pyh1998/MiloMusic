@@ -92,7 +92,7 @@ public class UserActivity extends AppCompatActivity {
                 reportIntent.putExtra("commentsCount",user_commentscount.getText());
                 reportIntent.putExtra("fansCount",user_fanscount.getText());
                 reportIntent.putExtra("likesCount", user_likescount.getText());
-                reportIntent.putExtra("username",user_username.getText());
+                reportIntent.putExtra("user",user);
                 startActivity(reportIntent);
             }
         });
