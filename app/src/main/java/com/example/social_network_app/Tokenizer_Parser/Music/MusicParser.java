@@ -116,7 +116,7 @@ public class MusicParser {
                 case ARTIST:
                     check_artist = false;
                     String artist = music.getArtist();
-                    if(artist.contains(token.getToken().toLowerCase(Locale.ROOT)) || artist.contains(token.getToken().toUpperCase(Locale.ROOT))) check_artist = true;
+                    if(artist.toLowerCase(Locale.ROOT).contains(token.getToken().toLowerCase(Locale.ROOT))) check_artist = true;
                     break;
                 case STAR:
                     check_star = false;
@@ -143,7 +143,7 @@ public class MusicParser {
                 case NAME:
                     check_name = false;
                     String name = music.getName();
-                    if(name.contains(token.getToken().toLowerCase(Locale.ROOT)) || name.contains(token.getToken().toUpperCase(Locale.ROOT))) check_name = true;
+                    if(name.toLowerCase(Locale.ROOT).contains(token.getToken().toLowerCase(Locale.ROOT))) check_name = true;
                     break;
             }
         }
