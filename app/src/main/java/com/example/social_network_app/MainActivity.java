@@ -51,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
     ImageView iv_userHead;
     TextView tv_location;
     EditText search;
-    //声明AMapLocationClient类对象
-    public AMapLocationClient mLocationClient = null;
+    // Declare the AMapLocationClient class object    public AMapLocationClient mLocationClient = null;
     private AMapLocationClient locationClient = null;
     private AMapLocationClientOption locationOption = null;
     private String mLocation = "";
-    //申请的权限
+
+    //Request permission
     private static final String[] mPermissions = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
 
     @SuppressLint("WrongViewCast")
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
 
-        /*高德定位*/
+        /*Scott positioning*/
         requestPermissions();
     }
 
@@ -218,23 +218,23 @@ public class MainActivity extends AppCompatActivity {
         initView();
     }
     /**
-     * 请求权限
+     * Request permission
      */
     private void requestPermissions() {
         if (PermissionsUtil.hasPermission(this,mPermissions)) {
-            //有访问权限
+            //Have access
             getLocalLocation();
         } else {
             PermissionsUtil.requestPermission(this, new PermissionListener() {
                 @Override
                 public void permissionGranted( String[] permissions) {
-                    //用户授予了访问权限
+                    //The user granted access
                     getLocalLocation();
                 }
                 @Override
                 public void permissionDenied( String[] permissions) {
-                    //用户拒绝了访问的申请
-                    Toast.makeText(MainActivity.this,"拒绝了访问的申请",Toast.LENGTH_LONG).show();
+                    //The user rejected the request for access
+                    Toast.makeText(MainActivity.this,"The request for access was denied",Toast.LENGTH_LONG).show();
                 }
             }, mPermissions);
         }
@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getLocalLocation() {
-        //初始化定位
+        //Initial positioning
         initLocation();
 
         startLocation();
@@ -250,42 +250,41 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * 初始化定位
+     * Initial positioning
      *
      */
     private void initLocation(){
-        //初始化client
+        //Initialize the client
         locationClient = new AMapLocationClient(this.getApplicationContext());
         locationOption = getDefaultOption();
-        //设置定位参数
+        //Setting Location Parameters
         locationClient.setLocationOption(locationOption);
-        // 设置定位监听
+        // Setting location Listening
         locationClient.setLocationListener(locationListener);
     }
 
     /**
-     * 默认的定位参数
+     * Default location parameters
      *
      */
     private AMapLocationClientOption getDefaultOption(){
         AMapLocationClientOption mOption = new AMapLocationClientOption();
-        mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//可选，设置定位模式，可选的模式有高精度、仅设备、仅网络。默认为高精度模式
-        mOption.setGpsFirst(false);//可选，设置是否gps优先，只在高精度模式下有效。默认关闭
-        mOption.setHttpTimeOut(30000);//可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
-        mOption.setInterval(2000);//可选，设置定位间隔。默认为2秒
-        mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
-        mOption.setOnceLocation(false);//可选，设置是否单次定位。默认是false
-        mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi刷新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
-        AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
-        mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
-        mOption.setWifiScan(true); //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动刷新，停止以后完全依赖于系统刷新，定位位置可能存在误差
-        mOption.setLocationCacheEnable(true); //可选，设置是否使用缓存定位，默认为true
-        mOption.setGeoLanguage(AMapLocationClientOption.GeoLanguage.DEFAULT);//可选，设置逆地理信息的语言，默认值为默认语言（根据所在地区选择语言）
+        mOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//Optional: Set the positioning mode, including high precision, device only, and network only. The default mode is high precision
+        mOption.setGpsFirst(false);//This parameter is optional. This parameter is available only in high-precision mode. Off by default
+        mOption.setHttpTimeOut(30000);//Optional: Set the network request timeout period. The default value is 30 seconds. Invalid in device-only mode
+        mOption.setInterval(2000);//Optional. Set the location interval. The default value is 2 seconds
+        mOption.setNeedAddress(true);//Optional: Specifies whether to return the inverse geographic address information. The default is true
+        mOption.setOnceLocation(false);//This parameter is optional. The default is false
+        mOption.setOnceLocationLatest(false);//This parameter is optional. The default value is false. If this parameter is set to true, the system automatically changes to single location
+        AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//Optional: Set the network request protocol. The value can be HTTP or HTTPS. The default for HTTP
+        mOption.setSensorEnable(false);//Optional: Set whether to use a sensor. The default is false
+        mOption.setWifiScan(true); //Optional. Enable or disable wifi scanning.This parameter is optional. The default value is true可选，设置是否使用缓存定位，默认为true
+        mOption.setGeoLanguage(AMapLocationClientOption.GeoLanguage.DEFAULT);//Optional, set the language of the inverse geographic information.
         return mOption;
     }
 
     /**
-     * 定位监听
+     * Positioning to monitor
      */
     AMapLocationListener locationListener = new AMapLocationListener() {
         @Override
@@ -296,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
                 stopLocation();
 
             } else {
-                mLocation = "定位失败，loc is null";
+                mLocation = "locate failure，loc is null";
             }
             tv_location.setText(mLocation);
 
@@ -304,58 +303,58 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    // 根据控件的选择，重新设置定位参数
+    // Resets the positioning parameters based on the selection of the control
     private void resetOption() {
-        // 设置是否需要显示地址信息
+        // Set whether to display the address information
         locationOption.setNeedAddress(true);
         /**
-         * 设置是否优先返回GPS定位结果，如果30秒内GPS没有返回定位结果则进行网络定位
-         * 注意：只有在高精度模式下的单次定位有效，其他方式无效
+         * Set whether to return the GPS location result preferentially.
+         *
          */
         locationOption.setGpsFirst(true);
-        // 设置是否开启缓存
+        // Set whether to enable caching
         locationOption.setLocationCacheEnable(true);
-        // 设置是否单次定位
+        // Set whether to locate the device once
         locationOption.setOnceLocation(true);
-        //设置是否等待设备wifi刷新，如果设置为true,会自动变为单次定位，持续定位时不要使用
+        //Set whether to wait for the wifi refresh of the device.
         locationOption.setOnceLocationLatest(true);
-        //设置是否使用传感器
+        //Sets whether to use sensors
         locationOption.setSensorEnable(true);
     }
 
     /**
-     * 开始定位
+     * positioning
      *
      */
     private void startLocation(){
         tv_location.setText("begin location");
-        //根据控件的选择，重新设置定位参数
+        //Resets the positioning parameters based on the selection of the control
         resetOption();
-        // 设置定位参数
+        // Setting Location Parameters
         locationClient.setLocationOption(locationOption);
-        // 启动定位
+        // positioning start
         locationClient.startLocation();
         tv_location.setText("locating...");
     }
 
     /**
-     * 停止定位
+     * positioning stop
      *
      */
     private void stopLocation(){
-        // 停止定位
+        // positioning stop
         locationClient.stopLocation();
     }
 
     /**
-     * 销毁定位
+     * destroy positioning
      *
      */
     private void destroyLocation(){
         if (null != locationClient) {
             /**
-             * 如果AMapLocationClient是在当前Activity实例化的，
-             * 在Activity的onDestroy中一定要执行AMapLocationClient的onDestroy
+             * If the AMapLocationClient is instantiated in the current Activity,
+             * Be sure to execute the AMapLocationClient's onDestroy in the Activity's onDestroy
              */
             locationClient.onDestroy();
             locationClient = null;
