@@ -2,6 +2,7 @@ package com.example.social_network_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -65,6 +66,7 @@ public class CommentsActivity extends AppCompatActivity {
     int start;
     int end;
 
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg){
@@ -126,6 +128,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         Comments.setOnItemClickListener(commentsListener);
         searchButton.setOnClickListener(searchResultListener);
+
         showComments(resultList.subList(0,start+1));
         CommentsCount.setText(String.valueOf(start));
 

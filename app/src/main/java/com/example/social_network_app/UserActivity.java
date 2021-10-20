@@ -200,8 +200,8 @@ public class UserActivity extends AppCompatActivity {
         globalVariable.setPostList(postList);
     }
 
-    public List<Post> getPostList(){
-        PostDao postDao = new PostDao();
-        return postDao.findAllPosts(this);
-    }
+//    public List<Post> getPostList(){
+//        PostDao postDao = new PostDao();
+//        return postDao.findAllPosts(this);
+//    }
 }

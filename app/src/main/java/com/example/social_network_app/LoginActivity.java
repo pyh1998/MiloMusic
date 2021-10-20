@@ -48,14 +48,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         initView();
+        GlobalVariable global = (GlobalVariable) getApplication();
+        userList = global.getUserList();
+        Log.e("!!!!!!",userList.toString());
+        //userList = getUserList();
 
-        userList = getUserList();
-
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        if(bundle != null){
-            userList = (List<User>) bundle.getSerializable("userList");
-        }
+//        Intent intent = getIntent();
+//        Bundle bundle = intent.getExtras();
+//        if(bundle != null){
+//            userList = (List<User>) bundle.getSerializable("userList");
+//        }
 
     }
 

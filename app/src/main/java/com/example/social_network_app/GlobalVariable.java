@@ -29,6 +29,14 @@ public class GlobalVariable extends Application {
         this.postList = postList;
     }
 
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
+
+    public void setMusicList(List<Music> musicList) {
+        this.musicList = musicList;
+    }
+
     public List<Post> getPostList() {
         return postList;
     }
@@ -41,15 +49,15 @@ public class GlobalVariable extends Application {
         return musicList;
     }
 
-    public List<Post> getPostListFromFile(){
+    private List<Post> getPostListFromFile(){
         PostDao postDao = new PostDao();
         return postDao.findAllPosts(this);
     }
-    public List<User> getUserListFromFile(){
+    private List<User> getUserListFromFile(){
         UserDao userDao = new UserDao();
         return userDao.findAllUsers(this);
     }
-    public List<Music> getMusicListFromFile(){
+    private List<Music> getMusicListFromFile(){
         MusicDao musicDao = new MusicDao();
         return musicDao.findAllMusics(this);
     }

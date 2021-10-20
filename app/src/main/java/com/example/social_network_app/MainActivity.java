@@ -86,8 +86,9 @@ public class MainActivity extends AppCompatActivity {
         search = findViewById(R.id.search);
         tv_location = findViewById(R.id.tv_location);
 
-        MusicList = getMusicList();
-        resultList = MusicList;  //TODO search function(parse & token)
+        GlobalVariable global = (GlobalVariable) getApplication();
+        MusicList = global.getMusicList();
+        resultList = MusicList;
         showMusic(resultList);
         showUser();
 
@@ -191,10 +192,6 @@ public class MainActivity extends AppCompatActivity {
         resultView.setAdapter(listAdapter);
     }
 
-    public List<Music> getMusicList(){
-        MusicDaoInterface music = new MusicDao();
-        return music.findAllMusics(this);
-    }
 
     @Override
     protected
@@ -314,7 +311,7 @@ public class MainActivity extends AppCompatActivity {
                 stopLocation();
 
             } else {
-                mLocation = "locate failure£¬loc is null";
+                mLocation = "locate failure, loc is null";
             }
             tv_location.setText(mLocation);
 

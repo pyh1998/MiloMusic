@@ -23,6 +23,8 @@ import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.regex.Pattern;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -71,14 +73,25 @@ public class RegisterActivity extends AppCompatActivity {
                 RadioButton radioButton = findViewById(sex.getCheckedRadioButtonId());
                 String sex = radioButton.getText().toString();
                 String name = et_name.getEditText().getText().toString();
-                int age = Integer.parseInt(et_age.getEditText().getText().toString());
-                userList = getUserList();
-                User current = new User(userList.size()+1,name,email,age,sex,sex+"_head1",0);
-                userList.add(current);
+                String pattern = "^[0-9]+$";
+                int age = 0;
+                if(Pattern.matches(pattern,et_age.getEditText().getText().toString())){
+                    age = Integer.parseInt(et_age.getEditText().getText().toString());
+                }
+                GlobalVariable global = (GlobalVariable) getApplication();
+                userList = global.getUserList();
                 if (email.trim().equals("")||password.trim().equals(""))
                 {
                     Toast.makeText(RegisterActivity.this,"Please enter your email address and password",Toast.LENGTH_LONG).show();
                     return;
+                }
+                for(User user : userList){
+                    if(email.trim().equals(user.getEmail())){
+                        Toast.makeText(RegisterActivity.this,"Already registered, please login",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                        startActivity(intent);
+                        return;
+                    }
                 }
 
                 SQLiteHelper helper = new SQLiteHelper(RegisterActivity.this);
@@ -89,16 +102,19 @@ public class RegisterActivity extends AppCompatActivity {
                 helper.close();
 
                 if(res > 0){
+                    User current = new User(userList.size()+1,name,email,age,sex,sex.toLowerCase(Locale.ROOT)+"_head1",0);
+                    userList.add(current);
+                    global.setUserList(userList);
                     Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("userList", (Serializable) userList);
-                    intent.putExtras(bundle);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("userList", (Serializable) userList);
+//                    intent.putExtras(bundle);
                     startActivity(intent);
 
                     Toast.makeText(RegisterActivity.this,"Registered successfully", Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
-                    Toast.makeText(RegisterActivity.this,"Registered successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,"Registered failed", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -107,27 +123,12 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    public List<User> getUserList(){
-        UserDao userDao = new UserDao();
-        return userDao.findAllUsers(this);
-    }
+//    public List<User> getUserList(){
+//        UserDao userDao = new UserDao();
+//        return userDao.findAllUsers(this);
+//    }
 
-    public static String getJson(Context context, String fileName){
-        StringBuilder stringBuilder = new StringBuilder();
-        AssetManager assetManager = context.getAssets();
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-                    assetManager.open(fileName),"utf-8"));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                stringBuilder.append(line);
-            }
-            bufferedReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return stringBuilder.toString();
-    }
+
 
 
     @Override
