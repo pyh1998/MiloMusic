@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +28,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CommentsActivity extends AppCompatActivity {
 
@@ -34,6 +39,7 @@ public class CommentsActivity extends AppCompatActivity {
     List<Post> postList = new ArrayList<>();
     List<Post> resultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
+    public static final int COMPLETED = 0;
 
     ImageView userHead;
     ImageView MusicImage;
@@ -47,6 +53,20 @@ public class CommentsActivity extends AppCompatActivity {
     TextView like_num;
     ImageButton like;
     ImageButton liked;
+    int start;
+    int end;
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what == COMPLETED){
+                showComments(resultList.subList(start,end));
+                Comments.setSelection(ListView.FOCUS_DOWN);
+                CommentsCount.setText(String.valueOf(start));
+                Comments.setOnItemClickListener(commentsListener);
+            }
+        }
+    };
 
 
     @Override
@@ -76,17 +96,32 @@ public class CommentsActivity extends AppCompatActivity {
         GlobalVariable global = (GlobalVariable) getApplication();
         postList = global.getPostList();
 
+
         for(int i=0;i<postList.size();i++){
             if(postList.get(i).getMusic(this).equals(currentMusic)){
                 resultList.add(postList.get(i));
             }
         }
+
         showUser();
         showMusic();
-        showComments(resultList);
-        CommentsCount.setText(String.valueOf(resultList.size()));
 
-        Comments.setOnItemClickListener(commentsListener);
+        start = resultList.size() / 5;
+        end = start + 1;
+
+        showComments(resultList.subList(0,start+1));
+        CommentsCount.setText(String.valueOf(start));
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                new WorkThread().start();
+                if (end == resultList.size()-1){
+                    timer.cancel();
+                }
+            }
+        },10000,10000);
 
 
     }
@@ -103,7 +138,6 @@ public class CommentsActivity extends AppCompatActivity {
     };
 
 
-
     public void showUser(){
         String head_img = currentUser.getHead();
         try {
@@ -115,6 +149,7 @@ public class CommentsActivity extends AppCompatActivity {
         }
         user_name.setText(currentUser.getName());
     }
+
     public void showMusic(){
         String img = currentMusic.getPicture();
         try {
@@ -133,10 +168,12 @@ public class CommentsActivity extends AppCompatActivity {
     public void showComments(List<Post> list){
         for(int i =0;i<list.size();i++){
             Map<String,Object> map = new HashMap<>();
+
             User user = list.get(i).getUser(this);
             String datetime = list.get(i).getDatetime();
             String comments = list.get(i).getUserReviews();
             String likeCount = String.valueOf(list.get(i).getLikeCount());
+
             try {
                 Field field = R.drawable.class.getField(user.getHead());
                 int img_id = field.getInt(field.getName());
@@ -150,13 +187,14 @@ public class CommentsActivity extends AppCompatActivity {
             map.put("likeCount",likeCount);
             resultMapList.add(map);
         }
+
         SimpleAdapter adapter = new SimpleAdapter(
                 this,
                 resultMapList,
                 R.layout.comment_item,
                 new String[]{"comment_userhead","comment_user_name","comment_date","comment","likeCount"},
                 new int[]{R.id.comment_userhead,R.id.comment_user_name,R.id.comment_date,R.id.comment,R.id.comment_likenum}
-        ){
+        ) {
             @Override
             public View getView(final int position, View convertView, ViewGroup parent) {
                 final View view=super.getView(position, convertView, parent);
@@ -188,6 +226,7 @@ public class CommentsActivity extends AppCompatActivity {
                 return view;
             }
         };
+
         Comments.setAdapter(adapter);
     }
 
@@ -201,6 +240,17 @@ public class CommentsActivity extends AppCompatActivity {
         }
         GlobalVariable globalVariable = (GlobalVariable) getApplication();
         globalVariable.setPostList(postList);
+    }
+
+    public class WorkThread extends Thread{
+        @Override
+        public void run(){
+            start++;
+            end++;
+            Message msg = new Message();
+            msg.what = COMPLETED;
+            handler.sendMessage(msg);
+        }
     }
 
 //    public List<Post> getPostList(){
