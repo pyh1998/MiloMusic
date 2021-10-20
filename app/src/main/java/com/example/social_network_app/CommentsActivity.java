@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -31,7 +32,9 @@ import com.example.social_network_app.Tokenizer_Parser.Post.PostToken;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +53,8 @@ public class CommentsActivity extends AppCompatActivity {
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     public static final int COMPLETED = 0;
 
+    Button postComment;
+    EditText editComment;
     ImageView userHead;
     ImageView MusicImage;
     TextView MusicName;
@@ -144,11 +149,36 @@ public class CommentsActivity extends AppCompatActivity {
         like_num = findViewById(R.id.comment_likenum);
         like = findViewById(R.id.comment_like);
         liked = findViewById(R.id.comment_liked);
+        postComment = findViewById(R.id.comment_button);
+        editComment = findViewById(R.id.user_post_comments);
 
         Comments.setOnItemClickListener(commentsListener);
         searchButton.setOnClickListener(searchResultListener);
         userHead.setOnClickListener(showUserDetailListener);
+        postComment.setOnClickListener(postNewListener);
     }
+
+    private final View.OnClickListener postNewListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            timer.cancel();
+            String newPost = editComment.getText().toString();
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date curDate =  new Date(System.currentTimeMillis());
+            String date = formatter.format(curDate);
+            if(!newPost.equals("")){
+                Post post = new Post(postList.size(),currentMusic.getId(),currentUser.getId(),currentUser.getName(),newPost,date,0);
+                postList.add(post);
+                currentList.add(post);
+                GlobalVariable global = (GlobalVariable) getApplication();
+                global.setPostList(postList);
+                editComment.setText("");
+                Toast.makeText(getApplicationContext(),"Post successfully!",Toast.LENGTH_LONG).show();
+                showComments(currentList);
+                Comments.setSelection(ListView.FOCUS_DOWN);
+            }
+        }
+    };
 
     private final View.OnClickListener showUserDetailListener = new View.OnClickListener() {
         @Override

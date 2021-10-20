@@ -5,13 +5,17 @@
       <map>
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/drawable/btn_blue_normal_bk.xml" value="0.24270833333333333" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.24270833333333333" />
-        <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-land/activity_comments.xml" value="0.34171075837742504" />
+        <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-land/activity_comments.xml" value="0.4" />
+        <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-land/activity_login.xml" value="0.34171075837742504" />
+        <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-land/activity_register.xml" value="0.34171075837742504" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-land/activity_user.xml" value="0.34171075837742504" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-land/comment_item.xml" value="0.34171075837742504" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-land/music_item.xml" value="0.21428571428571427" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-port/activity_main.xml" value="0.38632246376811596" />
+        <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-port/activity_register.xml" value="0.37681159420289856" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-port/activity_user.xml" value="0.38632246376811596" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-port/comment_item.xml" value="0.38632246376811596" />
+        <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout-port/music_item.xml" value="0.37681159420289856" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout/activity_bar.xml" value="0.4036458333333333" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout/activity_comments.xml" value="0.4" />
         <entry key="..\:/ANU/2021S2/COMP6442/Group Project/Social-network-app/app/src/main/res/layout/activity_login.xml" value="0.4036458333333333" />
@@ -29,22 +33,9 @@
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/drawable/field_username_icon.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/drawable/general_back_icon.xml" value="0.19479166666666667" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14814814814814814" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/activity_bar.xml" value="0.2" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/activity_comments.xml" value="0.21145833333333333" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/activity_login.xml" value="0.21145833333333333" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/activity_main.xml" value="0.25" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/activity_register.xml" value="0.21145833333333333" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/activity_user.xml" value="0.25" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/comment_item.xml" value="0.25" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/music_item.xml" value="0.21145833333333333" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/activity_bar.xml" value="0.20364583333333333" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/activity_comments.xml" value="0.20364583333333333" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/activity_login.xml" value="0.20364583333333333" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/activity_main.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/activity_register.xml" value="0.20364583333333333" />
+        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/activity_user.xml" value="0.1484375" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/activity_user.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/comment_item.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/music_item.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-port/comment_item.xml" value="0.14947916666666666" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_bar.xml" value="0.20364583333333333" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_bar_chart.xml" value="0.15677083333333333" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_comments.xml" value="0.22" />
@@ -55,7 +46,8 @@
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_timeline_post.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_user.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/comment_item.xml" value="0.20364583333333333" />
-        <entry key="..\:/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/music_item.xml" value="0.20364583333333333" />
+        <entry key="..\:/Users/Amrapier/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout-land/activity_main.xml" value="0.22432432432432434" />
+        <entry key="..\:/Users/Amrapier/AndroidStudioProjects/comp21006442_g15barbecue-sauce/app/src/main/res/layout/activity_comments.xml" value="0.1296875" />
         <entry key="app/src/main/res/layout/activity_user.xml" value="0.2105978260869565" />
       </map>
     </option>

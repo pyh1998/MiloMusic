@@ -23,7 +23,6 @@ public class PostParser {
     /**
      * The search upper limit for each condition
      */
-    private static final int music_max = 1;
     private static final int user_max = 1;
     private static final int likecount_max = 1;
     private static final int content_max = 1;

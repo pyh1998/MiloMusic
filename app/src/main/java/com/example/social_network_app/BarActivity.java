@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class BarActivity extends AppCompatActivity {
 
@@ -37,8 +38,8 @@ public class BarActivity extends AppCompatActivity {
     TextView title;
 
     List<Post> resultList = new ArrayList<>();
-    Map<String,Integer> commentsMonthly = new HashMap<>();
-    Map<String,Integer> likesMonthly = new HashMap<>();
+    Map<String,Integer> commentsMonthly = new TreeMap<>();
+    Map<String,Integer> likesMonthly = new TreeMap<>();
     User user;
 
     public Map<String, Integer> initMonthly(Map<String,Integer> map) {
@@ -51,6 +52,9 @@ public class BarActivity extends AppCompatActivity {
         map.put("07",0);
         map.put("08",0);
         map.put("09",0);
+        map.put("10",0);
+        map.put("11",0);
+        map.put("12",0);
         return map;
     }
 
@@ -90,6 +94,7 @@ public class BarActivity extends AppCompatActivity {
         }
 
 
+
         drawComments(cMonthly);
         drawLikeCount(lMonthly);
         drawFans(fansCount);
@@ -103,6 +108,7 @@ public class BarActivity extends AppCompatActivity {
         ArrayList<BarEntry> entries = new ArrayList<>();
         BarDataSet dataset;
         int index = 1;
+        Log.e("!!!!",map.toString());
         for(int cm_count : map.values()){
             entries.add(new BarEntry(index++, cm_count));
         }
@@ -206,6 +212,9 @@ public class BarActivity extends AppCompatActivity {
                 if (v==7) return "Jul.";
                 if (v==8) return "Aug.";
                 if (v==9) return "Sept.";
+                if (v==10) return "Oct.";
+                if (v==11) return "Nov.";
+                if (v==12) return "Dec.";
                 return "";//注意这里需要改成 ""
             }
         });

@@ -37,14 +37,18 @@
 
     <EditText
         android:id="@+id/comment_search"
-        android:layout_width="299dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:ems="10"
         android:hint="Search comments..."
         android:inputType="text"
-        app:layout_constraintLeft_toRightOf="@+id/music_name"
+        app:layout_constraintEnd_toStartOf="@+id/ib_search2"
+        app:layout_constraintStart_toEndOf="@+id/album_releasedate"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -57,7 +61,6 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/comment_search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/comment_search"
         app:layout_constraintTop_toTopOf="@+id/comment_search"
         app:srcCompat="@drawable/search" />
 
@@ -175,29 +178,29 @@
 
     <ListView
         android:id="@+id/user_comments"
-        android:layout_width="367dp"
-        android:layout_height="280dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/comment_button"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/user_post_comments"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/comment_search"
         app:layout_constraintTop_toBottomOf="@+id/comment_search"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/user_post_comments"
-        android:layout_width="249dp"
+        android:layout_width="0dp"
         android:layout_height="43dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/comment_button"
-        app:layout_constraintHorizontal_bias="0.936"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/user_comments"
         tools:hint="Write something to share..." />
 
     <Button

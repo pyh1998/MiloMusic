@@ -23,6 +23,8 @@ import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDaoInterface;
 import com.example.social_network_app.Basic_classes.UserDao.User;
+import com.example.social_network_app.DataStructure.Node;
+import com.example.social_network_app.DataStructure.RBTree;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicToken;
 import com.github.dfqin.grantor.PermissionListener;
@@ -159,6 +161,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    private List<Music> sortByRate(List<Music> list){
+        List<Music> result = new ArrayList<>();
+
+        RBTree<Double> rateTree = new RBTree<>();
+        for(Music music : list){
+            Node<Double> node = new Node<>(music.getRate(),music);
+        }
+
+        return result;
+    }
 
 
 

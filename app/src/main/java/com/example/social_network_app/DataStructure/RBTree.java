@@ -1,6 +1,8 @@
 package com.example.social_network_app.DataStructure;
 
 
+import java.util.List;
+
 public class RBTree<T extends Comparable<T>> {
 
     Node<T> root;
@@ -34,7 +36,7 @@ public class RBTree<T extends Comparable<T>> {
             }
         }else {
             x.parent = root;
-            root.GameIDList.add(x.GameIDList.get(0));
+            root.objects.add(x.objects.get(0));
         }
 
     }
@@ -175,4 +177,16 @@ public class RBTree<T extends Comparable<T>> {
     public String preOrder() {
         return preOrder(root);
     }
+
+
+//    public List<Object> getListPreOrder(Node<T> tree){
+//        if (tree != null && tree.value != null) {
+//            List<Object> leftStr = getListPreOrder(tree.left);
+//            List<Object> rightStr = getListPreOrder(tree.right);
+//            return tree
+//                    + (leftStr.isEmpty() ? leftStr : "\n" + leftStr)
+//                    + (rightStr.isEmpty() ? rightStr : "\n" + rightStr);
+//        }
+//        return null;
+//    }
 }

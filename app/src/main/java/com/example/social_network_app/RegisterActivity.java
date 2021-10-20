@@ -98,6 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 values.put("email", email);
                 values.put("password", password);
+
                 long res = helper.UserInfo_insert(values);
                 helper.close();
 

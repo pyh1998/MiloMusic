@@ -64,7 +64,6 @@ public class DataGenerate {
 
             Element music = document.createElement("music");
             Element user = document.createElement("user");
-            Element musicName = document.createElement("musicName");
             Element userName = document.createElement("userName");
             Element datetime = document.createElement("datetime");
             Element userReviews = document.createElement("userReviews");
@@ -72,7 +71,6 @@ public class DataGenerate {
 
             int music_id = random.nextInt(music_num) + 1;
             music.setTextContent(String.valueOf(music_id));
-            musicName.setTextContent(getMusicNameById(music_id));
             int user_id = random.nextInt(user_num) + 1;
             user.setTextContent(String.valueOf(user_id));
             userName.setTextContent(getUserNameById(user_id));
@@ -86,7 +84,6 @@ public class DataGenerate {
             likeCount.setTextContent(String.valueOf(count));
 
             post.appendChild(music);
-            post.appendChild(musicName);
             post.appendChild(user);
             post.appendChild(userName);
             post.appendChild(datetime);

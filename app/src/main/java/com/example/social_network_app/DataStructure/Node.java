@@ -12,7 +12,7 @@ public class Node<T> {
     T value; 				// Node value
     Node<T> parent; 		// Parent node
     Node<T> left, right; 	// Children nodes
-    LinkedList<Integer> GameIDList;
+    LinkedList<Object> objects;
 
     public Colour getColour() {
         return colour;
@@ -34,15 +34,15 @@ public class Node<T> {
         return right;
     }
 
-    public LinkedList<Integer> getGameIDList() {
-        return GameIDList;
+    public LinkedList<Object> getObjects() {
+        return objects;
     }
 
-    public Node(T value, int id) {
+    public Node(T value, Object object) {
         this.value  = value;
         this.colour = Colour.RED;
-        this.GameIDList=new LinkedList<>();
-        GameIDList.add(id);
+        this.objects =new LinkedList<>();
+        objects.add(object);
         this.parent = null;
 
         // Initialise children leaf nodes
@@ -60,12 +60,12 @@ public class Node<T> {
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder("key: " + this.value + "; ");
-        LinkedList<Integer> gameIDList = getGameIDList();
+        LinkedList<Object> gameIDList = getObjects();
         for (int i = 0; i < gameIDList.size(); i++) {
             if (i == gameIDList.size() - 1) {
-                res.append(gameIDList.get(i));
+                res.append(gameIDList.get(i).toString());
             } else {
-                res.append(gameIDList.get(i)).append(", ");
+                res.append(gameIDList.get(i).toString()).append(", ");
             }
 
         }
