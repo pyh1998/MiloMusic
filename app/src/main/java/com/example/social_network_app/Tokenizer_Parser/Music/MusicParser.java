@@ -31,18 +31,11 @@ public class MusicParser {
     private static final int name_max = 1;
 
     private List<MusicToken> tokenList = new ArrayList<>();
+    private MusicTokenizer tokenizer;
 
     public MusicParser(String searchText){
-        MusicTokenizer tokenizer = new MusicTokenizer(searchText);
-        try {
-            while (tokenizer.hasNext()) {
-                tokenList.add(tokenizer.current());
-                tokenizer.next();
-            }
-        }
-        catch (Exception e){
-            throw new MusicToken.IllegalTokenException("IllegalTokenException");
-        }
+        tokenizer = new MusicTokenizer(searchText);
+        parseExp();
     }
 
     /**
@@ -76,8 +69,34 @@ public class MusicParser {
         return tag <= tag_max && artist <= artist_max && rate <= rate_max && name <= name_max;
     }
 
+    /**
+     * Adheres to the grammar rule:
+     * <exp>    ::= <term> | <term> ; <exp>
+     *
+     */
+    public void parseExp(){
+        parseTerm();
+        if(tokenizer.hasNext() &&  tokenizer.current().getType() == MusicToken.Type.SEMICOLON){
+            tokenizer.next();
+            parseExp();
+        }
+    }
 
+    /**
+     * Adheres to the grammar rule:
+     * <term>    ::= <TAG> | <ARTIST> | <STAR> | <NAME>
+     *
+     */
+    public void parseTerm(){
+        if(tokenizer.current().getType() != MusicToken.Type.INVALID){
+            tokenList.add(tokenizer.current());
+        }
+        tokenizer.next();
+    }
 
+    public List<MusicToken> getTokenList() {
+        return tokenList;
+    }
 
     public List<MusicToken> getValidList(){
         List<MusicToken> validList = new ArrayList<>();
@@ -176,6 +195,7 @@ public class MusicParser {
         String s = "#abc;@Mike;*>4.3;asd";
         MusicParser parser = new MusicParser(s);
         System.out.println(parser.isValid());
+        System.out.println(parser.getTokenList().toString());
     }
 
 }
