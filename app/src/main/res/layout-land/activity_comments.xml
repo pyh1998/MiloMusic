@@ -34,14 +34,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--搜索栏-->
+
     <EditText
         android:id="@+id/comment_search"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_width="299dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Search comments..."
         android:inputType="text"
@@ -54,11 +53,11 @@
         android:layout_height="38dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:background="#C1E91E63"
+        android:background="#00BCD4"
         android:scaleType="fitXY"
-        app:layout_constraintStart_toEndOf="@+id/comment_search"
         app:layout_constraintBottom_toBottomOf="@+id/comment_search"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/comment_search"
         app:layout_constraintTop_toTopOf="@+id/comment_search"
         app:srcCompat="@drawable/search" />
 
@@ -174,13 +173,13 @@
         app:layout_constraintVertical_bias="1.0" />
 
 
-
-
     <ListView
         android:id="@+id/user_comments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_width="367dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/comment_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -191,12 +190,13 @@
 
     <EditText
         android:id="@+id/user_post_comments"
-        android:layout_width="294dp"
-        android:layout_height="52dp"
+        android:layout_width="249dp"
+        android:layout_height="43dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/comment_button"
+        app:layout_constraintHorizontal_bias="0.936"
         app:layout_constraintStart_toStartOf="parent"
         tools:hint="Write something to share..." />
 
@@ -209,9 +209,6 @@
         android:text="Post"
         app:layout_constraintBottom_toBottomOf="@+id/user_post_comments"
         app:layout_constraintEnd_toEndOf="parent" />
-
-
-
 
 
     <TextView

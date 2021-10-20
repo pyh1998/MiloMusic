@@ -11,16 +11,22 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.UserDao.User;
+import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
+import com.example.social_network_app.Tokenizer_Parser.Music.MusicToken;
+import com.example.social_network_app.Tokenizer_Parser.Post.PostParser;
+import com.example.social_network_app.Tokenizer_Parser.Post.PostToken;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -38,6 +44,7 @@ public class CommentsActivity extends AppCompatActivity {
     Music currentMusic;
     List<Post> postList = new ArrayList<>();
     List<Post> resultList = new ArrayList<>();
+    List<Post> searchResultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     public static final int COMPLETED = 0;
 
@@ -53,6 +60,8 @@ public class CommentsActivity extends AppCompatActivity {
     TextView like_num;
     ImageButton like;
     ImageButton liked;
+    ImageButton searchButton;
+    EditText search;
     int start;
     int end;
 
@@ -89,6 +98,9 @@ public class CommentsActivity extends AppCompatActivity {
         Comments = findViewById(R.id.user_comments);
         user_name = findViewById(R.id.c_user_name);
 
+        search = findViewById(R.id.comment_search);
+        searchButton = findViewById(R.id.ib_search2);
+
         like_num = findViewById(R.id.comment_likenum);
         like = findViewById(R.id.comment_like);
         liked = findViewById(R.id.comment_liked);
@@ -102,13 +114,18 @@ public class CommentsActivity extends AppCompatActivity {
                 resultList.add(postList.get(i));
             }
         }
+        searchResultList = resultList;
 
         showUser();
         showMusic();
+        showComments(searchResultList);
+        CommentsCount.setText(String.valueOf(resultList.size()));
 
         start = resultList.size() / 5;
         end = start + 1;
 
+        Comments.setOnItemClickListener(commentsListener);
+        searchButton.setOnClickListener(searchResultListener);
         showComments(resultList.subList(0,start+1));
         CommentsCount.setText(String.valueOf(start));
 
@@ -134,6 +151,42 @@ public class CommentsActivity extends AppCompatActivity {
             intent.putExtra("User",user);
             intent.putExtra("CurrentUser",currentUser);
             startActivity(intent);
+        }
+    };
+
+    private final View.OnClickListener searchResultListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String searchText = search.getText().toString();
+            if(!searchText.equals("")){
+                PostParser parser = new PostParser(searchText);
+                try{
+                    if(!parser.isValid()){
+                        List<PostToken> validList = parser.getValidList();
+                        if(validList.size() == 0){
+                            Toast.makeText(getApplicationContext(),"Invalid Input!",Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"Partial Valid Input! Valid condition: "+validList.toString(),Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"Invalid Input! IllegalTokenException!",Toast.LENGTH_LONG).show();
+                }
+                resultList = new ArrayList<>();
+                for(Post post : resultList){
+                    if(parser.isMatched(post)){
+                        searchResultList.add(post);
+                    }
+                }
+                Log.e("!!!!!!!!!!!!!!",resultList.toString());
+                showComments(searchResultList);
+                Toast toast = Toast.makeText(getApplicationContext(),"Search successfully! "+resultList.size()+" result(s)",Toast.LENGTH_LONG);
+                //toast.setGravity(Gravity.TOP,0,0);
+                toast.show();
+            }
         }
     };
 
