@@ -22,18 +22,38 @@ public class Post implements Serializable {
     private int id;
     private int music_id;
     private int user_id;
+    private String music_name;
+    private String user_name;
     private String userReviews;
     private String datetime;
     private int likeCount;
 
 
-    public Post(int id, int music_id, int user_id, String userReviews, String datetime, int likeCount) {
+    public Post(int id, int music_id,String music_name, int user_id, String user_name, String userReviews, String datetime, int likeCount) {
         this.id = id;
         this.music_id = music_id;
+        this.music_name = music_name;
         this.user_id = user_id;
+        this.user_name =user_name;
         this.userReviews = userReviews;
         this.datetime = datetime;
         this.likeCount = likeCount;
+    }
+
+    public String getMusic_name() {
+        return music_name;
+    }
+
+    public void setMusic_name(String music_name) {
+        this.music_name = music_name;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
     public Music getMusic(Context context){

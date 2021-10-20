@@ -1,8 +1,15 @@
 package com.example.social_network_app.DataGenerate;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.AssetManager;
 
+import com.example.social_network_app.Basic_classes.MusicDao.Music;
+import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -12,6 +19,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +46,8 @@ public class DataGenerate {
 
     public final static String postListPath = "app/src/main/assets/post.xml";
     public final static String reviewPath = "app/src/main/assets/userReviews.csv";
+    public final static String musicPath = "app/src/main/assets/music_list.json";
+    public final static String userPath = "app/src/main/assets/user.json";
 
     public static void createData(int num) throws ParserConfigurationException, TransformerException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -54,14 +64,18 @@ public class DataGenerate {
 
             Element music = document.createElement("music");
             Element user = document.createElement("user");
+            Element musicName = document.createElement("musicName");
+            Element userName = document.createElement("userName");
             Element datetime = document.createElement("datetime");
             Element userReviews = document.createElement("userReviews");
             Element likeCount = document.createElement("likeCount");
 
             int music_id = random.nextInt(music_num) + 1;
             music.setTextContent(String.valueOf(music_id));
+            musicName.setTextContent(getMusicNameById(music_id));
             int user_id = random.nextInt(user_num) + 1;
             user.setTextContent(String.valueOf(user_id));
+            userName.setTextContent(getUserNameById(user_id));
             String date = getRandomDatetime();
             datetime.setTextContent(date);
 
@@ -72,7 +86,9 @@ public class DataGenerate {
             likeCount.setTextContent(String.valueOf(count));
 
             post.appendChild(music);
+            post.appendChild(musicName);
             post.appendChild(user);
+            post.appendChild(userName);
             post.appendChild(datetime);
             post.appendChild(userReviews);
             post.appendChild(likeCount);
@@ -97,6 +113,49 @@ public class DataGenerate {
 
 
     }
+
+    public static String getMusicNameById(int id){
+        List<Music> musicList = new ArrayList<>();
+        Gson gson = new Gson();
+        JsonReader jsonReader = null;
+
+        final Type CUS_LIST_TYPE = new TypeToken<List<Music>>() {}.getType();
+
+        try{
+            jsonReader = new JsonReader(new FileReader(musicPath));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        musicList = gson.fromJson(jsonReader, CUS_LIST_TYPE);
+        for(Music music : musicList){
+            if(music.getId()==id) return music.getName();
+        }
+        return null;
+    }
+
+    public static String getUserNameById(int id){
+        List<User> userList = new ArrayList<>();
+        Gson gson = new Gson();
+        JsonReader jsonReader = null;
+
+        final Type CUS_LIST_TYPE = new TypeToken<List<User>>() {}.getType();
+
+        try{
+            jsonReader = new JsonReader(new FileReader(userPath));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        userList = gson.fromJson(jsonReader, CUS_LIST_TYPE);
+        for(User user : userList){
+            if(user.getId()==id) return user.getName();
+        }
+        return null;
+    }
+
+
+
 
     @SuppressLint("DefaultLocale")
     public static String getRandomDatetime(){

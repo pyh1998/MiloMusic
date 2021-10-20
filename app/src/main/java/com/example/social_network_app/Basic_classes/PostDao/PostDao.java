@@ -69,11 +69,13 @@ public class PostDao implements PostInterface{
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
                     String music = element.getElementsByTagName("music").item(0).getTextContent();
+                    String music_name = element.getElementsByTagName("musicName").item(0).getTextContent();
                     String user = element.getElementsByTagName("user").item(0).getTextContent();
+                    String user_name = element.getElementsByTagName("userName").item(0).getTextContent();
                     String datetime = element.getElementsByTagName("datetime").item(0).getTextContent();
                     String userReviews = element.getElementsByTagName("userReviews").item(0).getTextContent();
                     String likeCount = element.getElementsByTagName("likeCount").item(0).getTextContent();
-                    Post post = new Post(i + 1, Integer.parseInt(music), Integer.parseInt(user),userReviews,datetime,Integer.parseInt(likeCount));
+                    Post post = new Post(i + 1, Integer.parseInt(music), music_name,Integer.parseInt(user),user_name,userReviews,datetime,Integer.parseInt(likeCount));
                     postList.add(post);
                 }
             }
