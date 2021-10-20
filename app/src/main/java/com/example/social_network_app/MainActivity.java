@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -111,30 +112,35 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             String searchText = search.getText().toString();
-            MusicParser parser = new MusicParser(searchText);
-            try{
-                if(!parser.isValid()){
-                    List<MusicToken> validList = parser.getValidList();
-                    if(validList.size() == 0){
-                        Toast.makeText(getApplicationContext(),"Invalid Input!",Toast.LENGTH_LONG).show();
-                        return;
+            if(!searchText.equals("")){
+                MusicParser parser = new MusicParser(searchText);
+                try{
+                    if(!parser.isValid()){
+                        List<MusicToken> validList = parser.getValidList();
+                        if(validList.size() == 0){
+                            Toast.makeText(getApplicationContext(),"Invalid Input!",Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"Partial Valid Input! Valid condition: "+validList.toString(),Toast.LENGTH_LONG).show();
+                        }
                     }
-                    else{
-                        Toast.makeText(getApplicationContext(),"Partial Valid Input! Valid condition: "+validList.toString(),Toast.LENGTH_LONG).show();
-                    }
-                }
 
-            }catch (Exception e){
-                Toast.makeText(getApplicationContext(),"Invalid Input! IllegalTokenException!",Toast.LENGTH_LONG).show();
-            }
-            resultList = new ArrayList<>();
-            for(Music music : MusicList){
-                if(parser.isMatched(music)){
-                    resultList.add(music);
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(),"Invalid Input! IllegalTokenException!",Toast.LENGTH_LONG).show();
                 }
+                resultList = new ArrayList<>();
+                for(Music music : MusicList){
+                    if(parser.isMatched(music)){
+                        resultList.add(music);
+                    }
+                }
+                Log.e("!!!!!!!!!!!!!!",resultList.toString());
+                showMusic(resultList);
+                Toast toast = Toast.makeText(getApplicationContext(),"Search successfully! "+resultList.size()+" result(s)",Toast.LENGTH_LONG);
+                //toast.setGravity(Gravity.TOP,0,0);
+                toast.show();
             }
-            Log.e("!!!!!!!!!!!!!!",resultList.toString());
-            showMusic(resultList);
         }
     };
 

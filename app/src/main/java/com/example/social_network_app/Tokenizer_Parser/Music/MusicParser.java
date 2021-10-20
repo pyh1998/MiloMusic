@@ -91,8 +91,8 @@ public class MusicParser {
     public void parseTerm(){
         if(tokenizer.hasNext() && tokenizer.current().getType() != MusicToken.Type.SEMICOLON){
             tokenList.add(tokenizer.current());
+            tokenizer.next();
         }
-        if(tokenizer.hasNext()) tokenizer.next();
     }
 
     public List<MusicToken> getTokenList() {
@@ -193,7 +193,7 @@ public class MusicParser {
     };
 
     public static void main(String[] args) {
-        String s = ";;;";
+        String s = "";
         MusicParser parser = new MusicParser(s);
         System.out.println(parser.isValid());
         System.out.println(parser.getTokenList().toString());
