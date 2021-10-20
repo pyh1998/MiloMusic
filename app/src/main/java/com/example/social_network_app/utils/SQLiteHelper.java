@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+//code in this class are based of  the code from CSDN
+//url:https://cloud.tencent.com/developer/article/1394216
 public class SQLiteHelper extends SQLiteOpenHelper {
         private static final String DB_NAME = "user.db";//
         private static final String UserInfoTBL_NAME = "User";//

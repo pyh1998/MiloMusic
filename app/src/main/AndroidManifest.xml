@@ -3,26 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.social_network_app" >
 
-    <!--高德-->
-    <!--用于进行网络定位-->
+    <!--AMap-->
+    <!--Used to locate the network-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-    <!--用于访问GPS定位-->
+    <!--Used to access GPS location-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <!--获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <!--Obtain carrier information, which is used to provide interfaces related to carrier information-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <!--It is used to access wifi network information, which is used to locate the network-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-    <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <!--This permission is used to obtain wifi access permission, wifi information will be used to locate the network-->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
-    <!--用于访问网络，网络定位需要上网-->
+    <!--Used to access the network. Network positioning requires Internet access-->
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <!--用于读取手机当前的状态-->
+    <!--Used to read the current state of the phone-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-    <!--写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据-->
+    <!--Write expansion storage, write data to expansion card, used to write cache location data-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
-    <!--用于申请调用A-GPS模块-->
+    <!--Used to request calls to the A-GPS module-->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
-    <!--用于申请获取蓝牙信息进行室内定位-->
+    <!--It is used to obtain bluetooth information for indoor positioning-->
     <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
 
@@ -35,11 +35,11 @@
         android:theme="@style/Theme.Socialnetworkapp"
         android:name="com.example.social_network_app.GlobalVariable">
 
-        <!--高德地图-->
+        <!--AMap-->
         <meta-data android:name="com.amap.api.v2.apikey" android:value="ce5c594efb7c99595ece0f6bc0177dd3">
         </meta-data>
 
-        <!-- 定位需要的服务 适配Android Q需要加上android:foregroundServiceType="location"-->
+        <!-- Positioning need service adapter Android Q plus Android: foregroundServiceType = "location"-->
         <service
             android:name="com.amap.api.location.APSService"
             />

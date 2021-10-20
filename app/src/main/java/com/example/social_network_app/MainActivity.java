@@ -263,6 +263,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
+     * code in this function is based on the code from github
+     * url:https://github.com/qwd/OpenWeatherPlus-Android
      * Initial positioning
      *
      */
@@ -277,6 +279,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * code in this function are beased on the codes from TecentCloud
+     * https://www.tabnine.com/web/assistant/code/rs/5c7c32112ef5570001da71d7#L130
      * Default location parameters
      *
      */
@@ -297,6 +301,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     *  code in my OnLocationChanged function is based on some code from CSDN
+     *  url:https://blog.csdn.net/dr_abandon/article/details/77946585
      * Positioning to monitor
      */
     AMapLocationListener locationListener = new AMapLocationListener() {
@@ -315,7 +321,8 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
+    //code in this function are based on the code from CSDN
+    //url:https://blog.csdn.net/xiayiye5/article/details/88695284
     // Resets the positioning parameters based on the selection of the control
     private void resetOption() {
         // Set whether to display the address information
