@@ -4,7 +4,7 @@
   {"id":3,"name":"Wind Chimes","artist":"Brian Wilson","album":"SMILE","releaseDate":"2004-09-27","rate":4.1,"picture": "brianwilson","tag": "7"},
   {"id":4,"name":"On I Go","artist":"Fiona Apple","album":"FETCH THE BOLT CUTTERS","releaseDate":"2020-04-17","rate":4.9,"picture": "fionaapple","tag": "1,9"},
   {"id":5,"name":"Surf's Up","artist":"Brian Wilson","album":"SMILE","releaseDate":"2004-09-27","rate":4.1,"picture": "brianwilson","tag": "5,7"},
-  {"id":6,"name":"America, Pts. 1, 2 & 3","artist":"Wadada Leo Smith","album":"TEN FREEDOM SUMMERS","releaseDate":"2012-5-22","rate":4.1,"picture": "wadadaleosmith","tag": "2"},
+  {"id":6,"name":"America, Pts. 1, 2 & 3","artist":"Wadada Leo","album":"TEN FREEDOM SUMMERS","releaseDate":"2012-5-22","rate":4.1,"picture": "wadadaleosmith","tag": "2"},
   {"id":7,"name":"For Her","artist":"Fiona Apple","album":"FETCH THE BOLT CUTTERS","releaseDate":"2020-04-17","rate":4.1,"picture": "fionaapple","tag": "1"},
   {"id":8,"name":"Perfect","artist":"Ed Sheeran","album":"÷(DELUXE)","releaseDate":"2017-03-03","rate":4.9,"picture": "edsheeran","tag": "6,7"},
   {"id":9,"name":"Shape Of You","artist":"Ed Sheeran","album":"SHAPE OF YOU","releaseDate":"2017-01-06","rate":4.5,"picture": "edsheeran","tag": "7"},
