@@ -43,6 +43,7 @@ public class MusicParser {
      * @return return true if the string is valid
      */
     public boolean isValid(){
+        if(tokenList.isEmpty()) return false;
         for(MusicToken token :tokenList){
             if(token.getType()== MusicToken.Type.INVALID) return false;
         }
@@ -84,14 +85,14 @@ public class MusicParser {
 
     /**
      * Adheres to the grammar rule:
-     * <term>    ::= <TAG> | <ARTIST> | <STAR> | <NAME>
+     * <term>    ::= <TAG> | <ARTIST> | <STAR> | <NAME> | <INVALID>
      *
      */
     public void parseTerm(){
-        if(tokenizer.current().getType() != MusicToken.Type.INVALID){
+        if(tokenizer.hasNext() && tokenizer.current().getType() != MusicToken.Type.SEMICOLON){
             tokenList.add(tokenizer.current());
         }
-        tokenizer.next();
+        if(tokenizer.hasNext()) tokenizer.next();
     }
 
     public List<MusicToken> getTokenList() {
@@ -144,7 +145,7 @@ public class MusicParser {
                     MusicTag[] tags= music.getTag();
                     condition.add(false);
                     for(MusicTag tag : tags){
-                        if(tag.toString().equals(token.getToken())) {
+                        if(tag.toString().toLowerCase(Locale.ROOT).equals(token.getToken().toLowerCase(Locale.ROOT))) {
                             condition.set(condition.size()-1,true);
                             break;
                         }
@@ -192,7 +193,7 @@ public class MusicParser {
     };
 
     public static void main(String[] args) {
-        String s = "#abc;@Mike;*>4.3;asd";
+        String s = ";;;";
         MusicParser parser = new MusicParser(s);
         System.out.println(parser.isValid());
         System.out.println(parser.getTokenList().toString());
