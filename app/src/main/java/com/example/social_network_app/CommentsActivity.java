@@ -45,6 +45,7 @@ public class CommentsActivity extends AppCompatActivity {
     Music currentMusic;
     List<Post> postList = new ArrayList<>();
     List<Post> resultList = new ArrayList<>();
+    List<Post> currentList = new ArrayList<>();
     List<Post> searchResultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     public static final int COMPLETED = 0;
@@ -65,13 +66,15 @@ public class CommentsActivity extends AppCompatActivity {
     EditText search;
     int start;
     int end;
+    Timer timer = new Timer();
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg){
             if(msg.what == COMPLETED){
-                showComments(resultList.subList(start,end));
+                currentList = resultList.subList(0,end);
+                showComments(currentList);
                 Comments.setSelection(ListView.FOCUS_DOWN);
                 CommentsCount.setText(String.valueOf(start));
                 Comments.setOnItemClickListener(commentsListener);
@@ -90,6 +93,41 @@ public class CommentsActivity extends AppCompatActivity {
         currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
         currentMusic = (Music) getIntent().getSerializableExtra("Music");
 
+        GlobalVariable global = (GlobalVariable) getApplication();
+        postList = global.getPostList();
+
+        initView();
+
+        for(int i=0;i<postList.size();i++){
+            if(postList.get(i).getMusic(this).equals(currentMusic)){
+                resultList.add(postList.get(i));
+            }
+        }
+        searchResultList = resultList;
+
+        showUser();
+        showMusic();
+
+        start = resultList.size() / 5;
+        end = start + 1;
+        currentList = resultList.subList(0,start+1);
+        showComments(currentList);
+        CommentsCount.setText(String.valueOf(start));
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                new WorkThread().start();
+                if (end == resultList.size()-1){
+                    timer.cancel();
+                }
+            }
+        },5000,5000);
+
+
+    }
+
+    private void initView(){
         userHead = findViewById(R.id.iv_userhead_comments);
         MusicImage = findViewById(R.id.comment_music);
         MusicName = findViewById(R.id.music_name);
@@ -107,44 +145,21 @@ public class CommentsActivity extends AppCompatActivity {
         like = findViewById(R.id.comment_like);
         liked = findViewById(R.id.comment_liked);
 
-        GlobalVariable global = (GlobalVariable) getApplication();
-        postList = global.getPostList();
-
-
-        for(int i=0;i<postList.size();i++){
-            if(postList.get(i).getMusic(this).equals(currentMusic)){
-                resultList.add(postList.get(i));
-            }
-        }
-        searchResultList = resultList;
-
-        showUser();
-        showMusic();
-        //showComments(searchResultList);
-        //CommentsCount.setText(String.valueOf(resultList.size()));
-
-        start = resultList.size() / 5;
-        end = start + 1;
-
         Comments.setOnItemClickListener(commentsListener);
         searchButton.setOnClickListener(searchResultListener);
-
-        showComments(resultList.subList(0,start+1));
-        CommentsCount.setText(String.valueOf(start));
-
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                new WorkThread().start();
-                if (end == resultList.size()-1){
-                    timer.cancel();
-                }
-            }
-        },10000,10000);
-
-
+        userHead.setOnClickListener(showUserDetailListener);
     }
+
+    private final View.OnClickListener showUserDetailListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(),UserActivity.class);
+            User user = currentUser;
+            intent.putExtra("User",user);
+            intent.putExtra("CurrentUser",currentUser);
+            startActivity(intent);
+        }
+    };
 
     private AdapterView.OnItemClickListener commentsListener = new AdapterView.OnItemClickListener() {
         @Override
@@ -160,8 +175,12 @@ public class CommentsActivity extends AppCompatActivity {
     private final View.OnClickListener searchResultListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            timer.cancel();
             String searchText = search.getText().toString();
-            if(!searchText.equals("")){
+            if(searchText.equals("")){
+                showComments(currentList);
+            }
+            else{
                 PostParser parser = new PostParser(searchText);
                 try{
                     if(!parser.isValid()){
@@ -178,15 +197,15 @@ public class CommentsActivity extends AppCompatActivity {
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(),"Invalid Input! IllegalTokenException!",Toast.LENGTH_LONG).show();
                 }
-                resultList = new ArrayList<>();
-                for(Post post : resultList){
+                searchResultList = new ArrayList<>();
+                for(Post post : currentList){
                     if(parser.isMatched(post)){
                         searchResultList.add(post);
                     }
                 }
-                Log.e("!!!!!!!!!!!!!!",resultList.toString());
+                Log.e("!!!!!!!!!!!!!!",searchResultList.toString());
                 showComments(searchResultList);
-                Toast toast = Toast.makeText(getApplicationContext(),"Search successfully! "+resultList.size()+" result(s)",Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(getApplicationContext(),"Search successfully! "+searchResultList.size()+" result(s)",Toast.LENGTH_LONG);
                 //toast.setGravity(Gravity.TOP,0,0);
                 toast.show();
             }
@@ -222,6 +241,7 @@ public class CommentsActivity extends AppCompatActivity {
     }
 
     public void showComments(List<Post> list){
+        resultMapList.clear();
         for(int i =0;i<list.size();i++){
             Map<String,Object> map = new HashMap<>();
 

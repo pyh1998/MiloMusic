@@ -94,7 +94,19 @@ public class MainActivity extends AppCompatActivity {
 
         resultView.setOnItemClickListener(CommentViewListener);
         searchButton.setOnClickListener(searchResultListener);
+        iv_userHead.setOnClickListener(showUserDetailListener);
     }
+
+    private final View.OnClickListener showUserDetailListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(),UserActivity.class);
+            User user = currentUser;
+            intent.putExtra("User",user);
+            intent.putExtra("CurrentUser",currentUser);
+            startActivity(intent);
+        }
+    };
 
     private final AdapterView.OnItemClickListener CommentViewListener = new AdapterView.OnItemClickListener() {
         @Override
@@ -113,7 +125,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             String searchText = search.getText().toString();
-            if(!searchText.equals("")){
+            if(searchText.equals("")){
+                showMusic(MusicList);
+            }
+            else {
                 MusicParser parser = new MusicParser(searchText);
                 try{
                     if(!parser.isValid()){

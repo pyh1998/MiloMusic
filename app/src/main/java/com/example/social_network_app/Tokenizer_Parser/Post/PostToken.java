@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class PostToken {
     // The following enum defines different types of tokens.
-    public enum Type {MUSIC,USER,LIKECOUNT,CONTENT,SEMICOLON,INVALID}
+    public enum Type {USER,LIKECOUNT,CONTENT,SEMICOLON,INVALID}
 
     /**
      * The following exception should be thrown if a tokenizer attempts to tokenize something that is not of one
@@ -53,11 +53,6 @@ public class PostToken {
                 this.token = ";";
                 this.operator = "";
             }
-            else if(first == '#'){
-                this.type = Type.MUSIC;
-                this.token = piece.substring(1);
-                this.operator = "";
-            }
             else if(first == '@'){
                 this.type = Type.USER;
                 this.token = piece.substring(1);
@@ -97,7 +92,7 @@ public class PostToken {
             String pattern = "^[0-9]*$";
             return Pattern.matches(pattern,remain);
         }
-        else if (first == '#' || first == '@'){
+        else if (first == '@'){
             return piece.length() > 1;
         }
         else if(first == ';'){

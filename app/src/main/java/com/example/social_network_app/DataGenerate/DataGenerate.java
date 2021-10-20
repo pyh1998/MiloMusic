@@ -40,7 +40,7 @@ import javax.xml.transform.stream.StreamResult;
 public class DataGenerate {
 
     public final static int music_num = 20;
-    public final static int user_num = 20;
+    public final static int user_num = 21;
     public final static int review_num = 50;
     public final static int post_num = 1500;
 

@@ -45,15 +45,11 @@ public class PostParser {
         for(PostToken token :tokenList){
             if(token.getType()== PostToken.Type.INVALID) return false;
         }
-        int music = 0;
         int user = 0;
         int likecount = 0;
         int content = 0;
         for(PostToken token : tokenList){
             switch (token.getType()){
-                case MUSIC:
-                    music++;
-                    break;
                 case USER:
                     user++;
                     break;
@@ -65,7 +61,7 @@ public class PostParser {
                     break;
             }
         }
-        return  music <= music_max && user <= user_max && likecount <= likecount_max && content <= content_max;
+        return  user <= user_max && likecount <= likecount_max && content <= content_max;
     }
 
     /**
@@ -83,7 +79,7 @@ public class PostParser {
 
     /**
      * Adheres to the grammar rule:
-     * <term>    ::= <TAG> | <ARTIST> | <STAR> | <NAME> | <INVALID>
+     * <term>    ::= <USER> | <LIKECOUNT> | <CONTENT> | <INVALID>
      *
      */
     public void parseTerm(){
@@ -99,17 +95,11 @@ public class PostParser {
 
     public List<PostToken> getValidList(){
         List<PostToken> validList = new ArrayList<>();
-        int music = 0;
         int user = 0;
         int likecount = 0;
         int content = 0;
         for(PostToken token : tokenList){
             switch (token.getType()){
-                case MUSIC:
-                    if(music<music_max){
-                        validList.add(token);
-                        music++;
-                    }
                 case USER:
                     if(user<user_max){
                         validList.add(token);
@@ -138,11 +128,6 @@ public class PostParser {
 
         for(PostToken token : tokenList){
             switch (token.getType()){
-                case MUSIC:
-                    condition.add(false);
-                    String music = post.getMusic_name();
-                    if(music.toLowerCase(Locale.ROOT).contains(token.getToken().toLowerCase(Locale.ROOT))) condition.set(condition.size()-1,true);
-                    break;
                 case USER:
                     condition.add(false);
                     String user = post.getUser_name();

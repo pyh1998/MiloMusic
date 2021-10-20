@@ -19,6 +19,5 @@
   {"id": 18,"name": "Nancy","email": "nancy@gmail.com","age": 25,"sex":"female","head":"female_head1","fans": "52"},
   {"id": 19,"name": "Charlie","email": "charlie@gmail.com","age": 21,"sex":"male","head":"male_head1","fans": "36"},
   {"id": 20,"name": "David","email": "david@gmail.com","age": 20,"sex":"male","head":"male_head2","fans": "29"},
-  {"id": 21,"name": "Peter","email": "1","age":23,"sex":"male","head":"male_head3","fans": "58"},
-  {"id": 22,"name": "Man","email": "2","age": 25,"sex":"female","head":"female_head1","fans": "52"}
+  {"id": 21,"name": "Tester","email": "1","age":23,"sex":"male","head":"male_head3","fans": "58"}
 ]
