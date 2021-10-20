@@ -2,11 +2,14 @@ package com.example.social_network_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.UserDao.User;
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
@@ -31,6 +34,7 @@ public class BarActivity extends AppCompatActivity {
     public BarChart barChart;
     public BarChart barChart2;
     public BarChart barChart3;
+    TextView title;
 
     List<Post> resultList = new ArrayList<>();
     Map<String,Integer> commentsMonthly = new HashMap<>();
@@ -54,6 +58,10 @@ public class BarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar);
+        user = (User) getIntent().getSerializableExtra("user");
+
+        title = findViewById(R.id.report_title);
+        title.setText(user.getName()+"'s report");
 
         barChart = (BarChart) findViewById(R.id.report);
         barChart2 = (BarChart) findViewById(R.id.report2);
@@ -64,7 +72,7 @@ public class BarActivity extends AppCompatActivity {
         GlobalVariable global = (GlobalVariable) getApplication();
         List<Post> postList = global.getPostList();
 
-        user = (User) getIntent().getSerializableExtra("user");
+
         Map<String, Integer> cMonthly = initMonthly(commentsMonthly);
         Map<String, Integer> lMonthly = initMonthly(likesMonthly);
         for(int i=0;i<postList.size();i++){
@@ -122,7 +130,7 @@ public class BarActivity extends AppCompatActivity {
 
 
 
-        dataset = new BarDataSet(entries, "Like count per month");
+        dataset = new BarDataSet(entries, "Number of likes received from comments posted per month");
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);
         ArrayList<IBarDataSet> dataSets2 = new ArrayList<>();
         dataSets2.add(dataset);
@@ -141,6 +149,7 @@ public class BarActivity extends AppCompatActivity {
         BarDataSet dataset;
         entries.add(new BarEntry(1,(float)num));
         dataset = new BarDataSet(entries,"Number of fans");
+        dataset.setColors(Color.rgb(255,182,193));
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
         dataSets.add(dataset);
         BarData data = new BarData(dataSets);
@@ -163,8 +172,15 @@ public class BarActivity extends AppCompatActivity {
 
         YAxis yAxis = barChart3.getAxisRight();
         yAxis.setDrawGridLines(false);
+
+        //设置显示动画效果
+        barChart3.animateX(2000, Easing.EaseInSine);
+        barChart3.getDescription().setEnabled(false);
+
+
+
 //        yAxis.setAxisMaximum(100f);
-//        yAxis.setAxisMinimum(0f);
+//        yAxis.setAxisMinimum(0.5f);
 //        yAxis.setGranularity(1f);
 //        yAxis.setLabelCount(5,false);
 

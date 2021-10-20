@@ -8,9 +8,9 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/report"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="345dp"
+        android:layout_height="181dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,20 +19,22 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/report2"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="363dp"
+        android:layout_height="184dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/report"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/report"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/report"
+        app:layout_constraintTop_toBottomOf="@+id/report3"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/report3"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
