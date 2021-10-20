@@ -118,8 +118,8 @@ public class CommentsActivity extends AppCompatActivity {
 
         showUser();
         showMusic();
-        showComments(searchResultList);
-        CommentsCount.setText(String.valueOf(resultList.size()));
+        //showComments(searchResultList);
+        //CommentsCount.setText(String.valueOf(resultList.size()));
 
         start = resultList.size() / 5;
         end = start + 1;
