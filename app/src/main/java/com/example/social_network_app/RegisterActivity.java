@@ -85,14 +85,14 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"Please enter your email address and password",Toast.LENGTH_LONG).show();
                     return;
                 }
-//                for(User user : userList){
-//                    if(email.trim().equals(user.getEmail())){
-//                        Toast.makeText(RegisterActivity.this,"Already registered, please login",Toast.LENGTH_LONG).show();
-//                        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-//                        startActivity(intent);
-//                        return;
-//                    }
-//                }
+                for(User user : userList){
+                    if(email.trim().equals(user.getEmail())){
+                        Toast.makeText(RegisterActivity.this,"Already registered, please login",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                        startActivity(intent);
+                        return;
+                    }
+                }
 
                 SQLiteHelper helper = new SQLiteHelper(RegisterActivity.this);
                 ContentValues values = new ContentValues();
