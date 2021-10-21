@@ -177,7 +177,8 @@ Convenor.
 - *User avatar does not show in the activity_main.* 
 
 2. *Bug 2:*
-- *If an user sign up in the register page, the login detail of a user would lost when quit from the app.   
+- *If an user sign up in the register page, the login detail of a user would lost when quit from the app. 
+
 3. ...
 
 *List all the known errors and bugs here. If we find bugs/errors that your team do not know of, it shows that your testing is not through.*
