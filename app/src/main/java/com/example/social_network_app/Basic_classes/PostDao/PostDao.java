@@ -1,12 +1,19 @@
 package com.example.social_network_app.Basic_classes.PostDao;
 
 import android.content.Context;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +54,28 @@ public class PostDao implements PostDaoInterface {
             e.printStackTrace();
         }
         return postList;
+    }
+
+    /**
+     * To get the hate language list from file
+     * @return
+     */
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @Override
+    public List<String> findHateString(Context context) {
+        List<String> hate = new ArrayList<>();
+        BufferedReader bufferedReader;
+        try {
+            bufferedReader = new BufferedReader(new InputStreamReader(context.getAssets().open("hateLanguage.csv"), StandardCharsets.UTF_8));
+            String line;
+            while ((line = bufferedReader.readLine()) != null){
+                hate.add(line);
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return hate;
     }
 
 }

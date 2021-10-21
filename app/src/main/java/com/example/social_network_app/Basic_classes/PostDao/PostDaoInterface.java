@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface PostDaoInterface {
      List<Post> findAllPosts(Context context);
+     List<String> findHateString(Context context);
 }

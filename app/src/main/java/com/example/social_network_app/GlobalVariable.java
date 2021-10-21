@@ -6,6 +6,7 @@ import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
+import com.example.social_network_app.Basic_classes.PostDao.PostDaoInterface;
 import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.Basic_classes.UserDao.UserDao;
@@ -13,7 +14,10 @@ import com.example.social_network_app.DataStructure.Node;
 import com.example.social_network_app.DataStructure.RBTree;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author Yuhui Pang
@@ -21,7 +25,7 @@ import java.util.List;
  * Global variables are used and updated in each activity
  */
 public class GlobalVariable extends Application {
-    private List<Post> postList = new ArrayList<>();
+    private List<Post> postList = new LinkedList<>();
     private List<User> userList = new ArrayList<>();
     private List<Music> musicList = new ArrayList<>();
     private RBTree<Double> MusicRateTree = new RBTree<>();  //The tree stored music rate and music
@@ -39,6 +43,21 @@ public class GlobalVariable extends Application {
         musicList = getMusicListFromFile();
         totalPostCount = postList.size();
         initTree();
+    }
+
+    public void filterPost(){
+        PostDaoInterface postDao = new PostDao();
+        List<String> hate = postDao.findHateString(this);
+        Iterator<Post> iterator = postList.iterator();
+        while (iterator.hasNext()) {
+            String comment = iterator.next().getUserReviews();
+            for(String s : hate){
+                if(comment.toLowerCase(Locale.ROOT).contains(s.toLowerCase(Locale.ROOT))){
+                    iterator.remove();
+                    break;
+                }
+            }
+        }
     }
 
     /**

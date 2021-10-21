@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
@@ -48,10 +49,10 @@ public class CommentsActivity extends AppCompatActivity {
 
     CurrentUser currentUser;
     Music currentMusic;
-    List<Post> postList = new ArrayList<>();
-    List<Post> resultList = new ArrayList<>();
-    List<Post> currentList = new ArrayList<>();
-    List<Post> searchResultList = new ArrayList<>();
+    List<Post> postList = new LinkedList<>();
+    List<Post> resultList = new LinkedList<>();
+    List<Post> currentList = new LinkedList<>();
+    List<Post> searchResultList = new LinkedList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     List<User> userList = new ArrayList<>();
     private RBTree<Integer> PostLikeCountTree = new RBTree<>();
@@ -104,7 +105,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         global = (GlobalVariable) getApplication();
         currentMusic = (Music) getIntent().getSerializableExtra("Music");
-
+        global.filterPost();
         postList = global.getPostList();
         userList = global.getUserList();
         PostLikeCountTree = global.getPostLikeCountTree();
