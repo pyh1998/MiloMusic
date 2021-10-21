@@ -77,12 +77,15 @@ public class CommentsActivity extends AppCompatActivity {
     int start;
     int end;
     Timer timer = new Timer();
+    boolean flag = true;
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg){
             if(msg.what == COMPLETED){
+                end++;
+                currentList = resultList.subList(0,end);
                 showComments(currentList);
                 Comments.setSelection(ListView.FOCUS_DOWN);
                 Comments.setOnItemClickListener(commentsListener);
@@ -125,12 +128,14 @@ public class CommentsActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                new WorkThread().start();
-                if (end >= resultList.size()-1){
-                    timer.cancel();
+                if(flag){
+                    new WorkThread().start();
+                    if (end >= resultList.size()-1){
+                        timer.cancel();
+                    }
                 }
             }
-        },5000,5000);
+        },3000,3000);
 
 
     }
@@ -197,7 +202,7 @@ public class CommentsActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
-            User user = resultList.get(i).getUser(userList);
+            User user = currentList.get(i).getUser(userList);
             intent.putExtra("User",user);
             startActivity(intent);
         }
@@ -206,12 +211,14 @@ public class CommentsActivity extends AppCompatActivity {
     private final View.OnClickListener searchResultListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            timer.cancel();
             String searchText = search.getText().toString();
             if(searchText.equals("")){
+                currentList = resultList.subList(0,end);
                 showComments(currentList);
+                flag = true;
             }
             else{
+                flag = false;
                 PostParser parser = new PostParser(searchText);
                 try{
                     if(!parser.isValid()){
@@ -235,7 +242,8 @@ public class CommentsActivity extends AppCompatActivity {
                     }
                 }
                 Log.e("!!!!!!!!!!!!!!",searchResultList.toString());
-                showComments(searchResultList);
+                currentList = searchResultList;
+                showComments(currentList);
                 Toast toast = Toast.makeText(getApplicationContext(),"Search successfully! "+searchResultList.size()+" result(s)",Toast.LENGTH_LONG);
                 //toast.setGravity(Gravity.TOP,0,0);
                 toast.show();
@@ -358,8 +366,6 @@ public class CommentsActivity extends AppCompatActivity {
         @Override
         public void run(){
             //start++;
-            end++;
-            currentList = resultList.subList(0,end);
             Message msg = new Message();
             msg.what = COMPLETED;
             handler.sendMessage(msg);

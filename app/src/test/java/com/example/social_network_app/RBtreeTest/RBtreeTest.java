@@ -25,14 +25,27 @@ public class RBtreeTest {
     Music music4 = new Music(3,"name4","artist4","album4","2021-05-01",4.3,"picture4","1,2");
     Music music5 = new Music(3,"name5","artist5","album5","2021-05-01",4.6,"picture5","1,2");
     List<Music> musicList = new ArrayList<>();
-    RBTree<Double> rateTree = new RBTree<>();
+
     @Test
-    public void musicTest(){
+    public void musicRateTest(){
+        RBTree<Double> rateTree = new RBTree<>();
         rateTree.insert(new Node<>(music1.getRate(),music1));
         rateTree.insert(new Node<>(music2.getRate(),music2));
         rateTree.insert(new Node<>(music3.getRate(),music3));
         rateTree.insert(new Node<>(music4.getRate(),music3));
         rateTree.insert(new Node<>(music5.getRate(),music3));
+        System.out.println(rateTree.preOrder());
+        assertTrue(true);
+    }
+
+    @Test
+    public void musicDateTest(){
+        RBTree<String> rateTree = new RBTree<>();
+        rateTree.insert(new Node<>(music1.getReleaseDate(),music1));
+        rateTree.insert(new Node<>(music2.getReleaseDate(),music2));
+        rateTree.insert(new Node<>(music3.getReleaseDate(),music3));
+        rateTree.insert(new Node<>(music4.getReleaseDate(),music3));
+        rateTree.insert(new Node<>(music5.getReleaseDate(),music3));
         System.out.println(rateTree.preOrder());
         assertTrue(true);
     }
