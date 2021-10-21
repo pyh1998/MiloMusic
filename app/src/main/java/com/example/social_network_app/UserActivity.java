@@ -196,6 +196,7 @@ public class UserActivity extends AppCompatActivity {
                         likenum += 1;
                         updateLikeCount(list.get(position).getId(),likenum);
                         num.setText(String.valueOf(likenum));
+                        user_likescount.setText(String.valueOf(Integer.parseInt(user_likescount.getText().toString())+1));
                         like.setVisibility(View.INVISIBLE);
                         liked.setVisibility(View.VISIBLE);
                     }
@@ -207,6 +208,7 @@ public class UserActivity extends AppCompatActivity {
                         likenum -= 1;
                         updateLikeCount(list.get(position).getId(),likenum);
                         num.setText(String.valueOf(likenum));
+                        user_likescount.setText(String.valueOf(Integer.parseInt(user_likescount.getText().toString())-1));
                         liked.setVisibility(View.INVISIBLE);
                         like.setVisibility(View.VISIBLE);
                     }
