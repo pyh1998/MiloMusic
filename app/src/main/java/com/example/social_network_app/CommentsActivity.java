@@ -78,7 +78,6 @@ public class CommentsActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg){
             if(msg.what == COMPLETED){
-                currentList = resultList.subList(0,end);
                 showComments(currentList);
                 Comments.setSelection(ListView.FOCUS_DOWN);
                 CommentsCount.setText(String.valueOf(start));
@@ -117,7 +116,7 @@ public class CommentsActivity extends AppCompatActivity {
         end = start + 1;
         currentList = resultList.subList(0,start+1);
         showComments(currentList);
-        CommentsCount.setText(String.valueOf(start));
+        CommentsCount.setText(String.valueOf(start+1));
 
         timer.schedule(new TimerTask() {
             @Override
@@ -353,6 +352,7 @@ public class CommentsActivity extends AppCompatActivity {
         public void run(){
             start++;
             end++;
+            currentList = resultList.subList(0,end);
             Message msg = new Message();
             msg.what = COMPLETED;
             handler.sendMessage(msg);
