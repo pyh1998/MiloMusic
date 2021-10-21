@@ -1,3 +1,5 @@
+
+
 # [Team Name] Report
 
 The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
@@ -30,8 +32,8 @@ The following is a report template to help your team successfully provide all th
 
 | UID | Name | Role |
 | :--- | :----: | ---: |
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
+| u7211790 | Yuhui Pang | [role] |
+| u7167784 | Man Jin | [role] |
 | [uid] | [name] | [role] |
 | [uid] | [name] | [role] |
 
@@ -115,12 +117,9 @@ Convenor.
 
 ## Application Design and Decisions
 
-*Please give clear and concise descriptions for each subsections of this part. It would be better to list all the concrete items for each subsection and give no more than `5` concise, crucial reasons of your design. Here is an example for the subsection `Data Structures`:*
+**Data Structures**
 
-*I used the following data structures in my project:*
-
-1. *LinkedList*
-
+1. RBtree
    * *Objective: It is used for storing xxxx for xxx feature.*
 
    * *Locations: line xxx in XXX.java, ..., etc.*
@@ -135,21 +134,88 @@ Convenor.
 
 3. ...
 
-**Data Structures**
-
-*[What data structures did your team utilise? Where and why?]*
-
 **Design Patterns**
 
-*[What design patterns did your team utilise? Where and why?]*
+1. DAO
+
+   Use DAO design pattern when reading music, user and post data from file. Data access object (DAO) pattern is used to separate low-level data access APIs or operations from high-level business services.
+
+   We creat *Music.java*, *MusicDAO.java* and *MusicDaoInterface.java* for getting music data;
+
+   ​				*User.java*, *UserDAO.java* and *UserDaoInterface.java* for getting  user data;
+
+   ​		and *Post.java*, *PostDAO.java* and *PostDaoInterface.java* for getting  user data;
+
+   - The interface defines the standard operations to be performed on a model object. 
+
+   - The Dao class implements the above interface. This class is responsible for obtaining data from the data source (JSON & XML file). 
+
+   - The object class is a simple POJO and contains the get & set method to store the data retrieved by using the Dao class.
+
+   
+
+   The UML of these three Dao design patterns are like following figures:
+
+   <img src=".\images\Dao.png" alt="MusicDao" style="zoom:60%;" />
+
+   When we want to get the date, just execute the method of *findAllxxx()*.
+
+2. Singleton
+
+   The singleton design pattern is to ensure a class only has one instance, and provide a global point of access to it.
+
+   In the project, there is only one current user at a time, and the class should create its own unique instance.  So we can use the singleton design pattern to design the CurrentUser class.
+
+   The UML of this singleton design pattern is like following figure:
+
+   
+
+   <img src=".\images\Singleton.png" alt="MusicDao" style="zoom:80%;" />
+
+   
+
+   
+
+   Singleton design pattern can control the number of instances, save system resources, and avoid frequent creation and destruction of a globally used class.
 
 **Grammars**
 
-*Search Engine*
+1. *Music search Engine*
+
 <br> *Production Rules* <br>
-\<Non-Terminal> ::= \<some output>
-<br>
-\<Non-Terminal> ::= \<some output>
+
+```
+<exp> ::= <term> ; <exp>
+<term> ::= <symbol> <factor> | <text>
+<symbol> ::= # | @ | *
+<factor> ::= <operator> <decimal> | <text>
+<operator> ::= > | < | = | >= | <=
+<decimal> ::= <number> | <number> . <number>
+<number> ::= <digit> | <digit> <number>
+<digit> ::= 0|1|2|3|4|5|6|7|8|9
+<text> :: = <alpha> <text> | <alpha>
+<alpha> :: = a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z
+```
+
+2. *Post search Engine*
+
+<br> *Production Rules* <br>
+
+```
+<exp> ::= <term> ; <exp>
+<term> ::= <symbol> <factor> | <text>
+<symbol> ::= @ | *
+<factor> ::= <operator> <number> | <text>
+<operator> ::= > | < | = | >= | <=
+<number> ::= <digit> | <digit> <number>
+<digit> ::= 0|1|2|3|4|5|6|7|8|9
+<text> :: = <alpha> <text> | <alpha>
+<alpha> :: = a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z
+```
+
+
+
+
 
 *[How do you design the grammar? What are the advantages of your designs?]*
 
@@ -165,7 +231,8 @@ Convenor.
 
 **Other**
 
-*[What other design decisions have you made which you feel are relevant? Feel free to separate these into their own subheadings.]*
+1. *Data generate*
+2. 
 
 ## Summary of Known Errors and Bugs
 
@@ -216,12 +283,9 @@ Convenor.
 
 ## Team Meetings
 
-*Here is an example:*
-
 - *[Team Meeting 1](./meeting/meeting1.md)*
 - *[Team Meeting 2](./meeting/meeting2.md)*
 - *[Team Meeting 3](./meeting/meeting3.md)*
 - *[Team Meeting 4](./meeting/meeting4.md)*
 - *[Team Meeting 5](./meeting/meeting5.md)*
 
-*Either write your meeting minutes here or link to documents that contain them. There must be at least 3 team meetings.*
