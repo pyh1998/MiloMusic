@@ -17,10 +17,12 @@ import android.widget.TextView;
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
+import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,10 +30,11 @@ import java.util.Map;
 public class UserActivity extends AppCompatActivity {
 
     User user;
-    User CurrentUser;
+    CurrentUser CurrentUser;
     List<Post> postList = new ArrayList<>();
     List<Post> resultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
+    List<User> userList = new ArrayList<>();
 
     ImageView iv_user_userhead;
     TextView user_username;
@@ -55,14 +58,16 @@ public class UserActivity extends AppCompatActivity {
         GlobalVariable globalVariable = (GlobalVariable) getApplication();
         postList = globalVariable.getPostList();
         CurrentUser = globalVariable.getUser();
+        userList = globalVariable.getUserList();
 
         initView();
 
         for(int i=0;i<postList.size();i++){
-            if(postList.get(i).getUser(this).equals(user)){
+            if(postList.get(i).getUser(userList).equals(user)){
                 resultList.add(postList.get(i));
             }
         }
+        sortList();
         showUserDetail();
         showComments(resultList);
 
@@ -70,7 +75,7 @@ public class UserActivity extends AppCompatActivity {
         user_fanscount.setText(String.valueOf(user.getFans()));
         int total_likes = 0;
         for(int i=0;i<postList.size();i++){
-            if(postList.get(i).getUser(this).equals(user)){
+            if(postList.get(i).getUser(userList).equals(user)){
                 total_likes+=postList.get(i).getLikeCount();
             }
         }
@@ -115,6 +120,10 @@ public class UserActivity extends AppCompatActivity {
             startActivity(intent);
         }
     };
+
+    private void sortList(){
+        Collections.sort(resultList);
+    }
 
     public void showUserDetail(){
         String head_img = user.getHead();

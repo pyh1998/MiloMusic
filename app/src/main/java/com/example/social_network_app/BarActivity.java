@@ -38,6 +38,7 @@ public class BarActivity extends AppCompatActivity {
     TextView title;
 
     List<Post> resultList = new ArrayList<>();
+    List<User> userList = new ArrayList<>();
     Map<String,Integer> commentsMonthly = new TreeMap<>();
     Map<String,Integer> likesMonthly = new TreeMap<>();
     User user;
@@ -75,12 +76,13 @@ public class BarActivity extends AppCompatActivity {
 
         GlobalVariable global = (GlobalVariable) getApplication();
         List<Post> postList = global.getPostList();
+        userList = global.getUserList();
 
 
         Map<String, Integer> cMonthly = initMonthly(commentsMonthly);
         Map<String, Integer> lMonthly = initMonthly(likesMonthly);
         for(int i=0;i<postList.size();i++){
-            if(postList.get(i).getUser(this).equals(user)){
+            if(postList.get(i).getUser(userList).equals(user)){
                 resultList.add(postList.get(i));
             }
         }

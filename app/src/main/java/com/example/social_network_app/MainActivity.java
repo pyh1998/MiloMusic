@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
+import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.DataStructure.Node;
 import com.example.social_network_app.DataStructure.RBTree;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     List<Music> MusicList;
     List<Music> resultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
-    User currentUser;
+    CurrentUser currentUser;
 
     ListView resultView;
     ImageButton searchButton;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     private AMapLocationClientOption locationOption = null;
     private String mLocation = "";
 
-    private int order = 1;
+    private int order = -1;
 
     //Request permission
     private static final String[] mPermissions = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -220,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     public void showUser(){
+        Log.e("!!!!!!!",currentUser.toString());
         String name = currentUser.getName();
         String head_img = currentUser.getHead();
         Log.e("!!!!!!!!!!!!!!",String.valueOf(head_img));
@@ -281,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG," -- onRestoreInstanceState");
         if(savedInstanceState != null) {
             Bundle bundle = savedInstanceState.getBundle("CurrentUser");
-            currentUser = (User) bundle.getSerializable("CurrentUser");
+            currentUser = (CurrentUser) bundle.getSerializable("CurrentUser");
         }}
 
     @Override

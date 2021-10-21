@@ -118,6 +118,8 @@ public class LoginActivity extends AppCompatActivity {
                     GlobalVariable global = (GlobalVariable) getApplication();
                     CurrentUser.delUser();
                     CurrentUser user = CurrentUser.getInstance(current);
+                    userList.add(user);
+                    global.setUserList(userList);
                     global.setUser(user);
                     startActivity(intent);
                     finish();

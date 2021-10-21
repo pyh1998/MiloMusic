@@ -18,7 +18,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 
-public class Post implements Serializable {
+public class Post implements Serializable,Comparable<Post> {
     private int id;
     private int music_id;
     private int user_id;
@@ -51,9 +51,12 @@ public class Post implements Serializable {
         return music.findMusicById(context, music_id);
     }
 
-    public User getUser(Context context){
-        UserDaoInterface user = new UserDao();
-        return user.findUserById(context,user_id);
+    public User getUser(List<User> list){
+        for(User user : list){
+            if(user.getId() == this.user_id)
+                return user;
+        }
+        return null;
     }
 
     public int getId() {
@@ -113,5 +116,10 @@ public class Post implements Serializable {
                 ", userReviews='" + userReviews + '\'' +
                 ", datetime='" + datetime + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Post post) {
+        return this.getDatetime().compareTo(post.getDatetime());
     }
 }

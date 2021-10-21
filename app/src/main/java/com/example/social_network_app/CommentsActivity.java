@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
+import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicToken;
@@ -34,6 +36,7 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -44,13 +47,14 @@ import java.util.TimerTask;
 
 public class CommentsActivity extends AppCompatActivity {
 
-    User currentUser;
+    CurrentUser currentUser;
     Music currentMusic;
     List<Post> postList = new ArrayList<>();
     List<Post> resultList = new ArrayList<>();
     List<Post> currentList = new ArrayList<>();
     List<Post> searchResultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
+    List<User> userList = new ArrayList<>();
     public static final int COMPLETED = 0;
 
     Button postComment;
@@ -80,7 +84,6 @@ public class CommentsActivity extends AppCompatActivity {
             if(msg.what == COMPLETED){
                 showComments(currentList);
                 Comments.setSelection(ListView.FOCUS_DOWN);
-                CommentsCount.setText(String.valueOf(currentList.size()));
                 Comments.setOnItemClickListener(commentsListener);
             }
         }
@@ -97,6 +100,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         GlobalVariable global = (GlobalVariable) getApplication();
         postList = global.getPostList();
+        userList = global.getUserList();
         currentUser = global.getUser();
 
         initView();
@@ -106,6 +110,7 @@ public class CommentsActivity extends AppCompatActivity {
                 resultList.add(postList.get(i));
             }
         }
+        sortList();
         searchResultList = resultList;
 
         showUser();
@@ -115,7 +120,6 @@ public class CommentsActivity extends AppCompatActivity {
         end = start;
         currentList = resultList.subList(0,start);
         showComments(currentList);
-        CommentsCount.setText(String.valueOf(currentList.size()));
 
         timer.schedule(new TimerTask() {
             @Override
@@ -159,7 +163,6 @@ public class CommentsActivity extends AppCompatActivity {
     private final View.OnClickListener postNewListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            timer.cancel();
             String newPost = editComment.getText().toString();
             @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date curDate =  new Date(System.currentTimeMillis());
@@ -193,7 +196,7 @@ public class CommentsActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
-            User user = resultList.get(i).getUser(CommentsActivity.this);
+            User user = resultList.get(i).getUser(userList);
             intent.putExtra("User",user);
             startActivity(intent);
         }
@@ -240,6 +243,10 @@ public class CommentsActivity extends AppCompatActivity {
     };
 
 
+    private void sortList(){
+        Collections.sort(resultList);
+    }
+
     public void showUser(){
         String head_img = currentUser.getHead();
         try {
@@ -268,11 +275,12 @@ public class CommentsActivity extends AppCompatActivity {
     }
 
     public void showComments(List<Post> list){
+        CommentsCount.setText(String.valueOf(list.size()));
         resultMapList.clear();
         for(int i =0;i<list.size();i++){
             Map<String,Object> map = new HashMap<>();
 
-            User user = list.get(i).getUser(this);
+            User user = list.get(i).getUser(userList);
             String datetime = list.get(i).getDatetime();
             String comments = list.get(i).getUserReviews();
             String likeCount = String.valueOf(list.get(i).getLikeCount());
@@ -284,7 +292,7 @@ public class CommentsActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            map.put("comment_user_name",user.getName());
+            map.put("comment_user_name",list.get(i).getUser_name());
             map.put("comment_date",datetime);
             map.put("comment",comments);
             map.put("likeCount",likeCount);
