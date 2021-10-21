@@ -50,24 +50,14 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        iv_user_userhead = findViewById(R.id.iv_user_userhead);
-        user_username = findViewById(R.id.user_username);
-        user_userage = findViewById(R.id.user_userage);
-        user_usersex = findViewById(R.id.user_usersex);
-        user_useremail = findViewById(R.id.user_useremail);
-        user_commentscount = findViewById(R.id.user_commentscount);
-        comments = findViewById(R.id.user_usercomments);
-
-        user_fanscount = findViewById(R.id.user_fanscount);
-        user_likescount = findViewById(R.id.user_likescount);
-
-
-        Intent intent = getIntent();
         user = (User) getIntent().getSerializableExtra("User");
-        CurrentUser = (User) getIntent().getSerializableExtra("CurrentUser");
 
         GlobalVariable globalVariable = (GlobalVariable) getApplication();
         postList = globalVariable.getPostList();
+        CurrentUser = globalVariable.getUser();
+
+        initView();
+
         for(int i=0;i<postList.size();i++){
             if(postList.get(i).getUser(this).equals(user)){
                 resultList.add(postList.get(i));
@@ -98,6 +88,19 @@ public class UserActivity extends AppCompatActivity {
         });
 
         comments.setOnItemClickListener(resultViewListener);
+    }
+
+    public void initView(){
+        iv_user_userhead = findViewById(R.id.iv_user_userhead);
+        user_username = findViewById(R.id.user_username);
+        user_userage = findViewById(R.id.user_userage);
+        user_usersex = findViewById(R.id.user_usersex);
+        user_useremail = findViewById(R.id.user_useremail);
+        user_commentscount = findViewById(R.id.user_commentscount);
+        comments = findViewById(R.id.user_usercomments);
+
+        user_fanscount = findViewById(R.id.user_fanscount);
+        user_likescount = findViewById(R.id.user_likescount);
     }
 
     private AdapterView.OnItemClickListener resultViewListener = new AdapterView.OnItemClickListener() {

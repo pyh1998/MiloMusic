@@ -93,12 +93,11 @@ public class CommentsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_comments);
 
         Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
         currentMusic = (Music) getIntent().getSerializableExtra("Music");
 
         GlobalVariable global = (GlobalVariable) getApplication();
         postList = global.getPostList();
+        currentUser = global.getUser();
 
         initView();
 
@@ -196,7 +195,6 @@ public class CommentsActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),UserActivity.class);
             User user = resultList.get(i).getUser(CommentsActivity.this);
             intent.putExtra("User",user);
-            intent.putExtra("CurrentUser",currentUser);
             startActivity(intent);
         }
     };

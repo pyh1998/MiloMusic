@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
+//        Intent intent = getIntent();
+//        Bundle bundle = intent.getExtras();
+//        currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
 
 
         initView();
@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
         GlobalVariable global = (GlobalVariable) getApplication();
         MusicList = global.getMusicList();
+        currentUser = global.getUser();
         resultList = MusicList;
         sortList();
         showMusic(resultList);
@@ -152,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),CommentsActivity.class);
             Music music = resultList.get(i);
             Bundle bundle = new Bundle();
-            bundle.putSerializable("CurrentUser", currentUser);
             bundle.putSerializable("Music",music);
             intent.putExtras(bundle);
             startActivity(intent);

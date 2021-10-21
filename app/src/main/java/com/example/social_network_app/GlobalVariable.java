@@ -6,6 +6,7 @@ import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
+import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.Basic_classes.UserDao.UserDao;
 
@@ -16,6 +17,7 @@ public class GlobalVariable extends Application {
     private List<Post> postList = new ArrayList<>();
     private List<User> userList = new ArrayList<>();
     private List<Music> musicList = new ArrayList<>();
+    private CurrentUser user;
 
     @Override
     public void onCreate(){
@@ -23,6 +25,14 @@ public class GlobalVariable extends Application {
         postList = getPostListFromFile();
         userList = getUserListFromFile();
         musicList = getMusicListFromFile();
+    }
+
+    public CurrentUser getUser() {
+        return user;
+    }
+
+    public void setUser(CurrentUser user) {
+        this.user = user;
     }
 
     public void setPostList(List<Post> postList) {

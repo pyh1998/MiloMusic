@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.Basic_classes.UserDao.UserDao;
 import com.example.social_network_app.utils.SQLiteHelper;
@@ -111,9 +112,13 @@ public class LoginActivity extends AppCompatActivity {
 //                    Log.e("!!!!!!!",current.toString());
 //                    Log.e("!!!!!!!",userList.toString());
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("CurrentUser", current);
-                    intent.putExtras(bundle);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("CurrentUser", current);
+//                    intent.putExtras(bundle);
+                    GlobalVariable global = (GlobalVariable) getApplication();
+                    CurrentUser.delUser();
+                    CurrentUser user = CurrentUser.getInstance(current);
+                    global.setUser(user);
                     startActivity(intent);
                     finish();
                 }else{
