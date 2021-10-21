@@ -59,7 +59,7 @@ public class Node<T> {
 
     @Override
     public String toString() {
-        StringBuilder res = new StringBuilder("key: " + this.value + "; ");
+        StringBuilder res = new StringBuilder("value: " + this.value + "; ");
         LinkedList<Object> gameIDList = getObjects();
         for (int i = 0; i < gameIDList.size(); i++) {
             if (i == gameIDList.size() - 1) {

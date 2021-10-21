@@ -8,20 +8,19 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
-import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
-import com.example.social_network_app.Basic_classes.MusicDao.MusicDaoInterface;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.DataStructure.Node;
 import com.example.social_network_app.DataStructure.RBTree;
@@ -32,6 +31,7 @@ import com.github.dfqin.grantor.PermissionsUtil;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +39,6 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.amap.api.location.AMapLocationQualityReport;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -55,10 +54,15 @@ public class MainActivity extends AppCompatActivity {
     ImageView iv_userHead;
     TextView tv_location;
     EditText search;
+    RadioGroup sortBy;
+    ImageButton sortOrder;
+    ImageButton sortOrder2;
     // Declare the AMapLocationClient class object    public AMapLocationClient mLocationClient = null;
     private AMapLocationClient locationClient = null;
     private AMapLocationClientOption locationOption = null;
     private String mLocation = "";
+
+    private int order = 1;
 
     //Request permission
     private static final String[] mPermissions = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -87,10 +91,42 @@ public class MainActivity extends AppCompatActivity {
         iv_userHead = findViewById(R.id.iv_userhead);
         search = findViewById(R.id.search);
         tv_location = findViewById(R.id.tv_location);
+        sortBy = findViewById(R.id.sort);
+        sortOrder = findViewById(R.id.sortOrder);
+        sortOrder2 = findViewById(R.id.sortOrder2);
+
+        sortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                sortList();
+            }
+        });
+
+        sortOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                order = -1;
+                sortOrder.setVisibility(View.INVISIBLE);
+                sortOrder2.setVisibility(View.VISIBLE);
+                sortList();
+            }
+        });
+
+        sortOrder2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                order = 1;
+                sortOrder2.setVisibility(View.INVISIBLE);
+                sortOrder.setVisibility(View.VISIBLE);
+                sortList();
+            }
+        });
+
 
         GlobalVariable global = (GlobalVariable) getApplication();
         MusicList = global.getMusicList();
         resultList = MusicList;
+        sortList();
         showMusic(resultList);
         showUser();
 
@@ -154,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 Log.e("!!!!!!!!!!!!!!",resultList.toString());
+                sortList();
                 showMusic(resultList);
                 Toast toast = Toast.makeText(getApplicationContext(),"Search successfully! "+resultList.size()+" result(s)",Toast.LENGTH_LONG);
                 //toast.setGravity(Gravity.TOP,0,0);
@@ -162,15 +199,21 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private List<Music> sortByRate(List<Music> list){
-        List<Music> result = new ArrayList<>();
-
-        RBTree<Double> rateTree = new RBTree<>();
-        for(Music music : list){
-            Node<Double> node = new Node<>(music.getRate(),music);
+    private void sortList(){
+        RadioButton radioButton = findViewById(sortBy.getCheckedRadioButtonId());
+        String sortBy = radioButton.getText().toString();
+        if(sortBy.equals("Rate")){
+            for(Music music : resultList){
+                music.setSortOrder(1,order);
+            }
         }
-
-        return result;
+        if(sortBy.equals("Date")){
+            for(Music music : resultList){
+                music.setSortOrder(2,order);
+            }
+        }
+        Collections.sort(resultList);
+        showMusic(resultList);
     }
 
 

@@ -3,7 +3,7 @@ package com.example.social_network_app.Basic_classes.MusicDao;
 
 import java.io.Serializable;
 
-public class Music implements Serializable {
+public class Music implements Serializable,Comparable<Music> {
     private int id;
     private String name;
     private String artist;
@@ -12,6 +12,8 @@ public class Music implements Serializable {
     private double rate;
     private String picture;
     private String tag;
+    private int sortOrder = 1;
+    private int sortBy = 1;
 
     public Music(int id, String name, String artist, String album, String releaseDate, double rate,String picture,String tag){
         this.id = id;
@@ -111,5 +113,33 @@ public class Music implements Serializable {
         return this.id == music.id;
     }
 
-
+    public void setSortOrder(int sortBy, int sortOrder){
+        this.sortOrder = sortOrder;
+        this.sortBy = sortBy;
+    }
+    @Override
+    public int compareTo(Music music){
+        switch (sortBy){
+            case 1:
+                if(sortOrder >= 0){
+                    if(this.rate - music.rate >= 0) return 1;
+                    if(this.rate - music.rate == 0) return 0;
+                    else return -1;
+                }
+                else{
+                    if(this.rate - music.rate >= 0) return -1;
+                    if(this.rate - music.rate == 0) return 0;
+                    else return 1;
+                }
+            case 2:
+                if(sortOrder >= 0){
+                    return this.getReleaseDate().compareTo(music.getReleaseDate());
+                }
+                else{
+                    return music.getReleaseDate().compareTo(this.getReleaseDate());
+                }
+            default:
+                return 1;
+        }
+    }
 }
