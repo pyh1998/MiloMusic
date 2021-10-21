@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     CurrentUser currentUser;
 
+    GlobalVariable global;
+
     ListView resultView;
     ImageButton searchButton;
     TextView tv_userName;
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        global = (GlobalVariable) getApplication();
 //        Intent intent = getIntent();
 //        Bundle bundle = intent.getExtras();
 //        currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
@@ -124,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        GlobalVariable global = (GlobalVariable) getApplication();
+
         MusicList = global.getMusicList();
         currentUser = global.getUser();
         resultList = MusicList;

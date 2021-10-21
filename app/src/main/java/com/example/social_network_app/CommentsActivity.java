@@ -56,6 +56,7 @@ public class CommentsActivity extends AppCompatActivity {
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     List<User> userList = new ArrayList<>();
     public static final int COMPLETED = 0;
+    GlobalVariable global;
 
     Button postComment;
     EditText editComment;
@@ -95,10 +96,10 @@ public class CommentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
 
-        Intent intent = getIntent();
+        global = (GlobalVariable) getApplication();
         currentMusic = (Music) getIntent().getSerializableExtra("Music");
 
-        GlobalVariable global = (GlobalVariable) getApplication();
+
         postList = global.getPostList();
         userList = global.getUserList();
         currentUser = global.getUser();
@@ -168,10 +169,10 @@ public class CommentsActivity extends AppCompatActivity {
             Date curDate =  new Date(System.currentTimeMillis());
             String date = formatter.format(curDate);
             if(!newPost.equals("")){
-                Post post = new Post(postList.size()+1,currentMusic.getId(),currentUser.getId(),currentUser.getName(),newPost,date,0);
+                Post post = new Post(global.getTotalPostCount()+1,currentMusic.getId(),currentUser.getId(),currentUser.getName(),newPost,date,0);
+                global.setTotalPostCount(global.getTotalPostCount()+1);
                 postList.add(post);
                 currentList.add(post);
-                GlobalVariable global = (GlobalVariable) getApplication();
                 global.setPostList(postList);
                 editComment.setText("");
                 Toast.makeText(getApplicationContext(),"Post successfully!",Toast.LENGTH_LONG).show();
@@ -349,8 +350,8 @@ public class CommentsActivity extends AppCompatActivity {
                 break;
             }
         }
-        GlobalVariable globalVariable = (GlobalVariable) getApplication();
-        globalVariable.setPostList(postList);
+
+        global.setPostList(postList);
     }
 
     public class WorkThread extends Thread{

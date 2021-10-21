@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,8 @@ public class UserActivity extends AppCompatActivity {
     TextView user_fanscount;
     TextView user_likescount;
 
+    GlobalVariable global;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +58,10 @@ public class UserActivity extends AppCompatActivity {
 
         user = (User) getIntent().getSerializableExtra("User");
 
-        GlobalVariable globalVariable = (GlobalVariable) getApplication();
-        postList = globalVariable.getPostList();
-        CurrentUser = globalVariable.getUser();
-        userList = globalVariable.getUserList();
+        global = (GlobalVariable) getApplication();
+        postList = global.getPostList();
+        CurrentUser = global.getUser();
+        userList = global.getUserList();
 
         initView();
 
@@ -208,8 +211,7 @@ public class UserActivity extends AppCompatActivity {
                 break;
             }
         }
-        GlobalVariable globalVariable = (GlobalVariable) getApplication();
-        globalVariable.setPostList(postList);
+        global.setPostList(postList);
     }
 
 //    public List<Post> getPostList(){

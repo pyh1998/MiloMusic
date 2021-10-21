@@ -18,6 +18,7 @@ public class GlobalVariable extends Application {
     private List<User> userList = new ArrayList<>();
     private List<Music> musicList = new ArrayList<>();
     private CurrentUser user;
+    private int totalPostCount;
 
     @Override
     public void onCreate(){
@@ -25,6 +26,15 @@ public class GlobalVariable extends Application {
         postList = getPostListFromFile();
         userList = getUserListFromFile();
         musicList = getMusicListFromFile();
+        totalPostCount = postList.size();
+    }
+
+    public int getTotalPostCount() {
+        return totalPostCount;
+    }
+
+    public void setTotalPostCount(int totalPostCount) {
+        this.totalPostCount = totalPostCount;
     }
 
     public CurrentUser getUser() {
