@@ -37,7 +37,6 @@ The following is a report template to help your team successfully provide all th
 
 ## Conflict Resolution Protocol
 
-*[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem? (If you choose to make this an external document, link to it here)]*
 ### Conflict with a Team member
 Any conflict that arises with members of the project team will require the individual involved in
 the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a
@@ -74,112 +73,172 @@ Convenor.
 
 ## Application Description
 
-*[What is your application, what does it do? Include photos or diagrams if necessary]*
+MiloMusic is a music social media application specifically targeting all people who love music. It provides three parts for them, which are music, comments, and user.
 
-*Here is a pet specific social media application example*
+- In the music part, a list of songs are showed in descending order of date or score. Therefore, user can get the latest and highest score song. User also can search songs by four methods.
+- In the comments part, user can view posts on a timeline activity (update every 3 seconds). Similarly, user can search comments by three methods. In addition, user can post their comments.
+- The user part is open for every users, user can view their comments and a report for their activities.
 
-*PetBook is a social media application specifically targetting pet owners... it provides... certified practitioners, such as veterians are indicated by a label next to their profile...*
+<center class="third">
+<img src="./images/Login.png">
+<img src="./images/Music.png">
+<img src="./images/Comments.gif">
+</center>
+
+<center class="half">
+<img src="./images/User.png">
+<img src="./images/Report.png">
+</center>
 
 **Application Use Cases and or Examples**
 
-*[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
+Dennis wants to get the most popular song in the playlist and see the comments
 
-*Here is a pet training application example*
+1. He accesses the MiloMusic application and goes to the music page
+2. He clicks the Rate button and see the top 1 song
+3. He chooses the "Perfect" written by Ed Sheeran and goes to the comments page
 
-*Molly wants to inquiry about her cat, McPurr's recent troublesome behaviour*
-1. *Molly notices that McPurr has been hostile since...*
-2. *She makes a post about... with the tag...*
-3. *Lachlan, a vet, writes a reply to Molly's post...*
-4. ...
-5. *Molly gives Lachlan's reply a 'tick' response*
+Mia wants to search the "blues" style and rate greater than "4.2" songs
 
-*Here is a map navigation application example*
+1. She accesses the MiloMusic application and goes to the music page
+2. She types "#blues;*>4.2" in the search box
 
-*Targets Users: Drivers*
+Nancy wants to see her friends Dennis's comments that write for "End Game" and give him a like reaction
 
-* *Users can use it to navigate in order to reach the destinations.*
-* *Users can learn the traffic conditions*
-* ...
+1. She accesses the MiloMusic application and goes to the comments page
+2. She types "@Dennis" in the search box
+3. She clicks the like button in the first comment by Dennis.
 
-*Target Users: Those who want to find some good restaurants*
+Dennis wants to see her own user report and views it in a landscape screen
 
-* *Users can find nearby restaurants and the application can give recommendations*
-* ...
-
-*List all the use cases in text descriptions or create use case diagrams. Please refer to https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/ for use case diagram.*
+1. He click his own avatar in the music page or comment page
+2. He sees a "SHOW REPORT" button and clicks it
+3.  His report shows number of fans, number of comments per month and number of likes received from comments posted per month
+4. He adjusts his phone in the landscape mode
 
 ## Application UML
 
-![ClassDiagramExample](./images/ClassDiagramExample.png)
-*[Replace the above with a class diagram. You can look at how we have linked an image here as an example of how you can do it too.]*
+![UML](./images/UML.jpg)
 
 ## Application Design and Decisions
 
-*Please give clear and concise descriptions for each subsections of this part. It would be better to list all the concrete items for each subsection and give no more than `5` concise, crucial reasons of your design. Here is an example for the subsection `Data Structures`:*
-
-*I used the following data structures in my project:*
-
-1. *LinkedList*
-
-   * *Objective: It is used for storing xxxx for xxx feature.*
-
-   * *Locations: line xxx in XXX.java, ..., etc.*
-
-   * *Reasons:*
-
-     * *It is more efficient than Arraylist for insertion with a time complexity O(1)*
-
-     * *We don't need to access the item by index for this feature*
-
-2. ...
-
-3. ...
-
 **Data Structures**
 
-*[What data structures did your team utilise? Where and why?]*
+1. RBtree
+    * Objective: It is used for storing MusicRate, MusicDate, PostLikeCountand PostDate for searching feature.
+
+    * Locations: line 22-25 in GlobalVariable.java
+
+    * Reasons:
+* It is more efficient than Arraylist for insertion with a time complexity O(1).
+        * We don't need to access the item by index for this feature.
+* We can use this data structure to sort and search quickly.
+    
 
 **Design Patterns**
 
-*[What design patterns did your team utilise? Where and why?]*
+1. DAO
+   
+   Use DAO design pattern when reading music, user and post data from file. Data access object (DAO) pattern is used to separate low-level data access APIs or operations from high-level business services.
+   We create *Music.java*, *MusicDAO.java* and *MusicDaoInterface.java* for getting music data;
+   ​		           *User.java*, *UserDAO.java* and *UserDaoInterface.java* for getting  user data;
+   ​		           and *Post.java*, *PostDAO.java* and *PostDaoInterface.java* for getting  user data;
+   
+    - The interface defines the standard operations to be performed on a model object.
+    - The Dao class implements the above interface. This class is responsible for obtaining data from the data source (JSON & XML file).
+    - The object class is a simple POJO and contains the get & set method to store the data retrieved by using the Dao class.
+
+The UML of these three Dao design patterns are like following figures:
+
+<img src=".\images\Dao.png" alt="MusicDao" style="zoom:60%;" />
+
+When we want to get the date, just execute the method of *findAllxxx()*.
+
+2. Singleton
+   
+   The singleton design pattern is to ensure a class only has one instance, and provide a global point of access to it.
+   In the project, there is only one current user at a time, and the class should create its own unique instance.  So we can use the singleton design pattern to design the CurrentUser class.
+
+   The UML of this singleton design pattern is like following figure:
+
+   <img src=".\images\Singleton.png" alt="MusicDao" style="zoom:80%;" />
+
+Singleton design pattern can control the number of instances, save system resources, and avoid frequent creation and destruction of a globally used class.
 
 **Grammars**
 
-*Search Engine*
-<br> *Production Rules* <br>
-\<Non-Terminal> ::= \<some output>
-<br>
-\<Non-Terminal> ::= \<some output>
+1. Music search Engine
 
-*[How do you design the grammar? What are the advantages of your designs?]*
+   Production Rules:
 
-*If there are several grammars, list them all under this section and what they relate to.*
+```
+<exp> ::= <term> ; <exp>
+<term> ::= <symbol> <factor> | <text>
+<symbol> ::= # | @ | *
+<factor> ::= <operator> <decimal> | <text>
+<operator> ::= > | < | = | >= | <=
+<decimal> ::= <number> | <number> . <number>
+<number> ::= <digit> | <digit> <number>
+<digit> ::= 0|1|2|3|4|5|6|7|8|9
+<text> :: = <alpha> <text> | <alpha>
+<alpha> :: = a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z
+```
+
+2. Comment search Engine
+
+   Production Rules:
+
+```
+<exp> ::= <term> ; <exp>
+<term> ::= <symbol> <factor> | <text>
+<symbol> ::= @ | *
+<factor> ::= <operator> <number> | <text>
+<operator> ::= > | < | = | >= | <=
+<number> ::= <digit> | <digit> <number>
+<digit> ::= 0|1|2|3|4|5|6|7|8|9
+<text> :: = <alpha> <text> | <alpha>
+<alpha> :: = a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z
+```
+
+The grammar built by the different search input styles.
+Music search and comments input style:
+
+- Users can apply different rules for the music search and comments search.
+- For the music search, there are 4 attributes can be a searched, which are music tag, musician,  rate and music name.  Each rules can be linked with ";". The beginning of each attributes should have different symbols. For example, "#musictag;@musician;*>4.2". You also can search music name directly.
+- Similar with comments input rule, there are 3 attributes can be a searched, which are user name,  like numbers and comment contents.  Each rules can be linked with ";". The beginning of each attributes should have different symbols. For example, "@username;*>200". You also can search comment contents directly.
+- For the music name or comment contents, user can only type some of letters to get which music name or comment contents contain the typing letters.
+- For the rate and like numbers, it is linked with 5 operators, which are ">" "<" "="  ">=" "<=", and for rate, user can search the rate in an integer or a decimal number (such as 4.2).
+- User can search the rules at the same time or just choose some of them to search.
+- The rules are case insensitive.
+
+The advantages of the designs are users can easily to search and to get what the want quickly by typing simple symbols. In addition, the grammar can transfer the input string into many tokens, and searching in the specific data structure.
 
 **Tokenizer and Parsers**
 
-*[Where do you use tokenisers and parsers? How are they built? What are the advantages of the designs?]*
+*[Where do you use tokenizers and parsers? How are they built? What are the advantages of the designs?]*
 
-**Surpise Item**
+**Surprise Item**
 
-*[If you implement the surprise item, explain how your solution addresses the surprise task. What decisions do your team make in addressing the problem?]*
+- Sort items returned for a given search
+  - User can sort songs by rate or date by ascending and descending.
+
+- Removing/hiding hate speech in posts
+- Allowing users to view posts that were filtered out from their timeline
+  - User can view which comments they post for different songs. When click the user in the timeline, we can see that person comments for different songs.
 
 **Other**
 
-*[What other design decisions have you made which you feel are relevant? Feel free to separate these into their own subheadings.]*
+1. Data Generate
+
+   Randomly generate a specified number of posts and save them as a xml file.
 
 ## Summary of Known Errors and Bugs
 
-*[Where are the known errors and bugs? What consequences might they lead to?]*
+1. Bug 1:
+- *User can like the same comments in the different pages.* 
 
-*Here is an example:*
-
-1. *Bug 1:*
-- *User avatar does not show in the activity_main.* 
-
-2. *Bug 2:*
-3. ...
-
-*List all the known errors and bugs here. If we find bugs/errors that your team do not know of, it shows that your testing is not through.*
+2. Bug 2:
+- *When the location is displayed, switching the horizontal screen will not display the location.*
 
 ## Testing Summary
 
@@ -197,31 +256,80 @@ Convenor.
 
 ## Implemented Features
 
-*[What features have you implemented?]*
+*Basic App*
 
-*Here is an example:*
+1. *Login and Sign up. User can be able to login an sign up. (Basic)*
+   status: Completed
+   implemented feature: Login and sign up.
 
-*User Privacy*
+2. *One fully implemented data structure taught in this course (Basic)*
+   status: Completed
+   implemented feature: RBtree.
 
-1. *Friendship. Users may send friend requests which are then accepted or denied. (easy)*
-2. *Privacy I: A user must approve a friend's request based on privacy settings. (easy)*
-3. *Privacy II: A user can only see a profile that is Public (consider that there are at least two types of profiles: public and private). (easy)*
-4. *Privacy III: A user can only follow someone who shares at least one mutual friend based on privacy settings. (Medium)*
+3. *Search functionality that makes use of tokenizer and parser. (Basic)*
+   status: Completed
+   implemented feature: Use of tokenizer and parser.
 
-*Firebase Integration*
-1. *Use Firebase to implement user Authentication/Authorisation. (easy)*
-2. *Use Firebase to persist all data used in your app (this item replace the requirement to retrieve data from a local file) (medium)*
+4. *Two design pattern. (Basic)*
+   status: Completed
+   implemented feature: DAO patter and singleton pattern.
 
-*List all features you have completed in their separate categories with their difficulty classification. If they are features that are suggested and approved, please state this somewhere as well.*
+5. *Data file with at least 1,000 valid data instances. (Basic)*
+   status: Completed
+   implemented feature: Data file with 1,500 data instances.
 
+6. *Load and view posts and  retrieve data from a local file. (Basic)*
+   status: Completed
+   implemented feature: Load and view post.
+
+*Advanced features*
+
+1. *Read data instances from multiple local file in different formats. (Easy)*
+   status: Completed
+   implemented feature: Make use of json file and csv file.
+
+2. *UI can support for different scree size and have portrait and landscape layout variants. (Easy)*
+   status: Completed
+   implemented feature: UI including Login, register, main interface can switch between portrait and landscape layout in different screen size.
+
+3. *User profile activity containing a media file. (Easy)*
+   status: Completed
+   implemented feature: Different users have different avatars.
+
+4. *Use Gps Information. (Easy)*
+   status: Completed
+   implemented feature: GPS information is on the right side of the user's profile picture.
+
+5. *The ability to micro-interact with 'posts'. (Easy)*
+   status: Completed
+   implemented feature: User can like a post.
+
+6. *User statistics. (Medium)*
+   status: Completed
+   implemented feature: Total like, total posts and total followers of users can be seen.
+
+7. *Improved search. (Medium)*
+   status: Completed
+   implemented feature: Search function can handle partially valid input and invalid input.
+   
+8. Sort items returned for a given search
+
+   status: Completed
+   implemented feature: User can sort songs by rate or date by ascending and descending.
+
+9. Removing/hiding hate speech in posts
+
+   status: Completed
+   implemented feature: Hate speech in posts will be removed.
+
+10. Allowing users to view posts that were filtered out from their timeline
+
+   status: Completed
+   implemented feature: User can view which comments they post for different songs. When click the user in the timeline, we can see that person comments for different songs.
 ## Team Meetings
-
-*Here is an example:*
 
 - *[Team Meeting 1](./meeting/meeting1.md)*
 - *[Team Meeting 2](./meeting/meeting2.md)*
 - *[Team Meeting 3](./meeting/meeting3.md)*
 - *[Team Meeting 4](./meeting/meeting4.md)*
 - *[Team Meeting 5](./meeting/meeting5.md)*
-
-*Either write your meeting minutes here or link to documents that contain them. There must be at least 3 team meetings.*

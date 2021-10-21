@@ -38,75 +38,60 @@ The following is a report template to help your team successfully provide all th
 ## Conflict Resolution Protocol
 
 *[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem? (If you choose to make this an external document, link to it here)]*
+
 ### Conflict with a Team member
-Any conflict that arises with members of the project team will require the individual involved in
-the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a
-meeting with the aggrieved parties accompanied by a detailed description of each individual's
-comments and concerns. If the conflict in question involves the Project Manager then a Team
-Member who is not involved in the conflict will fill the role of Project Manager for the purposes of
-resolving this specific conflict. The meeting will begin with each person, in no particular order,
-individually explaining their concerns and discussing them openly. Notes will be taken
-throughout this process including key comments and desired outcomes. The purpose of this
-meeting is for all parties to come to a mutual understanding and reach a resolution to the
-aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and
-require mediation as described in the Mediation part.
+Any conflict that arises with members of the project team will require the individual involved in the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a meeting with the aggrieved parties accompanied by a detailed description of each individual's comments and concerns. If the conflict in question involves the Project Manager then a Team Member who is not involved in the conflict will fill the role of Project Manager for the purposes of resolving this specific conflict. The meeting will begin with each person, in no particular order, individually explaining their concerns and discussing them openly. Notes will be taken throughout this process including key comments and desired outcomes. The purpose of this meeting is for all parties to come to a mutual understanding and reach a resolution to the aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and require mediation as described in the Mediation part.
 
 ### Conflict with the Convenor
-Any conflict that arises with the Convenor will require the individual, or individuals, involved in
-the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a
-meeting with the aggrieved parties accompanied by a detailed description of each individual's
-comments and concerns. If the conflict in question involves the Project Manager then a Team
-Member who is not involved in the conflict will fill the role of Project Manager for the purposes of
-resolving this specific conflict. The meeting will begin with each person, in no particular order,
-individually explaining their concerns and discussing them openly. Notes will be taken
-throughout this process including key comments and desired outcomes. The purpose of this
-meeting is for all parties to come to a mutual understanding and reach a resolution to the
-aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and
-require mediation as described in the Mediation part.
+Any conflict that arises with the Convenor will require the individual, or individuals, involved in the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a meeting with the aggrieved parties accompanied by a detailed description of each individual's comments and concerns. If the conflict in question involves the Project Manager then a Team Member who is not involved in the conflict will fill the role of Project Manager for the purposes of resolving this specific conflict. The meeting will begin with each person, in no particular order, individually explaining their concerns and discussing them openly. Notes will be taken throughout this process including key comments and desired outcomes. The purpose of this meeting is for all parties to come to a mutual understanding and reach a resolution to the aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and require mediation as described in the Mediation part.
 
 ### Mediation
-In the unlikely event that an event of conflict can not be resolved it will require mediation from a
-third party. This can be at the request of the aggrieved parties if they believe they can not
-resolve the conflict through the usual means. It is the responsibility of the Project Manager to
-organise an appropriate person to undertake mediation. If there is a conflict of interest with the
-Project Manager, the next appropriate individual will be the Assessor followed by the Course
-Convenor.
+In the unlikely event that an event of conflict can not be resolved it will require mediation from a third party. This can be at the request of the aggrieved parties if they believe they can not resolve the conflict through the usual means. It is the responsibility of the Project Manager to organise an appropriate person to undertake mediation. If there is a conflict of interest with the Project Manager, the next appropriate individual will be the Assessor followed by the Course Convenor.
 
 ## Application Description
 
-*[What is your application, what does it do? Include photos or diagrams if necessary]*
+MiloMusic is a music social media application specifically targeting all people who love music. It provides three parts for them, which are music, comments, and user. 
 
-*Here is a pet specific social media application example*
+- In the music part, a list of songs are showed in descending order of date or score. Therefore, user can get the latest and highest score song. User also can search songs by four methods.
+- In the comments part, user can view posts on a timeline activity (update every 3 seconds). Similarly, user can search comments by three methods. In addition, user can post their comments.
+- The user part is open for every users, user can view their comments and a report for their activities.
 
-*PetBook is a social media application specifically targetting pet owners... it provides... certified practitioners, such as veterians are indicated by a label next to their profile...*
+<center class="third">
+<img src="./images/Login.png">
+<img src="./images/Music.png">
+<img src="./images/Comments.gif">
+</center>
+
+<center class="half">
+<img src="./images/User.png">
+<img src="./images/Report.png">
+</center>
 
 **Application Use Cases and or Examples**
 
-*[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
+Dennis wants to get the most popular song in the playlist and see the comments
 
-*Here is a pet training application example*
+1. He accesses the MiloMusic application and goes to the music page
+2. He clicks the Rate button and see the top 1 song
+3. He chooses the "Perfect" written by Ed Sheeran and goes to the comments page
 
-*Molly wants to inquiry about her cat, McPurr's recent troublesome behaviour*
-1. *Molly notices that McPurr has been hostile since...*
-2. *She makes a post about... with the tag...*
-3. *Lachlan, a vet, writes a reply to Molly's post...*
-4. ...
-5. *Molly gives Lachlan's reply a 'tick' response*
+Mia wants to search the "blues" style and rate greater than "4.2" songs
 
-*Here is a map navigation application example*
+1. She accesses the MiloMusic application and goes to the music page
+2. She types "#blues;*>4.2" in the search box
 
-*Targets Users: Drivers*
+Nancy wants to see her friends Dennis's comments that write for "End Game" and give him a like reaction
 
-* *Users can use it to navigate in order to reach the destinations.*
-* *Users can learn the traffic conditions*
-* ...
+1. She accesses the MiloMusic application and goes to the comments page
+2. She types "@Dennis" in the search box
+3. She clicks the like button in the first comment by Dennis.
 
-*Target Users: Those who want to find some good restaurants*
+Dennis wants to see her own user report and views it in a landscape screen 
 
-* *Users can find nearby restaurants and the application can give recommendations*
-* ...
-
-*List all the use cases in text descriptions or create use case diagrams. Please refer to https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/ for use case diagram.*
+1. He click his own avatar in the music page or comment page
+2. He sees a "SHOW REPORT" button and clicks it
+3.  His report shows number of fans, number of comments per month and number of likes received from comments posted per month
+4. He adjusts his phone in the landscape mode
 
 ## Application UML
 
