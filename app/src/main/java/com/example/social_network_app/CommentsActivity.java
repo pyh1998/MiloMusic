@@ -80,7 +80,7 @@ public class CommentsActivity extends AppCompatActivity {
             if(msg.what == COMPLETED){
                 showComments(currentList);
                 Comments.setSelection(ListView.FOCUS_DOWN);
-                CommentsCount.setText(String.valueOf(start));
+                CommentsCount.setText(String.valueOf(currentList.size()));
                 Comments.setOnItemClickListener(commentsListener);
             }
         }
@@ -113,16 +113,16 @@ public class CommentsActivity extends AppCompatActivity {
         showMusic();
 
         start = resultList.size() / 5;
-        end = start + 1;
-        currentList = resultList.subList(0,start+1);
+        end = start;
+        currentList = resultList.subList(0,start);
         showComments(currentList);
-        CommentsCount.setText(String.valueOf(start+1));
+        CommentsCount.setText(String.valueOf(currentList.size()));
 
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 new WorkThread().start();
-                if (end == resultList.size()-1){
+                if (end >= resultList.size()-1){
                     timer.cancel();
                 }
             }
@@ -166,7 +166,7 @@ public class CommentsActivity extends AppCompatActivity {
             Date curDate =  new Date(System.currentTimeMillis());
             String date = formatter.format(curDate);
             if(!newPost.equals("")){
-                Post post = new Post(postList.size(),currentMusic.getId(),currentUser.getId(),currentUser.getName(),newPost,date,0);
+                Post post = new Post(postList.size()+1,currentMusic.getId(),currentUser.getId(),currentUser.getName(),newPost,date,0);
                 postList.add(post);
                 currentList.add(post);
                 GlobalVariable global = (GlobalVariable) getApplication();
@@ -350,7 +350,7 @@ public class CommentsActivity extends AppCompatActivity {
     public class WorkThread extends Thread{
         @Override
         public void run(){
-            start++;
+            //start++;
             end++;
             currentList = resultList.subList(0,end);
             Message msg = new Message();
