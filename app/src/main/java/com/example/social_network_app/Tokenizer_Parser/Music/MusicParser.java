@@ -1,15 +1,18 @@
 package com.example.social_network_app.Tokenizer_Parser.Music;
 
-import android.widget.Switch;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicTag;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * @author Yuhui Pang
+ *
+ * The parser of music
+ */
 public class MusicParser {
 
     /**
@@ -30,8 +33,8 @@ public class MusicParser {
     private static final int rate_max = 1;
     private static final int name_max = 1;
 
-    private List<MusicToken> tokenList = new ArrayList<>();
-    private MusicTokenizer tokenizer;
+    private final List<MusicToken> tokenList = new ArrayList<>();
+    private final MusicTokenizer tokenizer;
 
     public MusicParser(String searchText){
         tokenizer = new MusicTokenizer(searchText);
@@ -136,6 +139,11 @@ public class MusicParser {
         return validList;
     }
 
+    /**
+     * To check if the music match the token list
+     * @param music the music need to check if matched
+     * @return return true if matched, return false if not
+     */
     public boolean isMatched(Music music){
         List<Boolean> condition = new ArrayList<>();
 
@@ -168,7 +176,7 @@ public class MusicParser {
                             condition.set(condition.size()-1,rate > rate_search);
                             break;
                         case "<=":
-                            condition.set(condition.size()-1,rate <= rate_search);;
+                            condition.set(condition.size()-1,rate <= rate_search);
                             break;
                         case "<":
                             condition.set(condition.size()-1,rate < rate_search);
@@ -190,6 +198,6 @@ public class MusicParser {
             total = total && b;
         }
         return total;
-    };
+    }
 
 }

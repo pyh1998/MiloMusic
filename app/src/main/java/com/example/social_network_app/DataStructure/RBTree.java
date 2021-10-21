@@ -1,8 +1,11 @@
 package com.example.social_network_app.DataStructure;
 
 
-import java.util.List;
-
+/**
+ * @author Yuhui Pang
+ *
+ * the data structure of RBtree, include insert,search,find and preorder output
+ */
 public class RBTree<T extends Comparable<T>> {
 
     Node<T> root;
@@ -93,7 +96,6 @@ public class RBTree<T extends Comparable<T>> {
 
     /**
      * Left Rotate
-     * @param x
      */
     public void rotateLeft(Node<T> x) {
         if (x.parent != null) {
@@ -116,7 +118,6 @@ public class RBTree<T extends Comparable<T>> {
 
     /**
      * Right Rotate
-     * @param x
      */
     public void rotateRight(Node<T> x) {
         if (x.parent!=null){

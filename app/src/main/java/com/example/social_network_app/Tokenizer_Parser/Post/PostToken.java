@@ -1,8 +1,15 @@
 package com.example.social_network_app.Tokenizer_Parser.Post;
 
 
+import androidx.annotation.NonNull;
+
 import java.util.regex.Pattern;
 
+/**
+ * @author Yuhui Pang
+ *
+ * The token of music, which has token, type and operator
+ */
 public class PostToken {
     // The following enum defines different types of tokens.
     public enum Type {USER,LIKECOUNT,CONTENT,SEMICOLON,INVALID}
@@ -17,26 +24,13 @@ public class PostToken {
         }
     }
 
-    private static final String symbol[] = {"=","<=",">=",">","<"};
+    private static final String[] symbol = {"=","<=",">=",">","<"};
     // Fields of the class Token.
     private final String token; // Token representation in String form.
     private final PostToken.Type type;    // Type of the token.
     private final String operator;
     private final int length;
 
-    public PostToken(String token, PostToken.Type type, String operator) {
-        this.token = token;
-        this.type = type;
-        this.operator = operator;
-        this.length = this.token.length() + 3;
-    }
-
-    public PostToken(String token, PostToken.Type type) {
-        this.token = token;
-        this.type = type;
-        this.operator = "";
-        this.length = this.token.length() + 1;
-    }
 
     public PostToken(String piece){
         this.length = piece.length();
@@ -60,11 +54,11 @@ public class PostToken {
             }
             else if(first == '*'){
                 this.type = Type.LIKECOUNT;
-                int index = 1;
+                int index;
                 for(index = 1;index<piece.length();index++){
                     if(Character.isDigit(piece.charAt(index))) break;
                 }
-                if(!isIn(piece.substring(1,index),symbol)) throw new PostToken.IllegalTokenException("IllegalToken!");
+                if(!isIn(piece.substring(1,index))) throw new PostToken.IllegalTokenException("IllegalToken!");
                 this.operator = piece.substring(1,index);
                 this.token = piece.substring(index);
             }
@@ -82,12 +76,12 @@ public class PostToken {
         char first = piece.charAt(0);
         if(first == '*'){
             if(piece.length() == 1) return false;
-            int index = 1;
+            int index;
             for(index = 1;index<piece.length();index++){
                 if(Character.isDigit(piece.charAt(index))) break;
             }
             if(index == 1 || index == piece.length()) return false;
-            if(!isIn(piece.substring(1,index),symbol)) return false;
+            if(!isIn(piece.substring(1,index))) return false;
             String remain = piece.substring(index);
             String pattern = "^[0-9]*$";
             return Pattern.matches(pattern,remain);
@@ -119,6 +113,7 @@ public class PostToken {
         return length;
     }
 
+    @NonNull
     @Override
     public String toString() {
         if(!this.operator.equals(""))return type + operator + token;
@@ -133,8 +128,8 @@ public class PostToken {
     }
 
 
-    private static boolean isIn(String string, String symbol[]) {
-        for (String s : symbol) {
+    private static boolean isIn(String string) {
+        for (String s : PostToken.symbol) {
             if (string.equals(s)) {
                 return true;
             }

@@ -11,27 +11,28 @@ import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * @author Man Jin
+ *
+ * To show the repot of different users
+ */
 public class BarActivity extends AppCompatActivity {
 
-    //显示的图表
+    //Chart shown
     public BarChart barChart;
     public BarChart barChart2;
     public BarChart barChart3;
@@ -43,6 +44,11 @@ public class BarActivity extends AppCompatActivity {
     Map<String,Integer> likesMonthly = new TreeMap<>();
     User user;
 
+    /**
+     * To initialize the map
+     * @param map the map need to be initialize
+     * @return a map after initialize
+     */
     public Map<String, Integer> initMonthly(Map<String,Integer> map) {
         map.put("01",0);
         map.put("02",0);
@@ -68,9 +74,9 @@ public class BarActivity extends AppCompatActivity {
         title = findViewById(R.id.report_title);
         title.setText(user.getName()+"'s report");
 
-        barChart = (BarChart) findViewById(R.id.report);
-        barChart2 = (BarChart) findViewById(R.id.report2);
-        barChart3 = (BarChart) findViewById(R.id.report3);
+        barChart = findViewById(R.id.report);
+        barChart2 = findViewById(R.id.report2);
+        barChart3 = findViewById(R.id.report3);
 
         int fansCount = Integer.parseInt(getIntent().getStringExtra("fansCount"));
 
@@ -96,16 +102,16 @@ public class BarActivity extends AppCompatActivity {
         }
 
 
-
         drawComments(cMonthly);
         drawLikeCount(lMonthly);
         drawFans(fansCount);
 
-
-
-
     }
 
+    /**
+     * draw the graph of comments every month
+     * @param map the map of comments every month
+     */
     public void drawComments(Map<String,Integer> map){
         ArrayList<BarEntry> entries = new ArrayList<>();
         BarDataSet dataset;
@@ -120,14 +126,16 @@ public class BarActivity extends AppCompatActivity {
         dataSets.add(dataset);
         BarData data = new BarData(dataSets);
         barChart.setData(data);
-
-
-        //设置显示动画效果
+        //animation effect
         barChart.animateY(2000);
         barChart.getDescription().setEnabled(false);
         setLayout(barChart);
     }
 
+    /**
+     * draw the graph of LikeCount every month
+     * @param map the map of LikeCount every month
+     */
     public void drawLikeCount(Map<String,Integer> map){
         ArrayList<BarEntry> entries = new ArrayList<>();
         BarDataSet dataset;
@@ -136,8 +144,6 @@ public class BarActivity extends AppCompatActivity {
             entries.add(new BarEntry(index++, lm_count));
         }
 
-
-
         dataset = new BarDataSet(entries, "Number of likes received from comments posted per month");
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);
         ArrayList<IBarDataSet> dataSets2 = new ArrayList<>();
@@ -145,13 +151,16 @@ public class BarActivity extends AppCompatActivity {
         BarData data = new BarData(dataSets2);
         barChart2.setData(data);
 
-
-        //设置显示动画效果
+        //animation effect
         barChart2.animateY(2000);
         barChart2.getDescription().setEnabled(false);
         setLayout(barChart2);
     }
 
+    /**
+     * draw the graph of fans of this user
+     * @param num the number of fans
+     */
     public void drawFans(int num){
         ArrayList<BarEntry> entries = new ArrayList<>();
         BarDataSet dataset;
@@ -169,7 +178,7 @@ public class BarActivity extends AppCompatActivity {
         XAxis xAxis=barChart3.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
-        xAxis.setValueFormatter(new ValueFormatter() {   //X轴自定义坐标
+        xAxis.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float v) {
                 if (v==1) return user.getName();
@@ -181,28 +190,18 @@ public class BarActivity extends AppCompatActivity {
         YAxis yAxis = barChart3.getAxisRight();
         yAxis.setDrawGridLines(false);
 
-        //设置显示动画效果
+        //animation effect
         barChart3.animateX(2000, Easing.EaseInSine);
         barChart3.getDescription().setEnabled(false);
-
-
-
-//        yAxis.setAxisMaximum(100f);
-//        yAxis.setAxisMinimum(0.5f);
-//        yAxis.setGranularity(1f);
-//        yAxis.setLabelCount(5,false);
-
-
     }
 
     public void setLayout(BarChart bar){
-        //X轴
         XAxis xAxis=bar.getXAxis();
-        xAxis.setDrawGridLines(false);  //是否绘制X轴上的网格线（背景里面的竖线）
-        xAxis.setAxisLineWidth(2);           //X轴粗细
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);        //X轴所在位置   默认为上面
+        xAxis.setDrawGridLines(false);
+        xAxis.setAxisLineWidth(2);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
 
-        xAxis.setValueFormatter(new ValueFormatter() {   //X轴自定义坐标
+        xAxis.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float v) {
                 if (v==1) return "Jan.";
@@ -220,18 +219,12 @@ public class BarActivity extends AppCompatActivity {
                 return "";//注意这里需要改成 ""
             }
         });
-//        xAxis.setAxisMaximum(9);   //X轴最大数值
-//        xAxis.setAxisMinimum(1);   //X轴最小数值
-//        //X轴坐标的个数    第二个参数一般填false     true表示强制设置标签数 可能会导致X轴坐标显示不全等问题
           xAxis.setLabelCount(9,false);
 
-
-        //Y轴
         YAxis AxisLeft=bar.getAxisLeft();
-        AxisLeft.setDrawGridLines(false);  //是否绘制Y轴上的网格线（背景里面的横线）
-        AxisLeft.setAxisLineWidth(2);           //Y轴粗细
+        AxisLeft.setDrawGridLines(false);
+        AxisLeft.setAxisLineWidth(2);
 
-        //是否隐藏右边的Y轴（不设置的话有两条Y轴 同理可以隐藏左边的Y轴）
         bar.getAxisRight().setEnabled(false);
     }
 }

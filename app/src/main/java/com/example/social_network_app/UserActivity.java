@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
-import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 
@@ -28,6 +25,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Yuhui Pang, Man Jin
+ */
 public class UserActivity extends AppCompatActivity {
 
     User user;
@@ -111,6 +111,9 @@ public class UserActivity extends AppCompatActivity {
         user_likescount = findViewById(R.id.user_likescount);
     }
 
+    /**
+     * Initialization interface
+     */
     private AdapterView.OnItemClickListener resultViewListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -124,10 +127,16 @@ public class UserActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Sorts the results in the specified sort manner
+     */
     private void sortList(){
         Collections.sort(resultList);
     }
 
+    /**
+     * Displays user details
+     */
     public void showUserDetail(){
         String head_img = user.getHead();
         try {
@@ -143,6 +152,10 @@ public class UserActivity extends AppCompatActivity {
         user_useremail.setText(user.getEmail());
     }
 
+    /**
+     * Show the result of comments
+     * @param list the list of result to be shown
+     */
     public void showComments(List<Post> list){
         for(int i =0;i<list.size();i++){
             Map<String,Object> map = new HashMap<>();
@@ -203,7 +216,11 @@ public class UserActivity extends AppCompatActivity {
         };
         comments.setAdapter(listAdapter);
     }
-
+    /**
+     * Click the like button to update the like count of post
+     * @param id the post id of clicked post
+     * @param newCount the new like count of this post
+     */
     public void updateLikeCount(int id,int newCount){
         for(int i =0;i<postList.size();i++){
             if(postList.get(i).getId() == id){
@@ -213,9 +230,4 @@ public class UserActivity extends AppCompatActivity {
         }
         global.setPostList(postList);
     }
-
-//    public List<Post> getPostList(){
-//        PostDao postDao = new PostDao();
-//        return postDao.findAllPosts(this);
-//    }
 }

@@ -2,29 +2,28 @@ package com.example.social_network_app.Basic_classes.PostDao;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDaoInterface;
 import com.example.social_network_app.Basic_classes.UserDao.User;
-import com.example.social_network_app.Basic_classes.UserDao.UserDao;
-import com.example.social_network_app.Basic_classes.UserDao.UserDaoInterface;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 
-import java.io.FileReader;
 import java.io.Serializable;
-import java.lang.reflect.Type;
 import java.util.List;
 
-
+/**
+ * @author Yuhui Pang
+ *
+ * The post class, which can be sort by datetime
+ */
 public class Post implements Serializable,Comparable<Post> {
     private int id;
-    private int music_id;
-    private int user_id;
-    private String user_name;
-    private String userReviews;
-    private String datetime;
+    private final int music_id;
+    private final int user_id;
+    private final String user_name;
+    private final String userReviews;
+    private final String datetime;
     private int likeCount;
 
 
@@ -68,10 +67,6 @@ public class Post implements Serializable,Comparable<Post> {
         return music_id;
     }
 
-    public int getUser_id() {
-        return user_id;
-    }
-
     public String getUserReviews() {
         return userReviews;
     }
@@ -88,6 +83,7 @@ public class Post implements Serializable,Comparable<Post> {
         this.likeCount = likeCount;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Post{" +

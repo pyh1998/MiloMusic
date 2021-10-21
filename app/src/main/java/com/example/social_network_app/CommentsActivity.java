@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,23 +16,18 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
-import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.example.social_network_app.DataStructure.RBTree;
-import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
-import com.example.social_network_app.Tokenizer_Parser.Music.MusicToken;
 import com.example.social_network_app.Tokenizer_Parser.Post.PostParser;
 import com.example.social_network_app.Tokenizer_Parser.Post.PostToken;
 
-import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,10 +36,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * @author Yuhui Pang, Hang Su
+ *
+ * The comments page of specific music
+ */
 public class CommentsActivity extends AppCompatActivity {
 
     CurrentUser currentUser;
@@ -82,8 +80,11 @@ public class CommentsActivity extends AppCompatActivity {
     Timer timer = new Timer();
     boolean flag = true;
 
+    /**
+     * Operations performed during each time period in the timeline
+     */
     @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(){
+    private final Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg){
             if(msg.what == COMPLETED){
@@ -96,7 +97,6 @@ public class CommentsActivity extends AppCompatActivity {
         }
     };
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +104,6 @@ public class CommentsActivity extends AppCompatActivity {
 
         global = (GlobalVariable) getApplication();
         currentMusic = (Music) getIntent().getSerializableExtra("Music");
-
 
         postList = global.getPostList();
         userList = global.getUserList();
@@ -125,6 +124,7 @@ public class CommentsActivity extends AppCompatActivity {
         showUser();
         showMusic();
 
+        //Initialization displays one-fifth of the comments
         start = resultList.size() / 5;
         end = start;
         currentList = resultList.subList(0,start);
@@ -141,10 +141,11 @@ public class CommentsActivity extends AppCompatActivity {
                 }
             }
         },3000,3000);
-
-
     }
 
+    /**
+     * Initialization interface
+     */
     private void initView(){
         userHead = findViewById(R.id.iv_userhead_comments);
         MusicImage = findViewById(R.id.comment_music);
@@ -171,6 +172,10 @@ public class CommentsActivity extends AppCompatActivity {
         postComment.setOnClickListener(postNewListener);
     }
 
+    /**
+     * Click the POST button to post a new comment
+     * Add a new comment to the global variable
+     */
     private final View.OnClickListener postNewListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -192,6 +197,10 @@ public class CommentsActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Click the current user profile picture to display detailed
+     * information about the current user
+     */
     private final View.OnClickListener showUserDetailListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -203,6 +212,10 @@ public class CommentsActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Click the view list to display the detailed information of
+     * the corresponding user to jump to the user interface
+     */
     private AdapterView.OnItemClickListener commentsListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -213,6 +226,9 @@ public class CommentsActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Click the search button to display the query results according to the query content
+     */
     private final View.OnClickListener searchResultListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -256,11 +272,16 @@ public class CommentsActivity extends AppCompatActivity {
         }
     };
 
-
+    /**
+     * Sorts the results in the specified sort manner
+     */
     private void sortList(){
         Collections.sort(resultList);
     }
 
+    /**
+     * To show the user head and username of current user
+     */
     public void showUser(){
         String head_img = currentUser.getHead();
         try {
@@ -273,6 +294,9 @@ public class CommentsActivity extends AppCompatActivity {
         user_name.setText(currentUser.getName());
     }
 
+    /**
+     * To show the detail of current music
+     */
     public void showMusic(){
         String img = currentMusic.getPicture();
         try {
@@ -288,6 +312,10 @@ public class CommentsActivity extends AppCompatActivity {
         ReleaseDate.setText(currentMusic.getReleaseDate());
     }
 
+    /**
+     * Show the result of comments
+     * @param list the list of result to be shown
+     */
     public void showComments(List<Post> list){
         CommentsCount.setText(String.valueOf(list.size()));
         resultMapList.clear();
@@ -355,7 +383,11 @@ public class CommentsActivity extends AppCompatActivity {
         Comments.setAdapter(adapter);
     }
 
-
+    /**
+     * Click the like button to update the like count of post
+     * @param id the post id of clicked post
+     * @param newCount the new like count of this post
+     */
     public void updateLikeCount(int id,int newCount){
         for(int i =0;i<postList.size();i++){
             if(postList.get(i).getId() == id){
@@ -363,7 +395,6 @@ public class CommentsActivity extends AppCompatActivity {
                 break;
             }
         }
-
         global.setPostList(postList);
     }
 
@@ -377,8 +408,4 @@ public class CommentsActivity extends AppCompatActivity {
         }
     }
 
-//    public List<Post> getPostList(){
-//        PostDao postDao = new PostDao();
-//        return postDao.findAllPosts(this);
-//    }
 }

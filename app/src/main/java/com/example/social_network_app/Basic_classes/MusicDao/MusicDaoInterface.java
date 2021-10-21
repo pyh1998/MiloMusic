@@ -4,7 +4,12 @@ import android.content.Context;
 
 import java.util.List;
 
+/**
+ * @author Yuhui Pang
+ *
+ * The interface of MusicDao to get data
+ */
 public interface MusicDaoInterface {
-    public List<Music> findAllMusics(Context context);
-    public Music findMusicById(Context context, int id);
+     List<Music> findAllMusics(Context context);
+     Music findMusicById(Context context, int id);
 }

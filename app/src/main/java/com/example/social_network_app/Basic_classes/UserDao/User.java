@@ -1,10 +1,16 @@
 package com.example.social_network_app.Basic_classes.UserDao;
 
-import com.example.social_network_app.Basic_classes.MusicDao.Music;
+
+import androidx.annotation.NonNull;
 
 import java.io.Serializable;
-import java.util.Random;
 
+
+/**
+ * @author Yuhui Pang
+ *
+ * The user class
+ */
 public class User implements Serializable {
     private int id;
     private String name;
@@ -80,6 +86,7 @@ public class User implements Serializable {
         this.fans = fans;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "User{" +

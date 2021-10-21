@@ -1,9 +1,13 @@
 package com.example.social_network_app.DataStructure;
 
+import androidx.annotation.NonNull;
+
 import java.util.LinkedList;
 
 /**
- * The Node class used in RBTreewhich contains GameIDlist in every Node.
+ * @author Yuhui Pang
+ *
+ * The Node class used in RBTree, it can store key and value
  * @param <T>
  */
 public class Node<T> {
@@ -42,8 +46,8 @@ public class Node<T> {
         this.parent = null;
 
         // Initialise children leaf nodes
-        this.left = new Node<T>();
-        this.right = new Node<T>();
+        this.left = new Node<>();
+        this.right = new Node<>();
         this.left.parent = this;
         this.right.parent = this;
     }
@@ -53,18 +57,9 @@ public class Node<T> {
         this.colour = Colour.BLACK;
     }
 
+    @NonNull
     @Override
     public String toString() {
-        StringBuilder res = new StringBuilder("value:" + this.value );
-//        LinkedList<Object> gameIDList = getObjects();
-//        for (int i = 0; i < gameIDList.size(); i++) {
-//            if (i == gameIDList.size() - 1) {
-//                res.append(gameIDList.get(i).toString());
-//            } else {
-//                res.append(gameIDList.get(i).toString()).append(", ");
-//            }
-//
-//        }
-        return res.toString();
+        return "value:" + this.value;
     }
 }

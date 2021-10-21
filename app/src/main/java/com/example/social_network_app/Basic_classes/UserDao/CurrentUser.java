@@ -1,5 +1,10 @@
 package com.example.social_network_app.Basic_classes.UserDao;
 
+/**
+ * @author Yuhui Pang
+ *
+ * The singleton class CurrentUser
+ */
 public class CurrentUser extends User{
 
     private static CurrentUser instance = null;

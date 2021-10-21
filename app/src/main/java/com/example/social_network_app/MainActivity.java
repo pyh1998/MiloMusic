@@ -40,7 +40,11 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 
-
+/**
+ * @author Yuhui Pang, Qihong Zeng, Man Jin
+ *
+ * The first page displayed after login, showing music data
+ */
 public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
     List<Music> MusicList;
@@ -77,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initView();
         global = (GlobalVariable) getApplication();
         MusicList = global.getMusicList();
         MusicRateTree = global.getMusicRateTree();
@@ -86,12 +91,14 @@ public class MainActivity extends AppCompatActivity {
         sortList();
         showMusic(resultList);
         showUser();
-        initView();
 
         /*Scott positioning*/
         requestPermissions();
     }
 
+    /**
+     * Initialization interface
+     */
     private void initView() {
         resultView = findViewById(R.id.rv_musiclist);
         searchButton = findViewById(R.id.ib_search);
@@ -135,6 +142,10 @@ public class MainActivity extends AppCompatActivity {
         iv_userHead.setOnClickListener(showUserDetailListener);
     }
 
+    /**
+     * Click the current user profile picture to display detailed
+     * information about the current user
+     */
     private final View.OnClickListener showUserDetailListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -146,6 +157,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Click on the corresponding item of the ListView to display the comments for the corresponding music
+     */
     private final AdapterView.OnItemClickListener CommentViewListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -158,6 +172,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Click the search button to display the query results according to the query content
+     */
     private final View.OnClickListener searchResultListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -198,6 +215,9 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Sorts the results in the specified sort manner
+     */
     private void sortList(){
         RadioButton radioButton = findViewById(sortBy.getCheckedRadioButtonId());
         String sortBy = radioButton.getText().toString();
@@ -215,14 +235,13 @@ public class MainActivity extends AppCompatActivity {
         showMusic(resultList);
     }
 
-
-
+    /**
+     * To show the user head and username of current user
+     */
     @SuppressLint("SetTextI18n")
     public void showUser(){
-        Log.e("!!!!!!!",currentUser.toString());
         String name = currentUser.getName();
         String head_img = currentUser.getHead();
-        Log.e("!!!!!!!!!!!!!!",String.valueOf(head_img));
         tv_userName.setText(name + " !");
         try {
             Field field = R.drawable.class.getField(head_img);
@@ -231,9 +250,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
+    /**
+     * Show the musics that need to be displayed
+     * @param list the list of music need to be show
+     */
     public void showMusic(List<Music> list){
         resultMapList.clear();
         for(int i =0;i<list.size();i++){
@@ -250,7 +272,6 @@ public class MainActivity extends AppCompatActivity {
             map.put("m_artist",music.getArtist());
             map.put("m_date",music.getReleaseDate());
             map.put("m_rate",music.getRate());
-//            Log.e("!!!!!!!!!",map.toString());
             resultMapList.add(map);
         }
         SimpleAdapter listAdapter = new SimpleAdapter(
@@ -288,13 +309,6 @@ public class MainActivity extends AppCompatActivity {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         Log.d(TAG," -- onConfigurationChanged");
-//        if(newConfig.orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
-//
-//            setContentView(R.layout.activity_main);
-//        }else{
-//
-//            setContentView(R.layout.activity_main);
-//        }
         setContentView(R.layout.activity_main);
         initView();
     }
@@ -397,10 +411,9 @@ public class MainActivity extends AppCompatActivity {
     private void resetOption() {
         // Set whether to display the address information
         locationOption.setNeedAddress(true);
-        /**
-         * Set whether to return the GPS location result preferentially.
-         *
-         */
+
+        //Set whether to return the GPS location result preferentially.
+
         locationOption.setGpsFirst(true);
         // Set whether to enable caching
         locationOption.setLocationCacheEnable(true);
@@ -439,13 +452,11 @@ public class MainActivity extends AppCompatActivity {
     /**
      * destroy positioning
      *
+     * If the AMapLocationClient is instantiated in the current Activity,
+     * Be sure to execute the AMapLocationClient's onDestroy in the Activity's onDestroy
      */
     private void destroyLocation(){
         if (null != locationClient) {
-            /**
-             * If the AMapLocationClient is instantiated in the current Activity,
-             * Be sure to execute the AMapLocationClient's onDestroy in the Activity's onDestroy
-             */
             locationClient.onDestroy();
             locationClient = null;
             locationOption = null;

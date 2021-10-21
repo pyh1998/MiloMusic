@@ -4,6 +4,10 @@ import com.example.social_network_app.Tokenizer_Parser.Tokenizer;
 
 import java.util.Scanner;
 
+/**
+ * @author Yuhui Pang
+ *
+ */
 public class MusicTokenizer extends Tokenizer {
     private String buffer;          // String to be transformed into tokens each time next() is called.
     private MusicToken currentToken;     // The current token. The next token is extracted when next() is called.
@@ -20,7 +24,6 @@ public class MusicTokenizer extends Tokenizer {
         /*
          Continue to get the user's input until they exit.
          To exit press: Control + D or providing the string 'q'
-         Example input you can try: ((1 + 2) * 5)/2
          */
         System.out.println("Provide a mathematical string to be tokenized:");
         while (scanner.hasNext()) {
@@ -45,7 +48,6 @@ public class MusicTokenizer extends Tokenizer {
     /**
      * Tokenizer class constructor
      * The constructor extracts the first token and save it to currentToken
-     * **** please do not modify this part ****
      */
     public MusicTokenizer(String text) {
         buffer = text;          // save input text (string)
@@ -94,8 +96,6 @@ public class MusicTokenizer extends Tokenizer {
 
     /**
      * Check whether there still exists another tokens in the buffer or not
-     * **** please do not modify this part ****
-     *
      * @return type: boolean
      */
     public boolean hasNext() {

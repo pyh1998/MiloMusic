@@ -4,8 +4,12 @@ import android.content.Context;
 
 import java.util.List;
 
+/**
+ * @author Yuhui Pang
+ *
+ * The interface of UserDao to get data
+ */
 public interface UserDaoInterface {
-    public List<User> findAllUsers(Context context);
-    public User findUserById(Context context, int id);
-
+     List<User> findAllUsers(Context context);
+     User findUserById(Context context, int id);
 }

@@ -5,6 +5,10 @@ import com.example.social_network_app.Tokenizer_Parser.Tokenizer;
 
 import java.util.Scanner;
 
+/**
+ * @author Yuhui Pang
+ *
+ */
 public class PostTokenizer extends Tokenizer {
     private String buffer;          // String to be transformed into tokens each time next() is called.
     private PostToken currentToken;     // The current token. The next token is extracted when next() is called.
@@ -41,7 +45,6 @@ public class PostTokenizer extends Tokenizer {
     /**
      * Tokenizer class constructor
      * The constructor extracts the first token and save it to currentToken
-     * **** please do not modify this part ****
      */
     public PostTokenizer(String text) {
         buffer = text;          // save input text (string)
@@ -90,7 +93,6 @@ public class PostTokenizer extends Tokenizer {
 
     /**
      * Check whether there still exists another tokens in the buffer or not
-     * **** please do not modify this part ****
      *
      * @return type: boolean
      */

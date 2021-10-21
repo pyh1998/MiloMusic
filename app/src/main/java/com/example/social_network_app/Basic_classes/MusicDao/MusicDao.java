@@ -12,6 +12,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+/**
+ * @author Yuhui Pang
+ *
+ * To get music data from file music.json
+ */
 public class MusicDao implements MusicDaoInterface  {
 
     @Override

@@ -1,6 +1,12 @@
 package com.example.social_network_app.Basic_classes.MusicDao;
 
+import androidx.annotation.NonNull;
 
+/**
+ * @author Yuhui Pang
+ *
+ * The enum class of music tag, which stored in music_tag.csv
+ */
 public enum MusicTag {
     alternative(1),blues(2),country(3),dance(4),electronica(5),
     hiphop(6),pop(7),rap(8),rock(9),RB(10);
@@ -19,6 +25,7 @@ public enum MusicTag {
         return null;
     }
 
+    @NonNull
     @Override
     public String toString() {
         switch (id){
@@ -43,7 +50,7 @@ public enum MusicTag {
             case 10:
                 return "R&B";
             default:
-                return null;
+                return "";
         }
     }
 }

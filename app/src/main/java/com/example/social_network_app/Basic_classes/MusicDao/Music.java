@@ -1,8 +1,15 @@
 package com.example.social_network_app.Basic_classes.MusicDao;
 
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
+/**
+ * @author Yuhui Pang
+ *
+ * Music class has two different type of compareto method,which is depended on sortOrder and sortBy
+ */
 public class Music implements Serializable,Comparable<Music> {
     private int id;
     private String name;
@@ -95,6 +102,7 @@ public class Music implements Serializable,Comparable<Music> {
         this.tag = tag;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Music{" +

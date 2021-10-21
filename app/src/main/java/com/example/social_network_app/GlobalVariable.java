@@ -15,14 +15,19 @@ import com.example.social_network_app.DataStructure.RBTree;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Yuhui Pang
+ *
+ * Global variables are used and updated in each activity
+ */
 public class GlobalVariable extends Application {
     private List<Post> postList = new ArrayList<>();
     private List<User> userList = new ArrayList<>();
     private List<Music> musicList = new ArrayList<>();
-    private RBTree<Double> MusicRateTree = new RBTree<>();
-    private RBTree<String> MusicDateTree = new RBTree<>();
-    private RBTree<Integer> PostLikeCountTree = new RBTree<>();
-    private RBTree<String> PostDateTree = new RBTree<>();
+    private RBTree<Double> MusicRateTree = new RBTree<>();  //The tree stored music rate and music
+    private RBTree<String> MusicDateTree = new RBTree<>();  //The tree stored music date and music
+    private RBTree<Integer> PostLikeCountTree = new RBTree<>();  //The tree stored post like count and music
+    private RBTree<String> PostDateTree = new RBTree<>();  //The tree stored post date and music
     private CurrentUser user;
     private int totalPostCount;
 
@@ -33,8 +38,12 @@ public class GlobalVariable extends Application {
         userList = getUserListFromFile();
         musicList = getMusicListFromFile();
         totalPostCount = postList.size();
+        initTree();
     }
 
+    /**
+     * Update tree structure global variables
+     */
     private void initTree(){
         for(Post post: postList){
             PostLikeCountTree.insert(new Node<>(post.getLikeCount(),post));
@@ -45,6 +54,10 @@ public class GlobalVariable extends Application {
             MusicDateTree.insert(new Node<>(music.getReleaseDate(),music));
         }
     }
+
+    /**
+     * The getter and setter function of these global variables
+     */
 
     public RBTree<Double> getMusicRateTree() {
         return MusicRateTree;
@@ -118,14 +131,26 @@ public class GlobalVariable extends Application {
         return musicList;
     }
 
+    /**
+     * Read data from a file
+     * @return the list of post data stored in file
+     */
     private List<Post> getPostListFromFile(){
         PostDao postDao = new PostDao();
         return postDao.findAllPosts(this);
     }
+    /**
+     * Read data from a file
+     * @return the list of user data stored in file
+     */
     private List<User> getUserListFromFile(){
         UserDao userDao = new UserDao();
         return userDao.findAllUsers(this);
     }
+    /**
+     * Read data from a file
+     * @return the list of music data stored in file
+     */
     private List<Music> getMusicListFromFile(){
         MusicDao musicDao = new MusicDao();
         return musicDao.findAllMusics(this);

@@ -1,5 +1,8 @@
 package com.example.social_network_app.Tokenizer_Parser;
 
+/**
+ * @author Yuhui Pang
+ */
 public abstract class Tokenizer  {
 
     /**

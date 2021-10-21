@@ -1,7 +1,4 @@
 package com.example.social_network_app.Tokenizer_Parser.Post;
-
-
-
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.GlobalVariable;
 
@@ -9,6 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * @author Yuhui Pang
+ *
+ * The parser of post
+ */
 public class PostParser {
     /**
      * The following exception should be thrown if the parse is faced with series of tokens that do not
@@ -122,6 +124,11 @@ public class PostParser {
         return validList;
     }
 
+    /**
+     * To check if the post match the token list
+     * @param post the post need to check if matched
+     * @return return true if matched, return false if not
+     */
     public boolean isMatched(Post post){
         List<Boolean> condition = new ArrayList<>();
 
