@@ -62,8 +62,9 @@
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
         android:ems="10"
-        android:hint="Search..."
+        android:hint="Search... e.g. #TAG;@ARTIST;*>4.5;NAME"
         android:inputType="text"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/ib_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_userhead" />

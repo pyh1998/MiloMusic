@@ -58,8 +58,9 @@
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:ems="10"
-        android:hint="Search..."
+        android:hint="Search... e.g. #TAG;@ARTIST;*>4.5;NAME"
         android:inputType="text"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/ib_search"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +84,7 @@
         android:id="@+id/rv_musiclist"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/search"
@@ -97,5 +98,61 @@
         android:text="Your location:"
         app:layout_constraintStart_toStartOf="@+id/tv_welcome"
         app:layout_constraintTop_toBottomOf="@+id/tv_welcome" />
+    <RadioGroup
+        android:id="@+id/sort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:checkedButton="@id/radioButton3"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/textView7">
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rate" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date" />
+    </RadioGroup>
+
+    <ImageButton
+        android:id="@+id/sortOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:rotation="180"
+        android:rotationY="180"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/rv_musiclist"
+        app:layout_constraintStart_toStartOf="@+id/ib_search"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+    <ImageButton
+        android:id="@+id/sortOrder2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/sortOrder"
+        app:layout_constraintTop_toTopOf="@+id/sortOrder"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort by:"
+        app:layout_constraintBottom_toTopOf="@+id/rv_musiclist"
+        app:layout_constraintStart_toStartOf="@+id/search"
+        app:layout_constraintTop_toBottomOf="@+id/search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
