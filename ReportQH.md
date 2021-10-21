@@ -177,7 +177,7 @@ Convenor.
 - *User avatar does not show in the activity_main.* 
 
 2. *Bug 2:*
-- *the login detail of a user would lost when quit from the app.   
+- *if an user sign up in the register page, the login detail of a user would lost when quit from the app.   
 3. ...
 
 *List all the known errors and bugs here. If we find bugs/errors that your team do not know of, it shows that your testing is not through.*
@@ -221,11 +221,11 @@ Convenor.
       status: completed
       implemented feature: DAO patter and singleton pattern.
    
-5. *data file with at least 1,000 valid data instances.(basic)*
+5. *data file with at least 1,000 valid data instances. (basic)*
       status: completed
       implemented feature: data file with 1500 data instances.
    
-6. *Load and view posts and  retrieve data from a local file.(basic)*
+6. *Load and view posts and  retrieve data from a local file. (basic)*
       status: completed
       implemented feature: load and view post.
 
@@ -235,7 +235,7 @@ Convenor.
       status: completed
       implemented feature: make use of json file and csv file.
    
-2. *UI can support for different scree size and have portrait and landscape layout variants . (Easy)*
+2. *UI can support for different scree size and have portrait and landscape layout variants. (Easy)*
       status: completed
       implemented feature: UI including Login, register, main interface can switch between portrait and landscape layout in different scree size.
    
@@ -243,11 +243,11 @@ Convenor.
       status: completed
       implemented feature: Different users have different avatars
    
-4. *Use Gps Information . (Easy)*    
+4. *Use Gps Information. (Easy)*    
       status: completed
       implemented feature: GPS information is on the right side of the user's profile picture.
    
-5. *The ability to micro-interact with 'posts' . (Easy)*    
+5. *The ability to micro-interact with 'posts'. (Easy)*    
       status: completed
       implemented feature: user can like a post.
 
