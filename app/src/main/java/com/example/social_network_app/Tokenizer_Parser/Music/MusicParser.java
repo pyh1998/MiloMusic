@@ -192,11 +192,4 @@ public class MusicParser {
         return total;
     };
 
-    public static void main(String[] args) {
-        String s = "";
-        MusicParser parser = new MusicParser(s);
-        System.out.println(parser.isValid());
-        System.out.println(parser.getTokenList().toString());
-    }
-
 }

@@ -168,8 +168,8 @@ public class RBTree<T extends Comparable<T>> {
             String leftStr = preOrder(tree.left);
             String rightStr = preOrder(tree.right);
             return tree
-                    + (leftStr.isEmpty() ? leftStr : "\n" + leftStr)
-                    + (rightStr.isEmpty() ? rightStr : "\n" + rightStr);
+                    + (leftStr.isEmpty() ? leftStr :  leftStr)
+                    + (rightStr.isEmpty() ? rightStr : rightStr);
         }
         return "";
     }
@@ -179,14 +179,4 @@ public class RBTree<T extends Comparable<T>> {
     }
 
 
-//    public List<Object> getListPreOrder(Node<T> tree){
-//        if (tree != null && tree.value != null) {
-//            List<Object> leftStr = getListPreOrder(tree.left);
-//            List<Object> rightStr = getListPreOrder(tree.right);
-//            return tree
-//                    + (leftStr.isEmpty() ? leftStr : "\n" + leftStr)
-//                    + (rightStr.isEmpty() ? rightStr : "\n" + rightStr);
-//        }
-//        return null;
-//    }
 }

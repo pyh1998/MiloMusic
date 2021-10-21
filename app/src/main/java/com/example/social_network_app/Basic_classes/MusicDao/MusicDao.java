@@ -4,9 +4,6 @@ package com.example.social_network_app.Basic_classes.MusicDao;
 import android.content.Context;
 import android.content.res.AssetManager;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.social_network_app.MainActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -19,7 +16,7 @@ public class MusicDao implements MusicDaoInterface  {
 
     @Override
     public List<Music> findAllMusics(Context context) {
-        String myjson = getJson(context,"music_list.json");
+        String myjson = getJson(context, "music.json");
         Gson gson = new Gson();
         return  gson.fromJson(myjson, new TypeToken<List<Music>>(){}.getType());
     }

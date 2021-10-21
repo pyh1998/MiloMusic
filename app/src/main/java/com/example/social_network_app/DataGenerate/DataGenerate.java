@@ -1,12 +1,10 @@
 package com.example.social_network_app.DataGenerate;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.res.AssetManager;
 
-import com.example.social_network_app.Basic_classes.MusicDao.Music;
+
+
 import com.example.social_network_app.Basic_classes.UserDao.User;
-import com.example.social_network_app.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -18,11 +16,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.Type;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -31,7 +26,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -46,10 +40,9 @@ public class DataGenerate {
 
     public final static String postListPath = "app/src/main/assets/post.xml";
     public final static String reviewPath = "app/src/main/assets/userReviews.csv";
-    public final static String musicPath = "app/src/main/assets/music_list.json";
     public final static String userPath = "app/src/main/assets/user.json";
 
-    public static void createData(int num) throws ParserConfigurationException, TransformerException {
+    private static void createData(int num) throws ParserConfigurationException, TransformerException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = factory.newDocumentBuilder();
         Document document = db.newDocument();
@@ -107,28 +100,6 @@ public class DataGenerate {
         DOMSource source = new DOMSource(document); //Acts as a holder for a transformation Source tree in the form of a Document Object Model (DOM) tree.
         StreamResult result = new StreamResult(new File(postListPath));//Acts as a holder for a transformation result, which may be XML,..
         transformer.transform(source, result); //Transform the XML Source to a Result.
-
-
-    }
-
-    public static String getMusicNameById(int id){
-        List<Music> musicList = new ArrayList<>();
-        Gson gson = new Gson();
-        JsonReader jsonReader = null;
-
-        final Type CUS_LIST_TYPE = new TypeToken<List<Music>>() {}.getType();
-
-        try{
-            jsonReader = new JsonReader(new FileReader(musicPath));
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        musicList = gson.fromJson(jsonReader, CUS_LIST_TYPE);
-        for(Music music : musicList){
-            if(music.getId()==id) return music.getName();
-        }
-        return null;
     }
 
     public static String getUserNameById(int id){

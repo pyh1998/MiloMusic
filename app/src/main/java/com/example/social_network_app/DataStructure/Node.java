@@ -14,10 +14,6 @@ public class Node<T> {
     Node<T> left, right; 	// Children nodes
     LinkedList<Object> objects;
 
-    public Colour getColour() {
-        return colour;
-    }
-
     public T getValue() {
         return value;
     }
@@ -59,16 +55,16 @@ public class Node<T> {
 
     @Override
     public String toString() {
-        StringBuilder res = new StringBuilder("value: " + this.value + "; ");
-        LinkedList<Object> gameIDList = getObjects();
-        for (int i = 0; i < gameIDList.size(); i++) {
-            if (i == gameIDList.size() - 1) {
-                res.append(gameIDList.get(i).toString());
-            } else {
-                res.append(gameIDList.get(i).toString()).append(", ");
-            }
-
-        }
+        StringBuilder res = new StringBuilder("value:" + this.value );
+//        LinkedList<Object> gameIDList = getObjects();
+//        for (int i = 0; i < gameIDList.size(); i++) {
+//            if (i == gameIDList.size() - 1) {
+//                res.append(gameIDList.get(i).toString());
+//            } else {
+//                res.append(gameIDList.get(i).toString()).append(", ");
+//            }
+//
+//        }
         return res.toString();
     }
 }

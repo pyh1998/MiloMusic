@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicToken;
+import com.example.social_network_app.Tokenizer_Parser.Post.PostParser;
+import com.example.social_network_app.Tokenizer_Parser.Post.PostToken;
 
 import org.junit.Test;
 
@@ -63,6 +65,34 @@ public class parserTest {
         list.add(new MusicToken("@Mike"));
         list.add(new MusicToken("*>4.3"));
         list.add(new MusicToken("asd"));
+        assertEquals(parser.getTokenList(),list);
+    }
+
+    @Test
+    public void tokenListTest6(){
+        String s = "@abc";
+        PostParser parser = new PostParser(s);
+        List<PostToken> list = new ArrayList<>();
+        list.add(new PostToken("@abc"));
+        assertEquals(parser.getTokenList(),list);
+    }
+
+    @Test
+    public void tokenListTest7(){
+        String s = "@abc;*<=500";
+        PostParser parser = new PostParser(s);
+        List<PostToken> list = new ArrayList<>();
+        list.add(new PostToken("@abc"));
+        list.add(new PostToken("*<=500"));
+        assertEquals(parser.getTokenList(),list);
+    }
+
+    @Test
+    public void tokenListTest8(){
+        String s = "ax";
+        PostParser parser = new PostParser(s);
+        List<PostToken> list = new ArrayList<>();
+        list.add(new PostToken("ax"));
         assertEquals(parser.getTokenList(),list);
     }
 

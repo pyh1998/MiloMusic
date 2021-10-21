@@ -27,6 +27,7 @@ import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
+import com.example.social_network_app.DataStructure.RBTree;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicToken;
 import com.example.social_network_app.Tokenizer_Parser.Post.PostParser;
@@ -55,6 +56,8 @@ public class CommentsActivity extends AppCompatActivity {
     List<Post> searchResultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     List<User> userList = new ArrayList<>();
+    private RBTree<Integer> PostLikeCountTree = new RBTree<>();
+    private RBTree<String> PostDateTree = new RBTree<>();
     public static final int COMPLETED = 0;
     GlobalVariable global;
 
@@ -105,6 +108,8 @@ public class CommentsActivity extends AppCompatActivity {
 
         postList = global.getPostList();
         userList = global.getUserList();
+        PostLikeCountTree = global.getPostLikeCountTree();
+        PostDateTree = global.getPostDateTree();
         currentUser = global.getUser();
 
         initView();

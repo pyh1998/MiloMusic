@@ -30,7 +30,7 @@ public class Music implements Serializable,Comparable<Music> {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(double rate) {
         this.rate = rate;
     }
 
@@ -111,6 +111,14 @@ public class Music implements Serializable,Comparable<Music> {
 
     public boolean equals(Music music){
         return this.id == music.id;
+    }
+
+    public int getSortOrder() {
+        return sortOrder;
+    }
+
+    public int getSortBy() {
+        return sortBy;
     }
 
     public void setSortOrder(int sortBy, int sortOrder){

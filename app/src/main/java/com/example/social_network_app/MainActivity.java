@@ -23,7 +23,6 @@ import android.widget.Toast;
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
-import com.example.social_network_app.DataStructure.Node;
 import com.example.social_network_app.DataStructure.RBTree;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicParser;
 import com.example.social_network_app.Tokenizer_Parser.Music.MusicToken;
@@ -48,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     List<Music> resultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     CurrentUser currentUser;
+    private RBTree<Double> MusicRateTree = new RBTree<>();
+    private RBTree<String> MusicDateTree = new RBTree<>();
 
     GlobalVariable global;
 
@@ -77,11 +78,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         global = (GlobalVariable) getApplication();
-//        Intent intent = getIntent();
-//        Bundle bundle = intent.getExtras();
-//        currentUser = (User) getIntent().getSerializableExtra("CurrentUser");
-
-
+        MusicList = global.getMusicList();
+        MusicRateTree = global.getMusicRateTree();
+        MusicDateTree = global.getMusicDateTree();
+        currentUser = global.getUser();
+        resultList = MusicList;
+        sortList();
+        showMusic(resultList);
+        showUser();
         initView();
 
         /*Scott positioning*/
@@ -125,15 +129,6 @@ public class MainActivity extends AppCompatActivity {
                 sortList();
             }
         });
-
-
-
-        MusicList = global.getMusicList();
-        currentUser = global.getUser();
-        resultList = MusicList;
-        sortList();
-        showMusic(resultList);
-        showUser();
 
         resultView.setOnItemClickListener(CommentViewListener);
         searchButton.setOnClickListener(searchResultListener);

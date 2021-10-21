@@ -1,34 +1,19 @@
 package com.example.social_network_app.Basic_classes.PostDao;
 
 import android.content.Context;
-import android.content.res.AssetManager;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.social_network_app.Basic_classes.MusicDao.Music;
-import com.example.social_network_app.MainActivity;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class PostDao implements PostInterface{
+public class PostDao implements PostDaoInterface {
 
 //    @Override
 //    public List<Post> findAllPosts(Context context) {
