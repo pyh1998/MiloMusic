@@ -304,6 +304,8 @@ public class MainActivity extends AppCompatActivity {
         initView();
     }
     /**
+     * code in this funciton are based on the code from github
+     * url:https://github.com/dfqin/PermissionGrantor
      * Request permission
      */
     private void requestPermissions() {

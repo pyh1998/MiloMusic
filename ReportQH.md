@@ -205,46 +205,59 @@ Convenor.
 *Basic App*
 
 1. *Login and Sign up. User can be able to login an sign up. (basic)*
-   implemented feature: Login and sign up.
+      status: completed
+      implemented feature: Login and sign up.
    
 2. *One fully implemented data structure taught in this course  (basic)*
-   implemented feature: RBtree.
+      status: completed
+      implemented feature: RBtree.
    
    
 3. *Search functionality that makes use of tokenizer and parser. (basic)*
-   implemented feature: use of tokenizer and parser
+      status: completed
+      implemented feature: Use of tokenizer and parser
 
 4. *two design pattern. (basic)*
-   implemented feature: DAO patter and single pattern.
+      status: completed
+      implemented feature: DAO patter and singleton pattern.
    
 5. *data file with at least 1,000 valid data instances.(basic)*
-   implemented feature: data file with 1500 data instances.
+      status: completed
+      implemented feature: data file with 1500 data instances.
    
 6. *Load and view posts and  retrieve data from a local file.(basic)*
-   implemented feature: load and view post.
+      status: completed
+      implemented feature: load and view post.
 
 *Advanced future*
 
 1. *Read data instances from multiple local file in different formats . (Easy)*
-   implemented feature: make user of json file and csv file.
+      status: completed
+      implemented feature: make use of json file and csv file.
    
 2. *UI can support for different scree size and have portrait and landscape layout variants . (Easy)*
-   implemented feature: UI including Login, register, main interface can switch between portait and landscape layout in different scree size.
+      status: completed
+      implemented feature: UI including Login, register, main interface can switch between portrait and landscape layout in different scree size.
    
 3. *User profile activity containing a media file. (Easy)*    
-   implemented feature: Different users have different avatars
+      status: completed
+      implemented feature: Different users have different avatars
    
 4. *Use Gps Information . (Easy)*    
-   implemented feature: GPS information is on the right side of the user's profile picture.
+      status: completed
+      implemented feature: GPS information is on the right side of the user's profile picture.
    
 5. *The ability to micro-interact with 'posts' . (Easy)*    
-   implemented feature: user can like a post.
+      status: completed
+      implemented feature: user can like a post.
 
 6. *User statistics. (Medium)*    
-   implemented feature: total like, total posts and total followers of users can be seen.
+      status: completed
+      implemented feature: total like, total posts and total followers of users can be seen.
    
 7. *Improved search. (Medium)*    
-   implemented feature: search function can handle partially valid input and invalid input.
+      status: completed
+      implemented feature: search function can handle partially valid input and invalid input.
 
 
 
