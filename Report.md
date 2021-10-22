@@ -104,14 +104,14 @@ Dennis wants to see her own user report and views it in a landscape screen
      * *It is more efficient than Arraylist for insertion and deletion with a time complexity O(1)*
 3. ArrayList
    * Objective: It is used for storing music and user for viewing feature.
-   * Locations: line29-30 in *GlobalVariable.java*, line 50 in *MainActivity.java*, line40 in *UserActivity.java*.
+   * Locations: line 29-30 in *GlobalVariable.java*, line 50 in *MainActivity.java*, line40 in *UserActivity.java*.
 
    * Reasons:
      * *It is more efficient than Arraylist for direct access with a time complexity O(1)*
      * *We don't need to access insertion and deletion for this feature.*
 4. TreeMap
    * Objective: It is used for storing monthly data for reporting feature.
-   * Locations: line48-49 in *BarActivity.java*.
+   * Locations: line 48-49 in *BarActivity.java*.
 
    * Reasons:
      * *The month is key, and the corresponding data is value. The data of each month can be obtained through key* 
@@ -248,7 +248,7 @@ The total Test coverage graph screenshot：
 
 ## Implemented Features
 
-*Basic App*
+Basic App
 
 | No   | Requirements                                                | Status    | Implemented feature                        | Difficulty |
 | ---- | ----------------------------------------------------------- | --------- | ------------------------------------------ | ---------- |
@@ -259,7 +259,7 @@ The total Test coverage graph screenshot：
 | 5    | Data file with at least 1,000 valid data instances          | Completed | Data file with 1,500 random data instances | Basic      |
 | 6    | Load and view posts and  retrieve data from a local file    | Completed | Load and view post                         | Basic      |
 
-*Advanced features*
+Advanced features
 
 | No   | Requirements                                                 | Status              | Implemented feature                                          | Difficulty |
 | ---- | ------------------------------------------------------------ | ------------------- | ------------------------------------------------------------ | ---------- |
@@ -272,13 +272,13 @@ The total Test coverage graph screenshot：
 | 7    | Search functionality can handle partially valid and invalid search queries | Completed           | The parser can identify valid and invalid search queries and return a valid search query | Medium     |
 | 8    | Provide users with the ability to message each other directly | Partially completed | It is possible to send one-to-many messages, not peer-to-peer message | Hard       |
 
-*Surprise*
+Surprise
 
 | No   | Requirements                                                | Status    | Implemented feature                                          | Difficulty |
 | ---- | ----------------------------------------------------------- | --------- | ------------------------------------------------------------ | ---------- |
-| 1    | Sort items returned for a given search                      | Completed | User can sort songs by rate or date by ascending and descending | *Surprise* |
-| 2    | Removing/hiding hate speech in posts                        | Completed | *Hate speech in posts will be removed*                       | *Surprise* |
-| 3    | Search functionality that makes use of tokenizer and parser | Completed | User can view which comments they post for different songs. When click the user in the timeline, we can see that person comments for different songs | *Surprise* |
+| 1    | Sort items returned for a given search                      | Completed | User can sort songs by rate or date by ascending and descending | Surprise |
+| 2    | Removing/hiding hate speech in posts                        | Completed | Hate speech in posts will be removed                       | Surprise |
+| 3    | Search functionality that makes use of tokenizer and parser | Completed | User can view which comments they post for different songs. When click the user in the timeline, we can see that person comments for different songs | Surprise |
 
 ## Team Meetings
 
