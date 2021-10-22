@@ -13,7 +13,7 @@ code:
   - comment: the code in my "CircleImageView"Java File is based on some code from github
       url: https://github.com/hdodenhof/CircleImageView
       licence: http://www.apache.org/licenses/LICENSE-2.0
-  - comment:the code in SQLiteHelper are based on some code from TencentCloud
+  - comment: the code in SQLiteHelper are based on some code from TencentCloud
       url: https://cloud.tencent.com/developer/article/1394216
   - comment: the  code in my requestPermission function in MainActivity.java file is based on some code from github
       url: https://github.com/dfqin/PermissionGrantor
@@ -30,16 +30,22 @@ code:
       url: https://blog.csdn.net/xiayiye5/article/details/88695284
   - comment: the code and files in Amap_Location_V5.2.0_20200915.jar makes use of a third party SDK.
       url: https://www.dssz.com/3381352.html
+  - comment: the code in startLocation function is based on some code from tabnine
+      url: https://www.tabnine.com/web/assistant/code/rs/5c7c8b94ac38dc0001e34b26#L263
+      licence: apache-2.0"
+  - comment: the code in destroyLocation function is based on some code from github
+      url: https://github.com/whoplayitcool/MyApplication6/blob/master/app/src/main/java/cn/bxw1/bxapp/amap/Location_Activity.java
+      licence: The MIT License (MIT) Copyright (c) 2017, dfqin
+  - comment: the code in stopLocation function is based on some code from github
+      url: https://github.com/whoplayitcool/MyApplication6/blob/master/app/src/main/java/cn/bxw1/bxapp/amap/Location_Activity.java
+      licence: The MIT License (MIT) Copyright (c) 2017, dfqin
 
 
 
 # add as many "url+licence+comment" entries as necessary
 # (or remove it altogether if you haven't used any external assets)
 assets:
-  # NOTE: "Bliss" is just here as an example, you should remove it
-  - comment: "_Bliss_ by Charles O'Rear"
-    url: https://en.wikipedia.org/wiki/Bliss_(image)
-    licence: fair use
+
   - comment: "Brain Wilson.jpg"
       url: https://zh.wikipedia.org/wiki/File:Brian_Wilson_Jan_2007.jpg(image)
       licence: fair use
@@ -49,7 +55,7 @@ assets:
   - comment: "wadadaleosmith.jpg"
     url:  https://downbeat.com/news/detail/wadada-leo-smith-rosa-parks(image)
     licence: fair use
-  - comment: "Music.jpg"
+  - comment: "music.jpg"
     url: http://www.uuwtq.com/uujodwr/
     licence: fair use
   -comment: music information in the data files
