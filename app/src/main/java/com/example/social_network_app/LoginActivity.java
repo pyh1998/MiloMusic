@@ -1,6 +1,7 @@
 package com.example.social_network_app;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -38,6 +39,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+
+        SQLiteHelper helper = new SQLiteHelper(this);
+        ContentValues values = new ContentValues();
+        values.put("email", "1");
+        values.put("password", "1");
+        helper.UserInfo_insert(values);
 
         initView();
         GlobalVariable global = (GlobalVariable) getApplication();
