@@ -1,18 +1,4 @@
-# [Team Name] Report
-
-The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
-
-*Here are some tips to write a good report:*
-
-* *Try to summarise and list the `bullet points` of your project as much as possible rather than give long, tedious paragraphs that mix up everything together.*
-
-* *Try to create `diagrams` instead of text descriptions, which are more straightforward and explanatory.*
-
-* *Try to make your report `well structured`, which is easier for the reviewers to capture the necessary information.*
-
-*We give instructions enclosed in square brackets [...] and examples for each sections to demonstrate what are expected for your project report.*
-
-*Please remove the instructions or examples in `italic` in your final report.*
+# [Group15 Barbecue Sauce] Report
 
 ## Table of Contents
 
@@ -30,46 +16,24 @@ The following is a report template to help your team successfully provide all th
 
 | UID | Name | Role |
 | :--- | :----: | ---: |
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
+| u7211790 | Yuhui Pang | Team leader, Developer |
+| u7167784 | Man Jin | GUI designer, Developer |
+| u7238342 | Hang Su | Data architect, Developer |
+| U6819217 | Qihong Zeng | Developer, Tester, GUI designer |
 
 ## Conflict Resolution Protocol
 
 ### Conflict with a Team member
-Any conflict that arises with members of the project team will require the individual involved in
-the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a
-meeting with the aggrieved parties accompanied by a detailed description of each individual's
-comments and concerns. If the conflict in question involves the Project Manager then a Team
-Member who is not involved in the conflict will fill the role of Project Manager for the purposes of
-resolving this specific conflict. The meeting will begin with each person, in no particular order,
-individually explaining their concerns and discussing them openly. Notes will be taken
-throughout this process including key comments and desired outcomes. The purpose of this
-meeting is for all parties to come to a mutual understanding and reach a resolution to the
-aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and
-require mediation as described in the Mediation part.
+
+Any conflict that arises with members of the project team will require the individual involved in the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a meeting with the aggrieved parties accompanied by a detailed description of each individual's comments and concerns. If the conflict in question involves the Project Manager then a Team Member who is not involved in the conflict will fill the role of Project Manager for the purposes of resolving this specific conflict. The meeting will begin with each person, in no particular order, individually explaining their concerns and discussing them openly. Notes will be taken throughout this process including key comments and desired outcomes. The purpose of this meeting is for all parties to come to a mutual understanding and reach a resolution to the aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and require mediation as described in the Mediation part.
 
 ### Conflict with the Convenor
-Any conflict that arises with the Convenor will require the individual, or individuals, involved in
-the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a
-meeting with the aggrieved parties accompanied by a detailed description of each individual's
-comments and concerns. If the conflict in question involves the Project Manager then a Team
-Member who is not involved in the conflict will fill the role of Project Manager for the purposes of
-resolving this specific conflict. The meeting will begin with each person, in no particular order,
-individually explaining their concerns and discussing them openly. Notes will be taken
-throughout this process including key comments and desired outcomes. The purpose of this
-meeting is for all parties to come to a mutual understanding and reach a resolution to the
-aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and
-require mediation as described in the Mediation part.
+
+Any conflict that arises with the Convenor will require the individual, or individuals, involved in the conflict to contact the Project Manager. The Project Manager will arrange and facilitate a meeting with the aggrieved parties accompanied by a detailed description of each individual's comments and concerns. If the conflict in question involves the Project Manager then a Team Member who is not involved in the conflict will fill the role of Project Manager for the purposes of resolving this specific conflict. The meeting will begin with each person, in no particular order, individually explaining their concerns and discussing them openly. Notes will be taken throughout this process including key comments and desired outcomes. The purpose of this meeting is for all parties to come to a mutual understanding and reach a resolution to the aforementioned conflict. If a solution cannot be agreed upon, the conflict will be escalated and require mediation as described in the Mediation part.
 
 ### Mediation
-In the unlikely event that an event of conflict can not be resolved it will require mediation from a
-third party. This can be at the request of the aggrieved parties if they believe they can not
-resolve the conflict through the usual means. It is the responsibility of the Project Manager to
-organise an appropriate person to undertake mediation. If there is a conflict of interest with the
-Project Manager, the next appropriate individual will be the Assessor followed by the Course
-Convenor.
+
+In the unlikely event that an event of conflict can not be resolved it will require mediation from a third party. This can be at the request of the aggrieved parties if they believe they can not resolve the conflict through the usual means. It is the responsibility of the Project Manager to organise an appropriate person to undertake mediation. If there is a conflict of interest with the Project Manager, the next appropriate individual will be the Assessor followed by the Course Convenor.
 
 ## Application Description
 
@@ -80,14 +44,14 @@ MiloMusic is a music social media application specifically targeting all people 
 - The user part is open for every users, user can view their comments and a report for their activities.
 
 <center class="third">
-<img src="./images/Login.png">
+<img src="./images/Login.png" style="zoom:98%;">
 <img src="./images/Music.png">
-<img src="./images/Comments.gif">
+<img src="./images/Comments.gif"style="zoom:51.5%;">
 </center>
 
 <center class="half">
-<img src="./images/User.png">
-<img src="./images/Report.png">
+<img src="./images/User.png"style="zoom:80%;">
+<img src="./images/Report.png"style="zoom:80%;">
 </center>
 
 **Application Use Cases and or Examples**
@@ -126,14 +90,32 @@ Dennis wants to see her own user report and views it in a landscape screen
 
 1. RBtree
     * Objective: It is used for storing MusicRate, MusicDate, PostLikeCountand PostDate for searching feature.
-
-    * Locations: line 22-25 in GlobalVariable.java
-
+    * Locations: line 32-35 in *GlobalVariable.java*
     * Reasons:
-* It is more efficient than Arraylist for insertion with a time complexity O(1).
-        * We don't need to access the item by index for this feature.
-* We can use this data structure to sort and search quickly.
-    
+        * *It is more efficient than Arraylist for insertion with a time complexity O(1).*
+        * *We don't need to access the item by index for this feature.*
+        * *We can use this data structure to sort and search quickly.*
+2. LinkedList
+   * Objective: It is used for storing post for posting feature.
+   * Locations: line28 in *GlobalVariable.java*, line 52-56 in *CommentActivity.java*, line 37 in *UserActivity.java*.
+
+   * Reasons:
+     * *It is more efficient than Arraylist for insertion and deletion with a time complexity O(1)*
+3. ArrayList
+   * Objective: It is used for storing music and user for viewing feature.
+   * Locations: line29-30 in *GlobalVariable.java*, line 50 in *MainActivity.java*, line40 in *UserActivity.java*.
+
+   * Reasons:
+     * *It is more efficient than Arraylist for direct access with a time complexity O(1)*
+     * *We don't need to access insertion and deletion for this feature.*
+4. TreeMap
+   * Objective: It is used for storing monthly data for reporting feature.
+   * Locations: line48-49 in *BarActivity.java*.
+
+   * Reasons:
+     * *The month is key, and the corresponding data is value. The data of each month can be obtained through key* 
+     
+     * *All elements in TreeMap have a fixed order*
 
 **Design Patterns**
 
@@ -230,15 +212,12 @@ The advantages of the designs are users can easily to search and to get what the
 
 1. Data Generate
 
-   Randomly generate a specified number of posts and save them as a xml file.
+   - Randomly generate a specified number of posts and save them as a xml file.
 
 ## Summary of Known Errors and Bugs
 
 1. Bug 1:
-- *User can like the same comments in the different pages.* 
-
-2. Bug 2:
-- *When the location is displayed, switching the horizontal screen will not display the location.*
+    - *Frequent and rapid rotation of the screen and clicking will flash back during real moblie phone simulation*
 
 ## Testing Summary
 
@@ -254,78 +233,64 @@ The advantages of the designs are users can easily to search and to get what the
 
 *Please provide some screenshots of your testing summary, showing the achieved testing coverage. Feel free to provide further details on your tests.*
 
+*Basic Class*
+
+- *Number of test cases: 8*
+
+- *Code coverage: 76%*
+
+*Data Structure*
+
+- *Number of test cases: 10*
+
+- *Code coverage: 95%*
+
+*Tokenizer and Parser*
+
+- *Number of test cases: 56*
+
+- *Code coverage: 73%*
+
+
+
+The total Test coverage graph screenshot：
+
+<img src=".\images\Test.png" alt="MusicDao" style="zoom:80%;" />
+
 ## Implemented Features
 
 *Basic App*
 
-1. *Login and Sign up. User can be able to login an sign up. (Basic)*
-   status: Completed
-   implemented feature: Login and sign up.
-
-2. *One fully implemented data structure taught in this course (Basic)*
-   status: Completed
-   implemented feature: RBtree.
-
-3. *Search functionality that makes use of tokenizer and parser. (Basic)*
-   status: Completed
-   implemented feature: Use of tokenizer and parser.
-
-4. *Two design pattern. (Basic)*
-   status: Completed
-   implemented feature: DAO patter and singleton pattern.
-
-5. *Data file with at least 1,000 valid data instances. (Basic)*
-   status: Completed
-   implemented feature: Data file with 1,500 data instances.
-
-6. *Load and view posts and  retrieve data from a local file. (Basic)*
-   status: Completed
-   implemented feature: Load and view post.
+| No   | Requirements                                                | Status    | Implemented feature                        | Difficulty |
+| ---- | ----------------------------------------------------------- | --------- | ------------------------------------------ | ---------- |
+| 1    | Login and Sign up. User can be able to login an sign up     | Completed | Login and sign up                          | Basic      |
+| 2    | One fully implemented data structure taught in this course  | Completed | *RBtree*                                   | Basic      |
+| 3    | Search functionality that makes use of tokenizer and parser | Completed | Use of tokenizer and parser                | Basic      |
+| 4    | Two design pattern                                          | Completed | *DAO* patter and *singleton* pattern       | Basic      |
+| 5    | Data file with at least 1,000 valid data instances          | Completed | Data file with 1,500 random data instances | Basic      |
+| 6    | Load and view posts and  retrieve data from a local file    | Completed | Load and view post                         | Basic      |
 
 *Advanced features*
 
-1. *Read data instances from multiple local file in different formats. (Easy)*
-   status: Completed
-   implemented feature: Make use of json file and csv file.
+| No   | Requirements                                                 | Status              | Implemented feature                                          | Difficulty |
+| ---- | ------------------------------------------------------------ | ------------------- | ------------------------------------------------------------ | ---------- |
+| 1    | Read data instances from multiple local file in different formats | Completed           | Make use of *json*, *csv* and *xml* file                     | Easy       |
+| 2    | UI can support for different scree size and have portrait and landscape layout variants | Completed           | UI including Login, register, main interface can switch between portrait and landscape layout in different screen size | Easy       |
+| 3    | User profile activity containing a media file                | Completed           | Different users have different avatars                       | Easy       |
+| 4    | Use GPS Information                                          | Completed           | GPS information is on the right side of the user's profile picture | Easy       |
+| 5    | The ability to micro-interact with 'posts'.                  | Completed           | User can like a post, having a UI feedback. And user can post a new post. | Easy       |
+| 6    | User statistics. Provide users with the ability to see a report of total views, total followers, total posts, total likes, in a graphical manner | Completed           | Total like, total posts and total followers of users can be seen with bar graph in user report | Medium     |
+| 7    | Search functionality can handle partially valid and invalid search queries | Completed           | The parser can identify valid and invalid search queries and return a valid search query | Medium     |
+| 8    | Provide users with the ability to message each other directly | Partially completed | It is possible to send one-to-many messages, not peer-to-peer message | Hard       |
 
-2. *UI can support for different scree size and have portrait and landscape layout variants. (Easy)*
-   status: Completed
-   implemented feature: UI including Login, register, main interface can switch between portrait and landscape layout in different screen size.
+*Surprise*
 
-3. *User profile activity containing a media file. (Easy)*
-   status: Completed
-   implemented feature: Different users have different avatars.
+| No   | Requirements                                                | Status    | Implemented feature                                          | Difficulty |
+| ---- | ----------------------------------------------------------- | --------- | ------------------------------------------------------------ | ---------- |
+| 1    | Sort items returned for a given search                      | Completed | User can sort songs by rate or date by ascending and descending | *Surprise* |
+| 2    | Removing/hiding hate speech in posts                        | Completed | *Hate speech in posts will be removed*                       | *Surprise* |
+| 3    | Search functionality that makes use of tokenizer and parser | Completed | User can view which comments they post for different songs. When click the user in the timeline, we can see that person comments for different songs | *Surprise* |
 
-4. *Use Gps Information. (Easy)*
-   status: Completed
-   implemented feature: GPS information is on the right side of the user's profile picture.
-
-5. *The ability to micro-interact with 'posts'. (Easy)*
-   status: Completed
-   implemented feature: User can like a post.
-
-6. *User statistics. (Medium)*
-   status: Completed
-   implemented feature: Total like, total posts and total followers of users can be seen.
-
-7. *Improved search. (Medium)*
-   status: Completed
-   implemented feature: Search function can handle partially valid input and invalid input.
-   
-8. Sort items returned for a given search
-
-   status: Completed
-   implemented feature: User can sort songs by rate or date by ascending and descending.
-
-9. Removing/hiding hate speech in posts
-
-   status: Completed
-   implemented feature: Hate speech in posts will be removed.
-
-10. Allowing users to view posts that were filtered out from their timeline
-
-   status: Completed
-   implemented feature: User can view which comments they post for different songs. When click the user in the timeline, we can see that person comments for different songs.
 ## Team Meetings
 
 - *[Team Meeting 1](./meeting/meeting1.md)*

@@ -47,7 +47,7 @@ import com.amap.api.location.AMapLocationListener;
  */
 public class MainActivity extends AppCompatActivity {
     private String TAG = "MainActivity";
-    List<Music> MusicList;
+    List<Music> MusicList = new ArrayList<>();
     List<Music> resultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     CurrentUser currentUser;

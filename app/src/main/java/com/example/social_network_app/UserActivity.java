@@ -23,6 +23,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class UserActivity extends AppCompatActivity {
 
     User user;
     CurrentUser CurrentUser;
-    List<Post> postList = new ArrayList<>();
+    List<Post> postList = new LinkedList<>();
     List<Post> resultList = new ArrayList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
     List<User> userList = new ArrayList<>();
