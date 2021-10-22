@@ -197,7 +197,9 @@ The advantages of the designs are users can easily to search and to get what the
 
 **Tokenizer and Parsers**
 
-*[Where do you use tokenizers and parsers? How are they built? What are the advantages of the designs?]*
+- We use Tokenizers and Parses when searching for musics and posts.
+- The Parser can convert String information into conditional tokens based on the string entered by the user,  It then calls the isMatched method to see if it matches.  
+- The Parser encapsulates the analysis process and makes it easy to call it externally without doing tedious string processing  
 
 **Surprise Item**
 
