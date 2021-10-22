@@ -51,6 +51,7 @@ public class CommentsActivity extends AppCompatActivity {
     Music currentMusic;
     List<Post> postList = new LinkedList<>();
     List<Post> resultList = new LinkedList<>();
+    List<Post> currentResultList = new LinkedList<>();
     List<Post> currentList = new LinkedList<>();
     List<Post> searchResultList = new LinkedList<>();
     List<Map<String,Object>> resultMapList = new ArrayList<>();
@@ -90,7 +91,8 @@ public class CommentsActivity extends AppCompatActivity {
         public void handleMessage(Message msg){
             if(msg.what == COMPLETED){
                 end++;
-                currentList = resultList.subList(0,end);
+                currentResultList = resultList.subList(0,end);
+                currentList = currentResultList;
                 showComments(currentList);
                 Comments.setSelection(ListView.FOCUS_DOWN);
                 Comments.setOnItemClickListener(commentsListener);
@@ -128,7 +130,8 @@ public class CommentsActivity extends AppCompatActivity {
         //Initialization displays one-fifth of the comments
         start = resultList.size() / 5;
         end = start;
-        currentList = resultList.subList(0,start);
+        currentResultList = resultList.subList(0,start);
+        currentList = currentResultList;
         showComments(currentList);
 
         timer.schedule(new TimerTask() {
@@ -258,14 +261,14 @@ public class CommentsActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Invalid Input! IllegalTokenException!",Toast.LENGTH_LONG).show();
                 }
                 searchResultList = new ArrayList<>();
-                for(Post post : currentList){
+                for(Post post : currentResultList){
                     if(parser.isMatched(post)){
                         searchResultList.add(post);
                     }
                 }
                 Log.e("!!!!!!!!!!!!!!",searchResultList.toString());
-                //currentList = searchResultList;
-                showComments(searchResultList);
+                currentList = searchResultList;
+                showComments(currentList);
                 Toast toast = Toast.makeText(getApplicationContext(),"Search successfully! "+searchResultList.size()+" result(s)",Toast.LENGTH_LONG);
                 toast.show();
             }
