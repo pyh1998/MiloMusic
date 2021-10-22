@@ -44,15 +44,15 @@ MiloMusic is a music social media application specifically targeting all people 
 - The user part is open for every users, user can view their comments and a report for their activities.
 
 <center class="third">
-<img src="./images/Login.png" style="zoom:98%;">
+<img src="./images/Login.png">
 <img src="./images/Music.png">
-<img src="./images/Comments.gif"style="zoom:52%;">
+<img src="./images/Comments.gif">
 </center>
 
 
 <center class="half">
-<img src="./images/User.png"style="zoom:80%;">
-<img src="./images/Report.png"style="zoom:80%;">
+<img src="./images/User.png"style=>
+<img src="./images/Report.png"style=>
 </center>
 
 **Application Use Cases and or Examples**
