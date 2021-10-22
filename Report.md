@@ -132,8 +132,7 @@ Dennis wants to see her own user report and views it in a landscape screen
     - The object class is a simple POJO and contains the get & set method to store the data retrieved by using the Dao class.
 
 The UML of these three Dao design patterns are like following figures:
-
-<img src=".\images\Dao.png" alt="MusicDao" style="zoom:60%;" />
+![Dao](.\images\Dao.png)
 
 When we want to get the date, just execute the method of *findAllxxx()*.
 
@@ -144,7 +143,7 @@ When we want to get the date, just execute the method of *findAllxxx()*.
 
    The UML of this singleton design pattern is like following figure:
 
-   <img src=".\images\Singleton.png" alt="MusicDao" style="zoom:80%;" />
+![Singleton](.\images\Singleton.png)
 
 Singleton design pattern can control the number of instances, save system resources, and avoid frequent creation and destruction of a globally used class.
 
@@ -236,27 +235,26 @@ The advantages of the designs are users can easily to search and to get what the
 
 *Basic Class*
 
-- *Number of test cases: 8*
+- *Number of test cases: 19*
 
-- *Code coverage: 76%*
+- *Code coverage: 84%*
 
 *Data Structure*
 
 - *Number of test cases: 10*
 
-- *Code coverage: 95%*
+- *Code coverage: 85%*
 
 *Tokenizer and Parser*
 
 - *Number of test cases: 56*
 
-- *Code coverage: 73%*
+- *Code coverage: 74%*
 
 
 
 The total Test coverage graph screenshot：
-
-<img src=".\images\Test.png" alt="MusicDao" style="zoom:80%;" />
+![Test](.\images\Test.png)
 
 ## Implemented Features
 
