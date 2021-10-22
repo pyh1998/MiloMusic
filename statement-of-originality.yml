@@ -29,6 +29,17 @@ assets:
   - comment: "_Bliss_ by Charles O'Rear"
     url: https://en.wikipedia.org/wiki/Bliss_(image)
     licence: fair use
+  - comment: "Brain Wilson.jpg"
+      url: https://zh.wikipedia.org/wiki/File:Brian_Wilson_Jan_2007.jpg(image)
+      licence: fair use
+  - comment: "fionaapple.jpg"
+      url:  https://www.google.com.hk/imgres?imgurl=https%3A%2F%2Fcdn.vox-cdn.com%2Fthumbor%2F3B6ypl5rrDtfmWosT32NwH9Jmu4%3D%2F0x0%3A1200x800%2F1200x800%2Ffilters%3Afocal(533x231%3A725x423)%2Fcdn.vox-cdn.com%2Fuploads%2Fchorus_image%2Fimage%2F66661055%2Ffiona_apple_getty_ringer.0.jpg&imgrefurl=https%3A%2F%2Fwww.theringer.com%2Fmusic%2F2020%2F4%2F16%2F21223112%2Ffiona-apple-new-album-fetch-the-bolt-cutters-preview&tbnid=-jwCJ74ImLTfpM&vet=12ahUKEwj-kdnipanzAhUHsp4KHXXiAo8QMyhbegUIARCFAQ..i&docid=g0cGJzN_YSTWOM&w=1200&h=800&q=Fiona%20Apple&ved=2ahUKEwj-kdnipanzAhUHsp4KHXXiAo8QMyhbegUIARCFAQ(image)
+      licence: fair use
+  - comment: "wadadaleosmith.jpg"
+    url:  https://downbeat.com/news/detail/wadada-leo-smith-rosa-parks(image)
+    licence: fair use
+
+
 
 # for each member, write your name and uid here
 # remove any empty "name+uid" entries
@@ -37,7 +48,7 @@ members:
     uid: u7167784
   - name:
     uid:
-  - name:
-    uid:
+  - name: Hang Su
+    uid: u7238342
   - name:
     uid:
