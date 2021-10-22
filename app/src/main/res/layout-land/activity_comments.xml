@@ -74,6 +74,7 @@
         android:id="@+id/comment_music"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginTop="8dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,19 +90,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="72dp"
         android:text="Music name"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintRight_toLeftOf="@+id/comment_search"
         app:layout_constraintStart_toEndOf="@+id/comment_music"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/comment_music" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/artist_name"
@@ -112,18 +112,18 @@
         android:id="@+id/artist_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="12dp"
         android:text="Artist name"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/comment_music"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/music_name" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/album_name"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:srcCompat="@drawable/album" />
@@ -133,15 +133,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Album name"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/album_releasedate"
         app:layout_constraintStart_toStartOf="@+id/artist_name"
         app:layout_constraintTop_toBottomOf="@+id/artist_name" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/comment_music"
         app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:srcCompat="@drawable/calendar" />
@@ -151,7 +151,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Release date"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/comment_music"
         app:layout_constraintStart_toStartOf="@+id/album_name" />
 
