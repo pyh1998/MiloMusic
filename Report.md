@@ -221,18 +221,6 @@ The advantages of the designs are users can easily to search and to get what the
 
 ## Testing Summary
 
-*[What features have you tested? What is your testing coverage?]*
-
-*Here is an example:*
-
-*Number of test cases: ...*
-
-*Code coverage: ...*
-
-*Types of tests created: ...*
-
-*Please provide some screenshots of your testing summary, showing the achieved testing coverage. Feel free to provide further details on your tests.*
-
 *Basic Class*
 
 - *Number of test cases: 19*
