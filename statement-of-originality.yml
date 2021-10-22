@@ -17,9 +17,27 @@ collaboration:
 # add as many "url+licence+comment" entries as necessary
 # (or remove it altogether if you haven't used any external code)
 code:
-  - comment:
-    url:
-    licence:
+  - comment: the code in my "CircleImageView"Java File is based on some code from github
+      url: https://github.com/hdodenhof/CircleImageView
+      licence: http://www.apache.org/licenses/LICENSE-2.0
+  - comment:the code in SQLiteHelper are based on some code from TencentCloud
+      url: https://cloud.tencent.com/developer/article/1394216
+  - comment: the  code in my requestPermission function in MainActivity.java file is based on some code from github
+      url: https://github.com/dfqin/PermissionGrantor
+      licence: The MIT License (MIT) Copyright (c) 2017, dfqin
+  - comment: the  code in my getDefaultOption function in MainActivity.java file is based on some code from github
+      url: https://www.tabnine.com/web/assistant/code/rs/5c7c32112ef5570001da71d7#L130
+      licence: The MIT License (MIT) Copyright (c) 2017, dfqin
+  - comment: the  code in my initLocation function in MainActivity.java file is based on some code from github
+      url: https://github.com/qwd/OpenWeatherPlus-Android
+      licence: The MIT License (MIT) Copyright (c) 2017, dfqin
+  - comment: the  code in my OnLocationChanged function in MainActivity.java file is based on some code from CSDN
+      url: https://blog.csdn.net/dr_abandon/article/details/77946585
+  - comment: the  code in my resetOption function in MainActivity.java file is based on some code from CSDN
+      url: https://blog.csdn.net/xiayiye5/article/details/88695284
+  - comment: the code and files in Amap_Location_V5.2.0_20200915.jar makes use of a third party SDK.
+      url: https://www.dssz.com/3381352.html
+
 
 
 # add as many "url+licence+comment" entries as necessary
@@ -38,6 +56,9 @@ assets:
   - comment: "wadadaleosmith.jpg"
     url:  https://downbeat.com/news/detail/wadada-leo-smith-rosa-parks(image)
     licence: fair use
+  - comment: "Music.jpg"
+    url: http://www.uuwtq.com/uujodwr/
+    licence: fair use
 
 
 
@@ -50,5 +71,5 @@ members:
     uid:
   - name: Hang Su
     uid: u7238342
-  - name:
-    uid:
+  - name: Qihong Zeng
+    uid: U6819217

@@ -34,7 +34,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             if (db != null)
                 db.close();
         }
-
+        //insert user
         public long UserInfo_insert(ContentValues values) {
             long flag = -1;
             SQLiteDatabase db = getWritableDatabase();
@@ -43,14 +43,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             return flag;
          }
 
-
+        // query user information
         public Cursor UserInfo_query() {
             SQLiteDatabase db = getReadableDatabase();
             Cursor c = db.query(UserInfoTBL_NAME, null, null, null, null, null, null);
             return c;
         }
 
-
+       //delete user information
         public long UserInfo_del(int id) {
             long flag = -1;
             if (db == null)
@@ -58,7 +58,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             flag = db.delete(UserInfoTBL_NAME, "id=?", new String[] { String.valueOf(id) });
             return flag;
         }
-
+        // update user information
         public long UserInfo_update(int id, ContentValues values) {
             long flag = -1;
             if (db == null)
