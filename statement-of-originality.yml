@@ -13,6 +13,9 @@ code:
   - comment: the code in my "CircleImageView"Java File is based on some code from github
       url: https://github.com/hdodenhof/CircleImageView
       licence: http://www.apache.org/licenses/LICENSE-2.0
+  - comment: the code in my "OutlineProvider"Java File is based on some code from github
+      url: https://github.com/hdodenhof/CircleImageView
+      licence: http://www.apache.org/licenses/LICENSE-2.0
   - comment: the code in SQLiteHelper are based on some code from TencentCloud
       url: https://cloud.tencent.com/developer/article/1394216
   - comment: the  code in my requestPermission function in MainActivity.java file is based on some code from github
