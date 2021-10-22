@@ -19,7 +19,7 @@
 | u7211790 | Yuhui Pang | Team leader, Developer |
 | u7167784 | Man Jin | GUI designer, Developer |
 | u7238342 | Hang Su | Data architect, Developer |
-| U6819217 | Qihong Zeng | Developer, Tester, GUI designer |
+| u6819217 | Qihong Zeng | Developer, Tester, GUI designer |
 
 ## Conflict Resolution Protocol
 
@@ -132,7 +132,7 @@ Dennis wants to see her own user report and views it in a landscape screen
     - The object class is a simple POJO and contains the get & set method to store the data retrieved by using the Dao class.
 
 The UML of these three Dao design patterns are like following figures:
-![Dao](.\images\Dao.png)
+![Dao](./images/Dao.png)
 
 When we want to get the date, just execute the method of *findAllxxx()*.
 
@@ -143,7 +143,7 @@ When we want to get the date, just execute the method of *findAllxxx()*.
 
    The UML of this singleton design pattern is like following figure:
 
-![Singleton](.\images\Singleton.png)
+![Singleton](./images/Singleton.png)
 
 Singleton design pattern can control the number of instances, save system resources, and avoid frequent creation and destruction of a globally used class.
 
@@ -244,7 +244,7 @@ The advantages of the designs are users can easily to search and to get what the
 
 
 The total Test coverage graph screenshot：
-![Test](.\images\Test.png)
+![Test](./images/Test.png)
 
 ## Implemented Features
 
