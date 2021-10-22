@@ -45,8 +45,9 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:ems="10"
-        android:hint="Search comments..."
+        android:hint="Search comments... e.g.@user;*>200;content"
         android:inputType="text"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/ib_search2"
         app:layout_constraintStart_toEndOf="@+id/album_releasedate"
         app:layout_constraintTop_toTopOf="parent" />

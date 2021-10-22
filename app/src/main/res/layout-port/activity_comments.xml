@@ -16,8 +16,9 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:ems="10"
-        android:hint="Search comments..."
+        android:hint="Search comments... e.g.@user;*>200;content"
         android:inputType="text"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/ib_search2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />

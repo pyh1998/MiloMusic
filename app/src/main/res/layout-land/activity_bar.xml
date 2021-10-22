@@ -6,27 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".BarActivity">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/report"
-        android:layout_width="345dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/report3"
-        tools:ignore="MissingConstraints" />
-
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/report2"
-        android:layout_width="361dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/report"
-        app:layout_constraintTop_toBottomOf="@+id/report3"
-        tools:ignore="MissingConstraints" />
-
     <com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/report3"
         android:layout_width="0dp"
@@ -36,7 +15,35 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/report_title"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" >
+
+    </com.github.mikephil.charting.charts.HorizontalBarChart>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/report3">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/report"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            tools:ignore="MissingConstraints" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/report2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/report_title"
