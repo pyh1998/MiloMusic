@@ -46,8 +46,9 @@ MiloMusic is a music social media application specifically targeting all people 
 <center class="third">
 <img src="./images/Login.png" style="zoom:98%;">
 <img src="./images/Music.png">
-<img src="./images/Comments.gif"style="zoom:51.5%;">
+<img src="./images/Comments.gif"style="zoom:52%;">
 </center>
+
 
 <center class="half">
 <img src="./images/User.png"style="zoom:80%;">
