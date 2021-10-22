@@ -81,13 +81,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initView();
         global = (GlobalVariable) getApplication();
         MusicList = global.getMusicList();
         MusicRateTree = global.getMusicRateTree();
         MusicDateTree = global.getMusicDateTree();
         currentUser = global.getUser();
         resultList = MusicList;
+        initView();
+
         sortList();
         showMusic(resultList);
         showUser();
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Initialization interface
      */
+    @SuppressLint("WrongConstant")
     private void initView() {
         resultView = findViewById(R.id.rv_musiclist);
         searchButton = findViewById(R.id.ib_search);
@@ -109,6 +111,14 @@ public class MainActivity extends AppCompatActivity {
         sortBy = findViewById(R.id.sort);
         sortOrder = findViewById(R.id.sortOrder);
         sortOrder2 = findViewById(R.id.sortOrder2);
+        if(order == 1) {
+            sortOrder.setVisibility(View.VISIBLE);
+            sortOrder2.setVisibility(View.INVISIBLE);
+        }
+        else {
+            sortOrder.setVisibility(View.INVISIBLE);
+            sortOrder2.setVisibility(View.VISIBLE);
+        }
 
         sortBy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -176,10 +186,12 @@ public class MainActivity extends AppCompatActivity {
      * Click the search button to display the query results according to the query content
      */
     private final View.OnClickListener searchResultListener = new View.OnClickListener() {
+        @SuppressLint("WrongConstant")
         @Override
         public void onClick(View view) {
             String searchText = search.getText().toString();
             if(searchText.equals("")){
+                sortList();
                 showMusic(MusicList);
             }
             else {
@@ -205,7 +217,6 @@ public class MainActivity extends AppCompatActivity {
                         resultList.add(music);
                     }
                 }
-                Log.e("!!!!!!!!!!!!!!",resultList.toString());
                 sortList();
                 showMusic(resultList);
                 Toast toast = Toast.makeText(getApplicationContext(),"Search successfully! "+resultList.size()+" result(s)",Toast.LENGTH_LONG);
@@ -311,6 +322,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG," -- onConfigurationChanged");
         setContentView(R.layout.activity_main);
         initView();
+        sortList();
+        showMusic(resultList);
+        showUser();
+
+        /*Scott positioning*/
+        requestPermissions();
     }
     /**
      * code in this funciton are based on the code from github

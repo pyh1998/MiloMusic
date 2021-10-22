@@ -266,7 +266,6 @@ public class CommentsActivity extends AppCompatActivity {
                         searchResultList.add(post);
                     }
                 }
-                Log.e("!!!!!!!!!!!!!!",searchResultList.toString());
                 currentList = searchResultList;
                 showComments(currentList);
                 Toast toast = Toast.makeText(getApplicationContext(),"Search successfully! "+searchResultList.size()+" result(s)",Toast.LENGTH_LONG);
