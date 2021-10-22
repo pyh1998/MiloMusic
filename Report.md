@@ -39,9 +39,9 @@ In the unlikely event that an event of conflict can not be resolved it will requ
 
 MiloMusic is a music social media application specifically targeting all people who love music. It provides three parts for them, which are music, comments, and user.
 
-- In the music part, a list of songs is shown in descending order of date or score. Therefore, users can get the latest and highest score song. Users also can search songs by four methods.
-- In the comments part, users can view posts on a timeline activity (update every 3 seconds). Similarly, users can search comments by three methods. In addition, user can post their comments.
-- The user part is open for every user, user can view their comments and a report for their activities.
+- In the music part, a list of songs are showed in descending order of date or score. Therefore, user can get the latest and highest score song. User also can search songs by four methods.
+- In the comments part, user can view posts on a timeline activity (update every 3 seconds). Similarly, user can search comments by three methods. In addition, user can post their comments.
+- The user part is open for every users, user can view their comments and a report for their activities.
 
 <center class="third">
 <img src="./images/Login.png">
@@ -60,7 +60,7 @@ MiloMusic is a music social media application specifically targeting all people 
 Dennis wants to get the most popular song in the playlist and see the comments
 
 1. He accesses the MiloMusic application and goes to the music page
-2. He clicks the Rate button and sees the top 1 song
+2. He clicks the Rate button and see the top 1 song
 3. He chooses the "Perfect" written by Ed Sheeran and goes to the comments page
 
 Mia wants to search the "blues" style and rate greater than "4.2" songs
@@ -68,17 +68,24 @@ Mia wants to search the "blues" style and rate greater than "4.2" songs
 1. She accesses the MiloMusic application and goes to the music page
 2. She types "#blues;*>4.2" in the search box
 
+Natasha wants to share her feelings about the song "Perfect"
+
+1. She accesses the MiloMusic application and goes to the music page
+2. She types "Perfect" in the search box and click search button
+3. She chooses the "Perfect" and goes to the comments page
+4. She types her feelings and click the post button
+
 Nancy wants to see her friends Dennis's comments that write for "End Game" and give him a like reaction
 
 1. She accesses the MiloMusic application and goes to the comments page
 2. She types "@Dennis" in the search box
 3. She clicks the like button in the first comment by Dennis.
 
-Dennis wants to see her own user report and views it on a landscape screen
+Dennis wants to see her own user report and views it in a landscape screen
 
-1. He clicks his own avatar in the music page or comment page
+1. He click his own avatar in the music page or comment page
 2. He sees a "SHOW REPORT" button and clicks it
-3.  His report shows a number of fans, number of comments per month, and number of likes received from comments posted per month
+3.  His report shows number of fans, number of comments per month and number of likes received from comments posted per month
 4. He adjusts his phone in the landscape mode
 
 ## Application UML
@@ -97,20 +104,20 @@ Dennis wants to see her own user report and views it on a landscape screen
         * *We don't need to access the item by index for this feature.*
         * *We can use this data structure to sort and search quickly.*
 2. LinkedList
-   * Objective: It is used for storing posts for posting features.
+   * Objective: It is used for storing post for posting feature.
    * Locations: line28 in *GlobalVariable.java*, line 52-56 in *CommentActivity.java*, line 37 in *UserActivity.java*.
 
    * Reasons:
      * *It is more efficient than Arraylist for insertion and deletion with a time complexity O(1)*
 3. ArrayList
-   * Objective: It is used for storing music and user for viewing features.
+   * Objective: It is used for storing music and user for viewing feature.
    * Locations: line 29-30 in *GlobalVariable.java*, line 50 in *MainActivity.java*, line40 in *UserActivity.java*.
 
    * Reasons:
      * *It is more efficient than Arraylist for direct access with a time complexity O(1)*
      * *We don't need to access insertion and deletion for this feature.*
 4. TreeMap
-   * Objective: It is used for storing monthly data for reporting features.
+   * Objective: It is used for storing monthly data for reporting feature.
    * Locations: line 48-49 in *BarActivity.java*.
 
    * Reasons:
@@ -131,17 +138,17 @@ Dennis wants to see her own user report and views it on a landscape screen
     - The Dao class implements the above interface. This class is responsible for obtaining data from the data source (JSON & XML file).
     - The object class is a simple POJO and contains the get & set method to store the data retrieved by using the Dao class.
 
-The UML of these three Dao design patterns are like the following figures:
+The UML of these three Dao design patterns are like following figures:
 ![Dao](./images/Dao.png)
 
 When we want to get the date, just execute the method of *findAllxxx()*.
 
 2. Singleton
    
-   The singleton design pattern is to ensure a class only has one instance and provide a global point of access to it.
+   The singleton design pattern is to ensure a class only has one instance, and provide a global point of access to it.
    In the project, there is only one current user at a time, and the class should create its own unique instance.  So we can use the singleton design pattern to design the CurrentUser class.
 
-   The UML of this singleton design pattern is like the following figure:
+   The UML of this singleton design pattern is like following figure:
 
 ![Singleton](./images/Singleton.png)
 
