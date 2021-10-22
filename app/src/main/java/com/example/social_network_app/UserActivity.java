@@ -114,7 +114,7 @@ public class UserActivity extends AppCompatActivity {
     /**
      * Initialization interface
      */
-    private AdapterView.OnItemClickListener resultViewListener = new AdapterView.OnItemClickListener() {
+    private final AdapterView.OnItemClickListener resultViewListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             Intent intent = new Intent(getApplicationContext(),CommentsActivity.class);
@@ -176,6 +176,17 @@ public class UserActivity extends AppCompatActivity {
             map.put("likeCount",likeCount);
             resultMapList.add(map);
         }
+        /*
+        Initialize a flag list that stores whether it is liked or not
+         */
+        List<Boolean> flags = new ArrayList<>();
+        for(Post post: list){
+            if(global.ifLike(post)){
+                flags.add(true);
+            }
+            else flags.add(false);
+        }
+
         SimpleAdapter listAdapter = new SimpleAdapter(
                 this,
                 resultMapList,
@@ -189,12 +200,24 @@ public class UserActivity extends AppCompatActivity {
                 ImageButton like = view.findViewById(R.id.comment_like);
                 ImageButton liked = view.findViewById(R.id.comment_liked);
                 TextView num = view.findViewById(R.id.comment_likenum);
+                if(flags.get(position)){
+                    like.setVisibility(View.INVISIBLE);
+                    liked.setVisibility(View.VISIBLE);
+                    num.setText(String.valueOf(list.get(position).getLikeCount()));
+                }
+                else{
+                    liked.setVisibility(View.INVISIBLE);
+                    like.setVisibility(View.VISIBLE);
+                    num.setText(String.valueOf(list.get(position).getLikeCount()));
+                }
                 like.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        flags.set(position,true);
                         int likenum = Integer.parseInt((String) num.getText());
                         likenum += 1;
                         updateLikeCount(list.get(position).getId(),likenum);
+                        global.addLikePost(list.get(position));
                         num.setText(String.valueOf(likenum));
                         user_likescount.setText(String.valueOf(Integer.parseInt(user_likescount.getText().toString())+1));
                         like.setVisibility(View.INVISIBLE);
@@ -204,9 +227,11 @@ public class UserActivity extends AppCompatActivity {
                 liked.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        flags.set(position,false);
                         int likenum = Integer.parseInt((String) num.getText());
                         likenum -= 1;
                         updateLikeCount(list.get(position).getId(),likenum);
+                        global.removeLikePost(list.get(position));
                         num.setText(String.valueOf(likenum));
                         user_likescount.setText(String.valueOf(Integer.parseInt(user_likescount.getText().toString())-1));
                         liked.setVisibility(View.INVISIBLE);

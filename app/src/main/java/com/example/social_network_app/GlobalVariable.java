@@ -28,6 +28,7 @@ public class GlobalVariable extends Application {
     private List<Post> postList = new LinkedList<>();
     private List<User> userList = new ArrayList<>();
     private List<Music> musicList = new ArrayList<>();
+    private List<Post> likePost = new LinkedList<>();
     private RBTree<Double> MusicRateTree = new RBTree<>();  //The tree stored music rate and music
     private RBTree<String> MusicDateTree = new RBTree<>();  //The tree stored music date and music
     private RBTree<Integer> PostLikeCountTree = new RBTree<>();  //The tree stored post like count and music
@@ -45,6 +46,9 @@ public class GlobalVariable extends Application {
         initTree();
     }
 
+    /**
+     * filter the hate language of post list
+     */
     public void filterPost(){
         PostDaoInterface postDao = new PostDao();
         List<String> hate = postDao.findHateString(this);
@@ -75,8 +79,37 @@ public class GlobalVariable extends Application {
     }
 
     /**
+     * add a like post to the liked post list
+     * @param post the post need to be added
+     */
+    public void addLikePost(Post post){
+        this.likePost.add(post);
+    }
+
+    /**
+     * remove a like post to the liked post list
+     * @param post the post need to be removed
+     */
+    public void removeLikePost(Post post){
+        this.likePost.remove(post);
+    }
+
+    /**
+     * check if this post be liked
+     * @param post the post need be checked
+     * @return return true if it is liked, return false if not
+     */
+   public boolean ifLike(Post post){
+        return likePost.contains(post);
+   }
+
+    /**
      * The getter and setter function of these global variables
      */
+
+    public List<Post> getLikePost() {
+        return likePost;
+    }
 
     public RBTree<Double> getMusicRateTree() {
         return MusicRateTree;
