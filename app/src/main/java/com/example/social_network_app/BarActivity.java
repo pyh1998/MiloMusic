@@ -2,12 +2,16 @@ package com.example.social_network_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.social_network_app.Basic_classes.PostDao.Post;
+import com.example.social_network_app.Basic_classes.UserDao.CurrentUser;
 import com.example.social_network_app.Basic_classes.UserDao.User;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
@@ -38,6 +42,7 @@ public class BarActivity extends AppCompatActivity {
     public BarChart barChart3;
     TextView title;
 
+    ImageButton back;
     List<Post> resultList = new ArrayList<>();
     List<User> userList = new ArrayList<>();
     Map<String,Integer> commentsMonthly = new TreeMap<>();
@@ -69,7 +74,17 @@ public class BarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar);
-        user = (User) getIntent().getSerializableExtra("user");
+        user = (User) getIntent().getSerializableExtra("User");
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserActivity.class);
+                intent.putExtra("User",user);
+                startActivity(intent);
+            }
+        });
 
         title = findViewById(R.id.report_title);
         title.setText(user.getName()+"'s report");
@@ -105,7 +120,6 @@ public class BarActivity extends AppCompatActivity {
         drawComments(cMonthly);
         drawLikeCount(lMonthly);
         drawFans(fansCount);
-
     }
 
     /**
@@ -116,7 +130,6 @@ public class BarActivity extends AppCompatActivity {
         ArrayList<BarEntry> entries = new ArrayList<>();
         BarDataSet dataset;
         int index = 1;
-        Log.e("!!!!",map.toString());
         for(int cm_count : map.values()){
             entries.add(new BarEntry(index++, cm_count));
         }
@@ -216,7 +229,7 @@ public class BarActivity extends AppCompatActivity {
                 if (v==10) return "Oct.";
                 if (v==11) return "Nov.";
                 if (v==12) return "Dec.";
-                return "";//注意这里需要改成 ""
+                return "";
             }
         });
           xAxis.setLabelCount(9,false);

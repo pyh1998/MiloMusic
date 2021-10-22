@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -90,7 +91,7 @@ public class UserActivity extends AppCompatActivity {
                 reportIntent.putExtra("commentsCount",user_commentscount.getText());
                 reportIntent.putExtra("fansCount",user_fanscount.getText());
                 reportIntent.putExtra("likesCount", user_likescount.getText());
-                reportIntent.putExtra("user",user);
+                reportIntent.putExtra("User",user);
                 startActivity(reportIntent);
             }
         });

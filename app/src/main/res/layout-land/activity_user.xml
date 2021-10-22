@@ -53,13 +53,15 @@
         android:id="@+id/user_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:text="User name"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/iv_user_userhead"
-        app:layout_constraintTop_toBottomOf="@+id/iv_user_userhead" />
+        app:layout_constraintBottom_toBottomOf="@+id/iv_user_userhead"
+        app:layout_constraintStart_toEndOf="@+id/iv_user_userhead"
+        app:layout_constraintTop_toTopOf="@+id/iv_user_userhead" />
 
     <TextView
         android:id="@+id/user_userage"
@@ -74,10 +76,10 @@
 
     <ImageView
         android:id="@+id/iv_user_userhead"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,9 +93,11 @@
         android:id="@+id/imageView7"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="@+id/user_username"
-        app:layout_constraintTop_toBottomOf="@+id/user_username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_user_userhead"
         app:srcCompat="@drawable/age" />
 
     <TextView
@@ -102,10 +106,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="5dp"
         android:text="History comments: "
         app:layout_constraintStart_toStartOf="@+id/iv_user_userhead"
-        app:layout_constraintTop_toBottomOf="@+id/iv_user_userhead" />
+        app:layout_constraintTop_toBottomOf="@+id/user_useremail" />
 
     <TextView
         android:id="@+id/user_commentscount"

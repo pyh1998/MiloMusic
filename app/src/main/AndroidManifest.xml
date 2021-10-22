@@ -46,8 +46,6 @@
 
         <activity
             android:name=".BarActivity"
-            android:parentActivityName=".UserActivity"
-            android:launchMode="singleTop"
             android:exported="true" />
         <activity
             android:name=".CommentsActivity"
