@@ -7,13 +7,6 @@ declaration: >-
   own work, with the following exceptions:
 
 
-# add as many "name+comment" entries as necessary
-# (or remove it altogether if you haven't collaborated with anyone outside your group)
-collaboration:
-  - name:
-    comment: >-
-
-
 # add as many "url+licence+comment" entries as necessary
 # (or remove it altogether if you haven't used any external code)
 code:
@@ -67,8 +60,8 @@ assets:
 members:
   - name: Man Jin
     uid: u7167784
-  - name:
-    uid:
+  - name: Yuhui Pang
+    uid: u7211790
   - name: Hang Su
     uid: u7238342
   - name: Qihong Zeng

@@ -144,7 +144,7 @@ public class CommentsActivity extends AppCompatActivity {
                     }
                 }
             }
-        },3000,3000);
+        },6000,3000);
     }
 
     /**
