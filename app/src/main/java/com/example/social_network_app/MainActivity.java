@@ -443,6 +443,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * code in this function is based on some code from tabnine
+     * url:https://www.tabnine.com/web/assistant/code/rs/5c7c8b94ac38dc0001e34b26#L263
      * positioning
      *
      */
@@ -458,6 +460,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * code in this function is based on some code on github
+     * url:https://github.com/whoplayitcool/MyApplication6/blob/master/app/src/main/java/cn/bxw1/bxapp/amap/Location_Activity.java
      * positioning stop
      *
      */
@@ -467,6 +471,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * code in this function is based on some code on github
+     * url:https://github.com/whoplayitcool/MyApplication6/blob/master/app/src/main/java/cn/bxw1/bxapp/amap/Location_Activity.java
      * destroy positioning
      *
      * If the AMapLocationClient is instantiated in the current Activity,
