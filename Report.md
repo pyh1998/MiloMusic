@@ -39,7 +39,7 @@ In the unlikely event that an event of conflict can not be resolved it will requ
 
 MiloMusic is a music social media application specifically targeting all people who love music. It provides three parts for them, which are music, comments, and user.
 
-- In the music part, a list of songs is showen in descending order of date or score. Therefore, users can get the latest and highest score song. Users also can search songs by four methods.
+- In the music part, a list of songs is shown in descending order of date or score. Therefore, users can get the latest and highest score song. Users also can search songs by four methods.
 - In the comments part, users can view posts on a timeline activity (update every 3 seconds). Similarly, users can search comments by three methods. In addition, users can post their comments.
 - The user part is open for every users, user can view their comments and a report for their activities.
 
