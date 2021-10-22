@@ -16,6 +16,7 @@ public enum MusicTag {
     MusicTag(int id) {
         this.id = id;
     }
+
     public static MusicTag getTagById(int id){
         for(MusicTag m : MusicTag.values()){
             if(m.id == id){

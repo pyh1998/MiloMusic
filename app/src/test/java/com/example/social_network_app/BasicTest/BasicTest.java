@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import com.example.social_network_app.Basic_classes.MusicDao.Music;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDao;
 import com.example.social_network_app.Basic_classes.MusicDao.MusicDaoInterface;
+import com.example.social_network_app.Basic_classes.MusicDao.MusicTag;
 import com.example.social_network_app.Basic_classes.PostDao.Post;
 import com.example.social_network_app.Basic_classes.PostDao.PostDao;
 import com.example.social_network_app.Basic_classes.PostDao.PostDaoInterface;
@@ -54,6 +55,24 @@ public class BasicTest {
         assertEquals(-1,music.getSortOrder());
         assertEquals(-1,music.getSortBy());
         MusicDaoInterface musicDaoInterface = new MusicDao();
+    }
+
+    @Test
+    public void MusicTagTest(){
+        assertEquals("alternative",MusicTag.getTagById(1).toString());
+        assertEquals("blues",MusicTag.getTagById(2).toString());
+        assertEquals("country",MusicTag.getTagById(3).toString());
+        assertEquals("dance",MusicTag.getTagById(4).toString());
+        assertEquals("electronica",MusicTag.getTagById(5).toString());
+        assertEquals("hiphop",MusicTag.getTagById(6).toString());
+        assertEquals("pop",MusicTag.getTagById(7).toString());
+        assertEquals("rap",MusicTag.getTagById(8).toString());
+        assertEquals("rock",MusicTag.getTagById(9).toString());
+        assertEquals("R&B",MusicTag.getTagById(10).toString());
+        assertNull(MusicTag.getTagById(11));
+
+
+
     }
 
     @Test
